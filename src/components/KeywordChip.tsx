@@ -1,5 +1,6 @@
 import { interpolate, useCurrentFrame } from "remotion";
-import { COLORS, FONTS } from "../constants";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 
 type KeywordChipProps = {
   text: string;

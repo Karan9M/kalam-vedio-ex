@@ -1,9 +1,19 @@
 import { Audio } from "@remotion/media";
 import { linearTiming, TransitionSeries } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
-import { AbsoluteFill, staticFile } from "remotion";
+import {
+  AbsoluteFill,
+  CalculateMetadataFunction,
+  staticFile,
+} from "remotion";
 import { Background } from "./components/Background";
-import { SCENE_FRAMES, TRANSITION_DURATION } from "./constants";
+import {
+  FPS,
+  SCENE_AUDIO_FILES,
+  SCENE_FALLBACK_FRAMES,
+  TRANSITION_DURATION,
+} from "./constants";
+import { getAudioDuration } from "./utils/getAudioDuration";
 import { SceneClosing } from "./scenes/SceneClosing";
 import { SceneHook } from "./scenes/SceneHook";
 import { SceneIntro } from "./scenes/SceneIntro";
@@ -13,48 +23,77 @@ import { SceneTopicReveal } from "./scenes/SceneTopicReveal";
 import { SceneUnitDigit } from "./scenes/SceneUnitDigit";
 import { SceneVbodmas } from "./scenes/SceneVbodmas";
 
+type Props = {
+  sceneDurations: number[]; // frames per scene
+};
+
 const transitionTiming = linearTiming({ durationInFrames: TRANSITION_DURATION });
 
-export const MyComposition: React.FC = () => {
+// Measures each per-scene audio file and passes exact frame counts as props.
+// Timing is 100% driven by audio — no more hardcoded SCENE_SECONDS.
+export const calculateMetadata: CalculateMetadataFunction<Props> = async () => {
+  const durations = await Promise.all(
+    SCENE_AUDIO_FILES.map((file) => getAudioDuration(staticFile(file))),
+  );
+
+  const sceneDurations = durations.map(
+    (sec) => Math.ceil(sec * FPS) + TRANSITION_DURATION,
+  );
+
+  const numTransitions = sceneDurations.length - 1;
+  const totalFrames =
+    sceneDurations.reduce((a, b) => a + b, 0) -
+    numTransitions * TRANSITION_DURATION;
+
+  return {
+    durationInFrames: totalFrames,
+    props: { sceneDurations },
+  };
+};
+
+export const MyComposition: React.FC<Props> = ({ sceneDurations }) => {
+  const durations = sceneDurations?.length
+    ? sceneDurations
+    : SCENE_FALLBACK_FRAMES.map((f) => f + TRANSITION_DURATION);
+
   const [intro, topic, hook, vbodmas, ofTrap, unitDigit, philosophy, closing] =
-    SCENE_FRAMES;
+    durations;
+
+  const scenes = [
+    { dur: intro, component: <SceneIntro />, audio: SCENE_AUDIO_FILES[0] },
+    { dur: topic, component: <SceneTopicReveal />, audio: SCENE_AUDIO_FILES[1] },
+    { dur: hook, component: <SceneHook />, audio: SCENE_AUDIO_FILES[2] },
+    { dur: vbodmas, component: <SceneVbodmas />, audio: SCENE_AUDIO_FILES[3] },
+    { dur: ofTrap, component: <SceneOfTrap />, audio: SCENE_AUDIO_FILES[4] },
+    { dur: unitDigit, component: <SceneUnitDigit />, audio: SCENE_AUDIO_FILES[5] },
+    { dur: philosophy, component: <ScenePhilosophy />, audio: SCENE_AUDIO_FILES[6] },
+    { dur: closing, component: <SceneClosing />, audio: SCENE_AUDIO_FILES[7] },
+  ];
 
   return (
     <AbsoluteFill>
       <Background />
-      <Audio src={staticFile("audio1.mp3")} />
       <TransitionSeries>
-        <TransitionSeries.Sequence durationInFrames={intro + TRANSITION_DURATION}>
-          <SceneIntro />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={transitionTiming} />
-        <TransitionSeries.Sequence durationInFrames={topic + TRANSITION_DURATION}>
-          <SceneTopicReveal />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={transitionTiming} />
-        <TransitionSeries.Sequence durationInFrames={hook + TRANSITION_DURATION}>
-          <SceneHook />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={transitionTiming} />
-        <TransitionSeries.Sequence durationInFrames={vbodmas + TRANSITION_DURATION}>
-          <SceneVbodmas />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={transitionTiming} />
-        <TransitionSeries.Sequence durationInFrames={ofTrap + TRANSITION_DURATION}>
-          <SceneOfTrap />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={transitionTiming} />
-        <TransitionSeries.Sequence durationInFrames={unitDigit + TRANSITION_DURATION}>
-          <SceneUnitDigit />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={transitionTiming} />
-        <TransitionSeries.Sequence durationInFrames={philosophy + TRANSITION_DURATION}>
-          <ScenePhilosophy />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={transitionTiming} />
-        <TransitionSeries.Sequence durationInFrames={closing + TRANSITION_DURATION}>
-          <SceneClosing />
-        </TransitionSeries.Sequence>
+        {scenes.map((scene, i) => (
+          <>
+            {/* Audio inside each Sequence so it starts exactly when its scene starts */}
+            <TransitionSeries.Sequence
+              key={`scene-${i}`}
+              durationInFrames={scene.dur}
+              premountFor={TRANSITION_DURATION * 2}
+            >
+              <Audio src={staticFile(scene.audio)} />
+              {scene.component}
+            </TransitionSeries.Sequence>
+            {i < scenes.length - 1 && (
+              <TransitionSeries.Transition
+                key={`transition-${i}`}
+                presentation={fade()}
+                timing={transitionTiming}
+              />
+            )}
+          </>
+        ))}
       </TransitionSeries>
     </AbsoluteFill>
   );

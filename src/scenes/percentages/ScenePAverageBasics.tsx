@@ -1,6 +1,7 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { KeywordChip } from "../../components/KeywordChip";
-import { COLORS, FONTS } from "../../constants";
+import { COLORS } from "../../constants";
+import { FONTS } from "../../fonts";
 
 export const ScenePAverageBasics: React.FC = () => {
   const frame = useCurrentFrame();

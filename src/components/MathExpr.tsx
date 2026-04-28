@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
-import { COLORS, FONTS } from "../constants";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 
 type MathExprProps = {
   children: React.ReactNode;

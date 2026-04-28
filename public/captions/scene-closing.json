@@ -1,0 +1,51 @@
+[
+  {
+    "text": "[",
+    "startMs": 20,
+    "endMs": 520,
+    "timestampMs": 2180,
+    "confidence": 0.850622
+  },
+  {
+    "text": "NON",
+    "startMs": 520,
+    "endMs": 640,
+    "timestampMs": 2180,
+    "confidence": 0.675843
+  },
+  {
+    "text": "-",
+    "startMs": 640,
+    "endMs": 770,
+    "timestampMs": 2180,
+    "confidence": 1
+  },
+  {
+    "text": "ENGLISH",
+    "startMs": 770,
+    "endMs": 2220,
+    "timestampMs": 2180,
+    "confidence": 1
+  },
+  {
+    "text": " SPE",
+    "startMs": 2220,
+    "endMs": 2340,
+    "timestampMs": 2180,
+    "confidence": 1
+  },
+  {
+    "text": "ECH",
+    "startMs": 2340,
+    "endMs": 2800,
+    "timestampMs": 2180,
+    "confidence": 1
+  },
+  {
+    "text": "]",
+    "startMs": 2800,
+    "endMs": 3000,
+    "timestampMs": 2180,
+    "confidence": 1
+  }
+]

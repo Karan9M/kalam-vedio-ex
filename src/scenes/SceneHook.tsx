@@ -1,6 +1,8 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { KeywordChip } from "../components/KeywordChip";
-import { COLORS, FONTS } from "../constants";
+import { CaptionOverlay } from "../components/CaptionOverlay";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 
 export const SceneHook: React.FC = () => {
   const frame = useCurrentFrame();
@@ -39,6 +41,7 @@ export const SceneHook: React.FC = () => {
         DECODE
       </div>
       <KeywordChip text="complexity -> decode" color={COLORS.green} x={1400} y={150} />
+      <CaptionOverlay sceneName="scene-hook" />
     </AbsoluteFill>
   );
 };

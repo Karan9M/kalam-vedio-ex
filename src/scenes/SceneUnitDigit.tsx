@@ -1,7 +1,9 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { KeywordChip } from "../components/KeywordChip";
 import { MathExpr } from "../components/MathExpr";
-import { COLORS, FONTS } from "../constants";
+import { CaptionOverlay } from "../components/CaptionOverlay";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 
 const cycle = ["7^1=7", "7^2=9", "7^3=3", "7^4=1"];
 
@@ -81,9 +83,10 @@ export const SceneUnitDigit: React.FC = () => {
           color: COLORS.green,
         }}
       >
-        95 mod 4 = 3  {"=>"}  unit digit of 7^95 is 3
+        95 mod 4 = 3{"  =>  "}unit digit of 7^95 is 3
       </div>
       <KeywordChip text="Cyclicity of 7 = 4" color={COLORS.green} x={1300} y={120} />
+      <CaptionOverlay sceneName="scene-unitdigit" />
     </AbsoluteFill>
   );
 };

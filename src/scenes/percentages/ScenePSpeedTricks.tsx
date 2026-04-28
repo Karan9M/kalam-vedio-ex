@@ -1,7 +1,8 @@
 import { AbsoluteFill } from "remotion";
 import { KeywordChip } from "../../components/KeywordChip";
 import { MathExpr } from "../../components/MathExpr";
-import { COLORS, FONTS } from "../../constants";
+import { COLORS } from "../../constants";
+import { FONTS } from "../../fonts";
 
 export const ScenePSpeedTricks: React.FC = () => {
   return (

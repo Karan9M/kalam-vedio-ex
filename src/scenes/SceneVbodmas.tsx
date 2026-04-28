@@ -1,6 +1,8 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { KeywordChip } from "../components/KeywordChip";
-import { COLORS, FONTS } from "../constants";
+import { CaptionOverlay } from "../components/CaptionOverlay";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 
 const lines = [
   "V - Vinculum / Bar",
@@ -45,6 +47,7 @@ export const SceneVbodmas: React.FC = () => {
         })}
       </div>
       <KeywordChip text="Your biggest weapon" color={COLORS.yellow} x={1320} y={120} />
+      <CaptionOverlay sceneName="scene-vbodmas" />
     </AbsoluteFill>
   );
 };

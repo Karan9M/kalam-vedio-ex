@@ -1,6 +1,8 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { KeywordChip } from "../components/KeywordChip";
-import { COLORS, FONTS } from "../constants";
+import { CaptionOverlay } from "../components/CaptionOverlay";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 
 export const SceneOfTrap: React.FC = () => {
   const frame = useCurrentFrame();
@@ -25,7 +27,9 @@ export const SceneOfTrap: React.FC = () => {
           transformOrigin: "top left",
         }}
       >
-        <div style={{ flex: 1, border: `3px solid ${COLORS.red}`, borderRadius: 20, padding: 24 }}>
+        <div
+          style={{ flex: 1, border: `3px solid ${COLORS.red}`, borderRadius: 20, padding: 24 }}
+        >
           <div style={{ color: COLORS.red, fontWeight: 700, marginBottom: 12 }}>Wrong Path</div>
           <div>18 / 3 = 6</div>
           <div>1/2 of 6 = 3</div>
@@ -43,6 +47,7 @@ export const SceneOfTrap: React.FC = () => {
         </div>
       </div>
       <KeywordChip text="'Of' solves first" color={COLORS.yellow} x={1400} y={130} />
+      <CaptionOverlay sceneName="scene-oftrap" />
     </AbsoluteFill>
   );
 };

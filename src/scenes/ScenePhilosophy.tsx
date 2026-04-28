@@ -1,5 +1,7 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { COLORS, FONTS } from "../constants";
+import { CaptionOverlay } from "../components/CaptionOverlay";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 
 export const ScenePhilosophy: React.FC = () => {
   const frame = useCurrentFrame();
@@ -37,6 +39,7 @@ export const ScenePhilosophy: React.FC = () => {
       <div style={{ marginTop: 80, fontFamily: FONTS.handwritten, fontSize: 90 }}>
         Speed x Accuracy = Mastery
       </div>
+      <CaptionOverlay sceneName="scene-philosophy" />
     </AbsoluteFill>
   );
 };

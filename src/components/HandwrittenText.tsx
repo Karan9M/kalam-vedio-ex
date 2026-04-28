@@ -1,6 +1,6 @@
 import { CSSProperties, useMemo } from "react";
 import { useCurrentFrame } from "remotion";
-import { FONTS } from "../constants";
+import { FONTS } from "../fonts";
 
 type HandwrittenTextProps = {
   text: string;

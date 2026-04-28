@@ -1,6 +1,7 @@
 import { AbsoluteFill } from "remotion";
 import { HandwrittenText } from "../../components/HandwrittenText";
-import { COLORS, FONTS } from "../../constants";
+import { COLORS } from "../../constants";
+import { FONTS } from "../../fonts";
 
 export const ScenePConclusion: React.FC = () => {
   return (

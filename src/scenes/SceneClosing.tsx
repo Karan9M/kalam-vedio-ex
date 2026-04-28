@@ -1,5 +1,7 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { COLORS, FONTS } from "../constants";
+import { CaptionOverlay } from "../components/CaptionOverlay";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 import { HandwrittenText } from "../components/HandwrittenText";
 
 export const SceneClosing: React.FC = () => {
@@ -36,6 +38,7 @@ export const SceneClosing: React.FC = () => {
       >
         अपनी मेहनत पर भरोसा रखें
       </div>
+      <CaptionOverlay sceneName="scene-closing" />
     </AbsoluteFill>
   );
 };

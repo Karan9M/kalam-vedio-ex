@@ -1,7 +1,9 @@
 import { AbsoluteFill } from "remotion";
-import { COLORS, FONTS } from "../constants";
+import { COLORS } from "../constants";
+import { FONTS } from "../fonts";
 import { HandwrittenText } from "../components/HandwrittenText";
 import { Underline } from "../components/Underline";
+import { CaptionOverlay } from "../components/CaptionOverlay";
 
 export const SceneIntro: React.FC = () => {
   return (
@@ -27,6 +29,7 @@ export const SceneIntro: React.FC = () => {
         }}
       />
       <Underline y={20} startFrame={32} durationInFrames={46} />
+      <CaptionOverlay sceneName="scene-intro" />
     </AbsoluteFill>
   );
 };

@@ -1,6 +1,7 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { KeywordChip } from "../../components/KeywordChip";
-import { COLORS, FONTS } from "../../constants";
+import { COLORS } from "../../constants";
+import { FONTS } from "../../fonts";
 
 const mappings = ["10% = 1/10", "12.5% = 1/8", "33.33% = 1/3"];
 

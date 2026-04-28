@@ -1,6 +1,7 @@
 import { AbsoluteFill } from "remotion";
 import { HandwrittenText } from "../components/HandwrittenText";
 import { KeywordChip } from "../components/KeywordChip";
+import { CaptionOverlay } from "../components/CaptionOverlay";
 import { COLORS } from "../constants";
 
 export const SceneTopicReveal: React.FC = () => {
@@ -22,6 +23,7 @@ export const SceneTopicReveal: React.FC = () => {
         x={1200}
         y={130}
       />
+      <CaptionOverlay sceneName="scene-topic" />
     </AbsoluteFill>
   );
 };
