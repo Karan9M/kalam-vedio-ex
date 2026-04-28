@@ -1,24 +1,14 @@
-import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
-import { loadFont as loadCaveat } from "@remotion/google-fonts/Caveat";
-import { loadFont as loadNotoSansDevanagari } from "@remotion/google-fonts/NotoSansDevanagari";
+import { loadFont } from "@remotion/google-fonts/Inter";
 
-const { fontFamily: interFamily } = loadInter("normal", {
-  weights: ["400", "700"],
-  subsets: ["latin"],
+const { fontFamily } = loadFont("normal", {
+  weights: ["400", "600", "700"],
+  subsets: ["latin", "latin-ext"],
 });
 
-const { fontFamily: caveatFamily } = loadCaveat("normal", {
-  weights: ["400", "700"],
-  subsets: ["latin"],
-});
-
-const { fontFamily: devanagariFamily } = loadNotoSansDevanagari("normal", {
-  weights: ["400", "700"],
-  subsets: ["devanagari"],
-});
-
+// All font roles now use Inter.
+// handwritten/devanagari kept as aliases so percentage scenes compile without a full rewrite.
 export const FONTS = {
-  body: interFamily,
-  handwritten: caveatFamily,
-  devanagari: devanagariFamily,
+  body:        fontFamily,
+  handwritten: fontFamily,
+  devanagari:  fontFamily,
 } as const;

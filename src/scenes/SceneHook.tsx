@@ -1,47 +1,92 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { KeywordChip } from "../components/KeywordChip";
-import { CaptionOverlay } from "../components/CaptionOverlay";
-import { COLORS } from "../constants";
+import { D } from "../design";
 import { FONTS } from "../fonts";
+import { RuleBox } from "../components/RuleBox";
 
 export const SceneHook: React.FC = () => {
   const frame = useCurrentFrame();
-  const shake = Math.sin(frame * 0.7) * interpolate(frame, [0, 40], [14, 0], {
-    extrapolateLeft: "clamp",
+
+  const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const decodeOpacity = interpolate(frame, [48, 80], [0, 1], {
+  const exprOpacity = interpolate(frame, [0, 20], [0, 1], {
+    extrapolateRight: "clamp",
+  });
+  const decodeOpacity = interpolate(frame, [35, 55], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   return (
-    <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
+    <AbsoluteFill
+      style={{
+        backgroundColor: D.bg,
+        opacity,
+        padding: D.pad,
+        paddingTop: D.pad + D.accentHeight + 24,
+        flexDirection: "column",
+        justifyContent: "center",
+        gap: D.gap * 1.5,
+      }}
+    >
+      {/* Accent bar */}
       <div
         style={{
-          transform: `translateX(${shake}px)`,
-          color: COLORS.red,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: D.accentHeight,
+          backgroundColor: D.red,
+        }}
+      />
+
+      {/* Scene label */}
+      <div
+        style={{
+          position: "absolute",
+          top: D.accentHeight + 28,
+          left: D.pad,
           fontFamily: FONTS.body,
-          fontSize: 74,
-          fontWeight: 700,
-          marginBottom: 60,
+          fontSize: D.sz.label,
+          fontWeight: 400,
+          color: D.textLabel,
         }}
       >
-        (7/9 x 13/4) - 5/12 + (11/15 x 6/7)
+        Numbers · The Challenge
       </div>
+
+      {/* Big expression */}
       <div
         style={{
-          color: COLORS.green,
-          fontFamily: FONTS.handwritten,
-          fontSize: 140,
+          opacity: exprOpacity,
+          fontFamily: FONTS.body,
+          fontSize: 80,
           fontWeight: 700,
-          opacity: decodeOpacity,
+          color: D.textPrimary,
+          letterSpacing: "-0.02em",
+          lineHeight: 1.2,
         }}
       >
-        DECODE
+        (7/9 × 13/4) − 5/12 + (11/15 × 6/7)
       </div>
-      <KeywordChip text="complexity -> decode" color={COLORS.green} x={1400} y={150} />
-      <CaptionOverlay sceneName="scene-hook" />
+
+      {/* Decode reveal */}
+      <div
+        style={{
+          opacity: decodeOpacity,
+          fontFamily: FONTS.body,
+          fontSize: 52,
+          fontWeight: 400,
+          color: D.textSecondary,
+        }}
+      >
+        Looks complex? Here's the truth —
+      </div>
+
+      <RuleBox color={D.green} startFrame={50}>
+        Simplification = decoding complexity, not computing it
+      </RuleBox>
     </AbsoluteFill>
   );
 };

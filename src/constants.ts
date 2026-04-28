@@ -1,14 +1,17 @@
+import { D } from "./design";
+
 export const FPS = 30;
 
+// Re-exported for backward compatibility with percentage scenes.
+// New scenes should import D from design.ts directly.
 export const COLORS = {
-  bg: "#0F1419",
-  text: "#FFFFFF",
-  blue: "#58C4DD",
-  green: "#83C167",
-  yellow: "#FFC857",
-  red: "#FC6255",
+  bg:     D.bg,
+  text:   D.textPrimary,
+  blue:   D.blue,
+  green:  D.green,
+  yellow: D.yellow,
+  red:    D.red,
 } as const;
-
 export const TRANSITION_DURATION = 12;
 export const toFrames = (seconds: number) => Math.round(seconds * FPS);
 
@@ -25,6 +28,6 @@ export const SCENE_AUDIO_FILES = [
   "audio/scene-closing.mp3",
 ] as const;
 
-// Fallback placeholder durations used in Remotion Studio before calculateMetadata runs.
-// Does NOT control actual video duration.
+// Fallback placeholder durations used in Remotion Studio
+// before calculateMetadata runs. Does NOT control actual video duration.
 export const SCENE_FALLBACK_FRAMES = SCENE_AUDIO_FILES.map(() => FPS * 8);

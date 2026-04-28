@@ -1,25 +1,49 @@
-import { AbsoluteFill } from "remotion";
-import { KeywordChip } from "../../components/KeywordChip";
-import { MathExpr } from "../../components/MathExpr";
-import { COLORS } from "../../constants";
+import { SceneShell } from "../../components/SceneShell";
+import { RuleBox } from "../../components/RuleBox";
+import { D } from "../../design";
 import { FONTS } from "../../fonts";
 
 export const ScenePSpeedTricks: React.FC = () => {
   return (
-    <AbsoluteFill style={{ padding: "80px 120px", color: COLORS.text }}>
-      <div style={{ fontFamily: FONTS.handwritten, fontSize: 102, color: COLORS.green }}>
-        Speed Trick: Average Speed
+    <SceneShell label="Averages · Speed Trick" accentColor={D.green}>
+      <div
+        style={{
+          fontFamily: FONTS.body,
+          fontSize: 96,
+          fontWeight: 700,
+          color: D.green,
+          marginBottom: 18,
+        }}
+      >
+        Average Speed Trick
       </div>
-      <div style={{ marginTop: 26, fontFamily: FONTS.body, fontSize: 46 }}>
+
+      <div
+        style={{
+          fontFamily: FONTS.body,
+          fontSize: D.sz.sub,
+          color: D.textSecondary,
+          marginBottom: 24,
+        }}
+      >
         Not simple average of x and y
       </div>
-      <MathExpr style={{ marginTop: 36, color: COLORS.yellow }}>
-        Avg Speed = (2xy) / (x + y)
-      </MathExpr>
-      <div style={{ marginTop: 46, fontFamily: FONTS.body, fontSize: 44 }}>
-        A to B at x, return at y {"=>"} use harmonic form
+
+      <div
+        style={{
+          fontFamily: FONTS.body,
+          fontSize: 68,
+          fontWeight: 700,
+          color: D.yellow,
+          marginBottom: 34,
+        }}
+      >
+        Avg Speed = 2xy / (x + y)
       </div>
-      <KeywordChip text="Pattern question in CSAT" color={COLORS.yellow} x={1300} y={140} />
-    </AbsoluteFill>
+
+      <RuleBox color={D.yellow} startFrame={36} style={{ alignSelf: "flex-start" }}>
+        For equal distance travel, always use harmonic mean form
+      </RuleBox>
+    </SceneShell>
   );
 };

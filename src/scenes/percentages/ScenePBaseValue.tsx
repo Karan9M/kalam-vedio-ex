@@ -1,27 +1,37 @@
-import { AbsoluteFill } from "remotion";
-import { KeywordChip } from "../../components/KeywordChip";
-import { COLORS } from "../../constants";
+import { SceneShell } from "../../components/SceneShell";
+import { RuleBox } from "../../components/RuleBox";
+import { D } from "../../design";
 import { FONTS } from "../../fonts";
 
 export const ScenePBaseValue: React.FC = () => {
   return (
-    <AbsoluteFill style={{ padding: "80px 120px", color: COLORS.text }}>
-      <div style={{ fontFamily: FONTS.handwritten, fontSize: 104, color: COLORS.red }}>
+    <SceneShell label="Percentages · Base Value" accentColor={D.red}>
+      <div
+        style={{
+          fontFamily: FONTS.body,
+          fontSize: 96,
+          fontWeight: 700,
+          color: D.red,
+          marginBottom: 24,
+        }}
+      >
         Base Value Matters
       </div>
-      <div style={{ marginTop: 26, fontFamily: FONTS.body, fontSize: 52 }}>
+
+      <div style={{ fontFamily: FONTS.body, fontSize: D.sz.sub, color: D.textPrimary, marginBottom: 12 }}>
         A is 25% more than B
       </div>
-      <div style={{ marginTop: 16, fontFamily: FONTS.body, fontSize: 52, color: COLORS.yellow }}>
+      <div style={{ fontFamily: FONTS.body, fontSize: D.sz.sub, color: D.yellow, marginBottom: 26 }}>
         B is NOT 25% less than A
       </div>
-      <div style={{ marginTop: 38, fontFamily: FONTS.body, fontSize: 42 }}>
-        If B = 100, A = 125
+
+      <div style={{ fontFamily: FONTS.body, fontSize: D.sz.body, color: D.textSecondary, marginBottom: 34 }}>
+        If B = 100, A = 125 ⇒ B is 20% less than A
       </div>
-      <div style={{ marginTop: 8, fontFamily: FONTS.body, fontSize: 42, color: COLORS.green }}>
-        So B is 20% less than A (not 25%)
-      </div>
-      <KeywordChip text="Always check the base" color={COLORS.red} x={1350} y={140} />
-    </AbsoluteFill>
+
+      <RuleBox color={D.red} startFrame={34} style={{ alignSelf: "flex-start" }}>
+        Always identify the reference base before applying percentage logic
+      </RuleBox>
+    </SceneShell>
   );
 };

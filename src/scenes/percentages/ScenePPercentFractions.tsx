@@ -1,49 +1,54 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { KeywordChip } from "../../components/KeywordChip";
-import { COLORS } from "../../constants";
+import { SceneShell } from "../../components/SceneShell";
+import { RuleBox } from "../../components/RuleBox";
+import { D } from "../../design";
 import { FONTS } from "../../fonts";
+import { interpolate, useCurrentFrame } from "remotion";
 
-const mappings = ["10% = 1/10", "12.5% = 1/8", "33.33% = 1/3"];
+const mappings = ["10% = 1/10", "12.5% = 1/8", "33.33% = 1/3", "50% = 1/2"];
 
 export const ScenePPercentFractions: React.FC = () => {
   const frame = useCurrentFrame();
-  const titleOpacity = interpolate(frame, [0, 20], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
 
   return (
-    <AbsoluteFill style={{ padding: "90px 120px", color: COLORS.text }}>
+    <SceneShell label="Percentages · Think in Fractions" accentColor={D.yellow}>
       <div
         style={{
-          fontFamily: FONTS.handwritten,
-          fontSize: 110,
-          color: COLORS.yellow,
-          opacity: titleOpacity,
+          fontFamily: FONTS.body,
+          fontSize: D.sz.heading,
+          fontWeight: 700,
+          color: D.yellow,
+          marginBottom: 36,
         }}
       >
         Percentage = Per Hundred
       </div>
-      <div style={{ marginTop: 48, fontFamily: FONTS.body, fontSize: 64 }}>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 44 }}>
         {mappings.map((item, index) => {
-          const start = 22 + index * 20;
-          const opacity = interpolate(frame, [start, start + 10], [0, 1], {
+          const start = 14 + index * 12;
+          const opacity = interpolate(frame, [start, start + 8], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           });
           return (
-            <div key={item} style={{ opacity, marginBottom: 20, color: COLORS.blue }}>
+            <div
+              key={item}
+              style={{
+                opacity,
+                fontFamily: FONTS.body,
+                fontSize: D.sz.body,
+                color: index < 2 ? D.blue : D.textPrimary,
+              }}
+            >
               {item}
             </div>
           );
         })}
       </div>
-      <KeywordChip
-        text="Think in fractions, not decimals"
-        color={COLORS.green}
-        x={1180}
-        y={150}
-      />
-    </AbsoluteFill>
+
+      <RuleBox color={D.green} startFrame={62} style={{ alignSelf: "flex-start" }}>
+        Convert to fractions first — calculations become faster and cleaner
+      </RuleBox>
+    </SceneShell>
   );
 };

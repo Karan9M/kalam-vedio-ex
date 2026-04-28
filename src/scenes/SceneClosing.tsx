@@ -1,44 +1,88 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-import { CaptionOverlay } from "../components/CaptionOverlay";
-import { COLORS } from "../constants";
+import { D } from "../design";
 import { FONTS } from "../fonts";
-import { HandwrittenText } from "../components/HandwrittenText";
+import { RevealText } from "../components/RevealText";
 
 export const SceneClosing: React.FC = () => {
   const frame = useCurrentFrame();
-  const rays = interpolate(frame, [0, 50], [0, 1], {
+
+  const opacity = interpolate(frame, [0, 12], [0, 1], {
+    extrapolateRight: "clamp",
+  });
+  const subOpacity = interpolate(frame, [25, 45], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const lineScale = interpolate(frame, [15, 40], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   return (
-    <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
-      <AbsoluteFill
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(88,196,221,0.35), rgba(88,196,221,0))",
-          transform: `scale(${0.7 + rays * 0.6})`,
-          opacity: rays,
-        }}
-      />
-      <HandwrittenText
-        text="चलिए शुरू करते हैं!"
-        devanagari
-        charsPerFrame={0.5}
-        style={{ fontSize: 132, color: COLORS.yellow, fontWeight: 700 }}
-      />
+    <AbsoluteFill
+      style={{
+        backgroundColor: D.bg,
+        opacity,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: 40,
+      }}
+    >
+      {/* Top accent bar */}
       <div
         style={{
-          marginTop: 24,
-          fontFamily: FONTS.devanagari,
-          fontSize: 48,
-          color: COLORS.text,
-          opacity: 0.8,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: D.accentHeight,
+          backgroundColor: D.yellow,
+        }}
+      />
+
+      <RevealText
+        text="चलिए शुरू करते हैं!"
+        wordsPerSecond={3}
+        fontSize={120}
+        color={D.yellow}
+        style={{ letterSpacing: "-0.01em" }}
+      />
+
+      {/* Divider */}
+      <div
+        style={{
+          width: 480,
+          height: 2,
+          backgroundColor: `${D.yellow}40`,
+          transform: `scaleX(${lineScale})`,
+          transformOrigin: "left",
+        }}
+      />
+
+      <div
+        style={{
+          opacity: subOpacity,
+          fontFamily: FONTS.body,
+          fontSize: D.sz.sub,
+          fontWeight: 400,
+          color: D.textSecondary,
         }}
       >
         अपनी मेहनत पर भरोसा रखें
       </div>
-      <CaptionOverlay sceneName="scene-closing" />
+
+      {/* Bottom accent bar */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: D.accentHeight,
+          backgroundColor: D.yellow,
+        }}
+      />
     </AbsoluteFill>
   );
 };

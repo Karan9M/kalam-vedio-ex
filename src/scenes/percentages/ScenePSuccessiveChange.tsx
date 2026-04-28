@@ -1,23 +1,48 @@
-import { AbsoluteFill } from "remotion";
-import { KeywordChip } from "../../components/KeywordChip";
-import { MathExpr } from "../../components/MathExpr";
-import { COLORS } from "../../constants";
+import { SceneShell } from "../../components/SceneShell";
+import { RuleBox } from "../../components/RuleBox";
+import { D } from "../../design";
 import { FONTS } from "../../fonts";
 
 export const ScenePSuccessiveChange: React.FC = () => {
   return (
-    <AbsoluteFill style={{ padding: "80px 120px", color: COLORS.text }}>
-      <div style={{ fontFamily: FONTS.handwritten, fontSize: 98, color: COLORS.yellow }}>
-        Successive Percentage Change
+    <SceneShell label="Percentages · Successive Change" accentColor={D.red}>
+      <div
+        style={{
+          fontFamily: FONTS.body,
+          fontSize: 96,
+          fontWeight: 700,
+          color: D.yellow,
+          marginBottom: 28,
+        }}
+      >
+        +10% then -10% ≠ 0%
       </div>
-      <MathExpr style={{ marginTop: 36, color: COLORS.blue }}>+10% then -10% != 0%</MathExpr>
-      <div style={{ marginTop: 50, fontFamily: FONTS.body, fontSize: 56 }}>
-        Formula: <span style={{ color: COLORS.green }}>x + y + (xy / 100)</span>
+
+      <div
+        style={{
+          fontFamily: FONTS.body,
+          fontSize: D.sz.sub,
+          color: D.textSecondary,
+          marginBottom: 20,
+        }}
+      >
+        Net % change = x + y + (xy/100)
       </div>
-      <div style={{ marginTop: 20, fontFamily: FONTS.body, fontSize: 52, color: COLORS.red }}>
-        10 + (-10) + (10 x -10 / 100) = -1%
+
+      <div
+        style={{
+          fontFamily: FONTS.body,
+          fontSize: D.sz.body,
+          color: D.textPrimary,
+          marginBottom: 42,
+        }}
+      >
+        10 + (-10) + (10 × -10 / 100) = <span style={{ color: D.red }}>-1%</span>
       </div>
-      <KeywordChip text="Price always drops by 1%" color={COLORS.red} x={1260} y={140} />
-    </AbsoluteFill>
+
+      <RuleBox color={D.red} startFrame={40} style={{ alignSelf: "flex-start" }}>
+        Equal up and down percentages do not cancel — base keeps changing
+      </RuleBox>
+    </SceneShell>
   );
 };

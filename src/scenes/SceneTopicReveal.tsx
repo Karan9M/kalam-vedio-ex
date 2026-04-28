@@ -1,29 +1,51 @@
-import { AbsoluteFill } from "remotion";
-import { HandwrittenText } from "../components/HandwrittenText";
-import { KeywordChip } from "../components/KeywordChip";
-import { CaptionOverlay } from "../components/CaptionOverlay";
-import { COLORS } from "../constants";
+import { interpolate, useCurrentFrame } from "remotion";
+import { D } from "../design";
+import { FONTS } from "../fonts";
+import { SceneShell } from "../components/SceneShell";
+import { RevealText } from "../components/RevealText";
 
 export const SceneTopicReveal: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  const badgeOpacity = interpolate(frame, [35, 55], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
   return (
-    <AbsoluteFill style={{ justifyContent: "center", paddingLeft: 160 }}>
-      <HandwrittenText
+    <SceneShell label="UPSC CSAT · GS Paper 2" accentColor={D.blue}>
+      <RevealText
         text="Numbers & Simplification"
-        charsPerFrame={0.45}
+        wordsPerSecond={2.5}
+        fontSize={D.sz.heading}
+        color={D.yellow}
+        style={{ maxWidth: 1400, marginBottom: D.gap }}
+      />
+
+      <div
         style={{
-          fontSize: 132,
-          fontWeight: 700,
-          color: COLORS.yellow,
-          maxWidth: 1300,
+          opacity: badgeOpacity,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 16,
+          fontFamily: FONTS.body,
+          fontSize: D.sz.body,
+          fontWeight: 400,
+          color: D.textSecondary,
+          marginTop: 16,
         }}
-      />
-      <KeywordChip
-        text="UPSC GS Paper 2  ·  Marks Foundation"
-        startFrame={36}
-        x={1200}
-        y={130}
-      />
-      <CaptionOverlay sceneName="scene-topic" />
-    </AbsoluteFill>
+      >
+        <span
+          style={{
+            display: "inline-block",
+            width: 10,
+            height: 10,
+            borderRadius: "50%",
+            backgroundColor: D.blue,
+          }}
+        />
+        Marks Foundation for every CSAT aspirant
+      </div>
+    </SceneShell>
   );
 };

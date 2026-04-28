@@ -1,23 +1,22 @@
-import { AbsoluteFill } from "remotion";
-import { HandwrittenText } from "../../components/HandwrittenText";
-import { KeywordChip } from "../../components/KeywordChip";
-import { COLORS } from "../../constants";
+import { SceneShell } from "../../components/SceneShell";
+import { RevealText } from "../../components/RevealText";
+import { RuleBox } from "../../components/RuleBox";
+import { D } from "../../design";
 
 export const ScenePTitle: React.FC = () => {
   return (
-    <AbsoluteFill style={{ justifyContent: "center", paddingLeft: 140 }}>
-      <HandwrittenText
-        text="Percentages  +  Averages"
-        charsPerFrame={0.45}
-        style={{ fontSize: 130, color: COLORS.blue, fontWeight: 700 }}
+    <SceneShell label="CSAT · Percentages & Averages" accentColor={D.blue}>
+      <RevealText
+        text="Percentages + Averages"
+        wordsPerSecond={2.4}
+        fontSize={D.sz.heading}
+        color={D.blue}
+        style={{ marginBottom: 44 }}
       />
-      <KeywordChip
-        text="Arithmetic Core for UPSC CSAT"
-        color={COLORS.yellow}
-        x={1240}
-        y={130}
-        startFrame={36}
-      />
-    </AbsoluteFill>
+
+      <RuleBox color={D.yellow} startFrame={26} style={{ alignSelf: "flex-start" }}>
+        Arithmetic core for UPSC CSAT problem solving
+      </RuleBox>
+    </SceneShell>
   );
 };
