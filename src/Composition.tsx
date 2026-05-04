@@ -19,6 +19,7 @@ import { SceneUnitDigit } from "./scenes/SceneUnitDigit";
 import { SceneVbodmas } from "./scenes/SceneVbodmas";
 import { SceneClosing } from "./scenes/SceneClosing";
 import { D } from "./design";
+import { numbersManifest } from "./content/numbersManifest";
 
 const BRAND_INTRO_FRAMES = 75;  // 2.5s
 const BRAND_OUTRO_FRAMES = 90;  // 3.0s
@@ -66,7 +67,11 @@ export const MyComposition: React.FC<Props> = ({ sceneDurations }) => {
         <TransitionSeries.Sequence
           durationInFrames={BRAND_INTRO_FRAMES + TRANSITION_DURATION}
         >
-          <SceneBrand mode="intro" />
+          <SceneBrand
+            mode="intro"
+            introSubtitle={numbersManifest.introSubtitle}
+            outroSubtitle={numbersManifest.outroSubtitle}
+          />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={timing} />
 
@@ -91,7 +96,11 @@ export const MyComposition: React.FC<Props> = ({ sceneDurations }) => {
 
         {/* Brand outro — no audio */}
         <TransitionSeries.Sequence durationInFrames={BRAND_OUTRO_FRAMES}>
-          <SceneBrand mode="outro" />
+          <SceneBrand
+            mode="outro"
+            introSubtitle={numbersManifest.introSubtitle}
+            outroSubtitle={numbersManifest.outroSubtitle}
+          />
         </TransitionSeries.Sequence>
       </TransitionSeries>
     </AbsoluteFill>

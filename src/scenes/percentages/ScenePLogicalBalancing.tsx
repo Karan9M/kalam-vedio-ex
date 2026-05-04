@@ -1,53 +1,34 @@
+import { useCurrentFrame } from "remotion";
 import { SceneShell } from "../../components/SceneShell";
 import { RuleBox } from "../../components/RuleBox";
+import { VisualRenderer } from "../../components/VisualRenderer";
+import { WordHighlightSubtitle } from "../../components/WordHighlightSubtitle";
 import { D } from "../../design";
-import { FONTS } from "../../fonts";
+import { percentagesManifest } from "../../content/percentagesManifest";
+import { findSceneById, getCueFrame, getActiveSegmentIndex } from "../../content/cues";
+
+const scene = findSceneById(percentagesManifest.scenes, "p-logical-balancing");
 
 export const ScenePLogicalBalancing: React.FC = () => {
+  const frame = useCurrentFrame();
+  const activeIdx = getActiveSegmentIndex(frame, scene);
+  const seg = scene.narration[activeIdx];
+  const segStartFrame = scene.cueFrames[seg?.cue ?? "sceneIn"] ?? 0;
+  const ruleBoxIn = getCueFrame(scene.cueFrames, "ruleBoxIn", 9999);
+
   return (
-    <SceneShell label="Averages · Logical Balancing" accentColor={D.yellow}>
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: 96,
-          fontWeight: 700,
-          color: D.yellow,
-          marginBottom: 20,
-        }}
-      >
-        Class avg = 50, new student = 60
+    <SceneShell label={scene.label} accentColor={D[scene.accentColor]}>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        {seg?.visual && (
+          <VisualRenderer spec={seg.visual} startFrame={segStartFrame} accentColor={D[scene.accentColor]} />
+        )}
       </div>
-
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: D.sz.sub,
-          color: D.textSecondary,
-          marginBottom: 36,
-        }}
-      >
-        Extra +10 gets distributed across the full class
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          gap: 18,
-          alignItems: "center",
-          fontFamily: FONTS.body,
-          fontSize: 42,
-          marginBottom: 40,
-          color: D.textPrimary,
-        }}
-      >
-        <div style={{ padding: "14px 24px", border: `2px solid ${D.blue}`, borderRadius: D.cardR }}>50</div>
-        <div style={{ fontSize: 52, color: D.textLabel }}>+</div>
-        <div style={{ padding: "14px 24px", border: `2px solid ${D.yellow}`, borderRadius: D.cardR }}>10 / N</div>
-      </div>
-
-      <RuleBox color={D.blue} startFrame={44} style={{ alignSelf: "flex-start" }}>
-        Use balancing logic first — avoid total-sum brute force
-      </RuleBox>
+      <WordHighlightSubtitle text={seg?.text ?? ""} accentColor={D[scene.accentColor]} />
+      {ruleBoxIn < 9999 && (
+        <RuleBox color={D[scene.accentColor]} startFrame={ruleBoxIn} style={{ alignSelf: "flex-start", marginTop: 24 }}>
+          {scene.takeaway}
+        </RuleBox>
+      )}
     </SceneShell>
   );
 };

@@ -1,85 +1,34 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { useCurrentFrame } from "remotion";
+import { SceneShell } from "../../components/SceneShell";
+import { RuleBox } from "../../components/RuleBox";
+import { VisualRenderer } from "../../components/VisualRenderer";
+import { WordHighlightSubtitle } from "../../components/WordHighlightSubtitle";
 import { D } from "../../design";
-import { FONTS } from "../../fonts";
-import { RevealText } from "../../components/RevealText";
+import { percentagesManifest } from "../../content/percentagesManifest";
+import { findSceneById, getCueFrame, getActiveSegmentIndex } from "../../content/cues";
+
+const scene = findSceneById(percentagesManifest.scenes, "p-intro");
 
 export const ScenePIntro: React.FC = () => {
   const frame = useCurrentFrame();
-
-  const subOpacity = interpolate(frame, [30, 50], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const lineScale = interpolate(frame, [20, 45], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const opacity = interpolate(frame, [0, 12], [0, 1], {
-    extrapolateRight: "clamp",
-  });
+  const activeIdx = getActiveSegmentIndex(frame, scene);
+  const seg = scene.narration[activeIdx];
+  const segStartFrame = scene.cueFrames[seg?.cue ?? "sceneIn"] ?? 0;
+  const ruleBoxIn = getCueFrame(scene.cueFrames, "summaryIn", 9999);
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor: D.bg,
-        opacity,
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: 40,
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: D.accentHeight,
-          backgroundColor: D.yellow,
-        }}
-      />
-
-      <RevealText
-        text="नमस्ते!"
-        wordsPerSecond={4}
-        fontSize={160}
-        color={D.yellow}
-      />
-
-      <div
-        style={{
-          width: 620,
-          height: 2,
-          backgroundColor: `${D.yellow}40`,
-          transform: `scaleX(${lineScale})`,
-          transformOrigin: "left",
-        }}
-      />
-
-      <div
-        style={{
-          opacity: subOpacity,
-          fontFamily: FONTS.body,
-          fontSize: D.sz.sub,
-          fontWeight: 400,
-          color: D.textSecondary,
-          textAlign: "center",
-        }}
-      >
-        CSAT Percentages and Averages में आपका स्वागत है
+    <SceneShell label={scene.label} accentColor={D[scene.accentColor]}>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        {seg?.visual && (
+          <VisualRenderer spec={seg.visual} startFrame={segStartFrame} accentColor={D[scene.accentColor]} />
+        )}
       </div>
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: D.accentHeight,
-          backgroundColor: D.yellow,
-        }}
-      />
-    </AbsoluteFill>
+      <WordHighlightSubtitle text={seg?.text ?? ""} accentColor={D[scene.accentColor]} />
+      {ruleBoxIn < 9999 && (
+        <RuleBox color={D[scene.accentColor]} startFrame={ruleBoxIn} style={{ alignSelf: "flex-start", marginTop: 24 }}>
+          {scene.takeaway}
+        </RuleBox>
+      )}
+    </SceneShell>
   );
 };

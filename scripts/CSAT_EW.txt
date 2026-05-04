@@ -1,0 +1,96 @@
+Hello दोस्तो! आज हम पढ़ेंगे Time and Work — यानी काम और समय का relationship। यह topic C-SAT में directly आता है, और एक बार concept clear हो जाए तो हर सवाल एक pattern follow करता है। तो चलिए step by step समझते हैं।
+[pause]
+सबसे पहले — एक simple सवाल से शुरू करते हैं।
+अगर एक आदमी एक काम 10 दिन में करता है — तो वो एक दिन में कितना काम करता है?
+दसवाँ हिस्सा। यानी 1 by 10।
+यही है efficiency का concept।
+Efficiency मतलब — एक दिन में कितना काम होता है।
+अगर कोई काम N दिनों में करता है, तो उसकी daily efficiency है 1 by N।
+यह एक line याद कर लो — और Time and Work का आधा topic clear हो जाता है।
+[pause]
+अब इसे थोड़ा और extend करते हैं।
+A एक काम 10 दिन में करता है।
+B वही काम 15 दिन में करता है।
+अगर दोनों मिलकर काम करें तो कितने दिन लगेंगे?
+A की daily efficiency है 1 by 10।
+B की daily efficiency है 1 by 15।
+दोनों मिलकर एक दिन में करेंगे — 1 by 10 plus 1 by 15।
+LCM of 10 and 15 is 30।
+तो 3 by 30 plus 2 by 30 equals 5 by 30 equals 1 by 6।
+मतलब दोनों मिलकर एक दिन में पूरे काम का 1 by 6 हिस्सा करते हैं।
+तो पूरा काम होगा 6 दिन में।
+[pause]
+Formula याद रखो — जब दो लोग साथ काम करें, total efficiency add होती है। Time निकालना है तो efficiency का reciprocal लो।
+अब एक shortcut जो exam में बहुत काम आता है।
+जब दो लोग साथ काम करें — A काम करे N1 दिन में, B काम करे N2 दिन में — तो दोनों मिलकर करेंगे N1 times N2 divided by N1 plus N2 दिन में।
+ऊपर वाले example में — 10 times 15 divided by 10 plus 15 equals 150 by 25 equals 6।
+Same answer। लेकिन बहुत faster।
+यह formula सिर्फ दो लोगों के लिए है। तीन या ज़्यादा लोगों के लिए efficiency वाला method use करो।
+[pause]
+अब LCM method — यह method सबसे powerful है जब numbers complicated हों।
+A एक काम 12 दिन में करता है।
+B वही काम 18 दिन में करता है।
+C वही काम 9 दिन में करता है।
+Total work मान लो LCM of 12, 18, 9 — जो है 36 units।
+अब efficiencies निकालो।
+A एक दिन में करेगा 36 by 12 equals 3 units।
+B एक दिन में करेगा 36 by 18 equals 2 units।
+C एक दिन में करेगा 36 by 9 equals 4 units।
+तीनों मिलकर एक दिन में करेंगे 3 plus 2 plus 4 equals 9 units।
+Total time लगेगा 36 by 9 equals 4 दिन।
+इस method में fractions की झंझट नहीं होती। LCM को total work मान लो — और सब कुछ whole numbers में हो जाता है।
+[pause]
+अब एक concept जो C-SAT में अक्सर आता है — काम बीच में छोड़ना।
+A एक काम 20 दिन में करता है। B वही काम 30 दिन में करता है। दोनों मिलकर काम शुरू करते हैं, लेकिन 6 दिन बाद A चला जाता है। B अकेले बाकी काम कितने दिन में पूरा करेगा?
+Total work मान लो LCM of 20 and 30 equals 60 units।
+A की efficiency — 60 by 20 equals 3 units per day।
+B की efficiency — 60 by 30 equals 2 units per day।
+6 दिन दोनों ने मिलकर काम किया — 6 times 5 equals 30 units हो गए।
+बचा काम — 60 minus 30 equals 30 units।
+B अकेले करेगा — 30 by 2 equals 15 दिन।
+[pause]
+अब एक aur common type — alternating work।
+A और B एक काम alternate दिनों पर करते हैं। पहले दिन A, दूसरे दिन B, तीसरे दिन A — इस तरह।
+A काम करता है 10 दिन में। B काम करता है 15 दिन में।
+Total work LCM of 10 and 15 equals 30 units।
+A की efficiency — 3 units per day।
+B की efficiency — 2 units per day।
+दो दिनों में मिलकर होता है 3 plus 2 equals 5 units।
+30 units का काम है — 30 by 5 equals 6 cycles — यानी 12 दिन।
+लेकिन अगर A पहले शुरू करे तो 11वें दिन A काम करेगा, 12वें दिन B।
+यह verify ज़रूर करो — कि exactly किस दिन काम पूरा होता है।
+[pause]
+अब pipes and cisterns — यह exactly same concept है, बस direction अलग होती है।
+Inlet pipe — tank भरती है। यह positive work है।
+Outlet pipe — tank खाली करती है। यह negative work है।
+A pipe एक tank 8 घंटे में भरती है।
+B pipe वही tank 12 घंटे में भरती है।
+C pipe वही tank 6 घंटे में खाली करती है।
+Total capacity LCM of 8, 12, 6 equals 24 units।
+A की rate — 24 by 8 equals 3 units per hour — भरना।
+B की rate — 24 by 12 equals 2 units per hour — भरना।
+C की rate — 24 by 6 equals 4 units per hour — खाली करना।
+तीनों एक साथ चलें तो — 3 plus 2 minus 4 equals 1 unit per hour।
+Tank भरने में लगेगा — 24 by 1 equals 24 घंटे।
+Inlet positive, outlet negative — बस यह एक rule याद रखो।
+[pause]
+अब efficiency और wages का connection — यह C-SAT में बहुत आता है।
+Rule simple है — जितना काम, उतना पैसा।
+A एक काम 10 दिन में करता है। B वही काम 15 दिन में करता है। दोनों मिलकर काम करते हैं और total 500 रुपये मिलते हैं। A और B को कितना-कितना मिलेगा?
+A की efficiency — 3 units per day — LCM method से।
+B की efficiency — 2 units per day।
+Ratio of work done — 3 is to 2।
+A को मिलेगा — 3 by 5 times 500 equals 300 रुपये।
+B को मिलेगा — 2 by 5 times 500 equals 200 रुपये।
+Wages हमेशा efficiency के ratio में बाँटो।
+[pause]
+अब एक important concept — काम का कुछ हिस्सा।
+अगर सवाल पूछे कि A अकेले 4 दिन काम करता है, फिर B आ जाता है और दोनों मिलकर बाकी काम 6 दिन में पूरा करते हैं। A की अकेले काम करने की capacity कितने दिन है? B की कितने दिन?
+इस type के सवालों में — equation बनाओ।
+मान लो A पूरा काम x दिन में करता है, B पूरा काम y दिन में करता है।
+A की daily efficiency — 1 by x।
+B की daily efficiency — 1 by y।
+4 दिन A ने अकेले किया — 4 by x काम हुआ।
+6 दिन दोनों ने मिलकर किया — 6 times open bracket 1 by x plus 1 by y close bracket काम हुआ।
+दोनों का total equals 1।
+4 by x plus 6 by x plus 6 by y equals 1। यह equation solve करो — answer मिल जाएगा। [pause] अब कुछ common mistakes जो सीसैट में होती हैं। पहली गलती — efficiencies को directly add नहीं करना। हमेशा efficiencies add होती हैं, days नहीं। A 10 दिन में, B 20 दिन में — दोनों मिलकर 15 दिन में नहीं करेंगे। 10 plus 20 by 2 गलत है। Efficiencies add करो। दूसरी गलती — negative work को ignore करना। Pipes और cisterns में outlet pipe को हमेशा minus करो। तीसरी गलती — wages बराबर बाँटना। Wages हमेशा work के ratio में बाँटते हैं, दिनों के ratio में नहीं। [pause] चलिए एक सीसैट style question solve करते हैं। A एक काम 12 दिन में करता है। B वही काम 16 दिन में करता है। दोनों मिलकर काम शुरू करते हैं। 4 दिन बाद A चला जाता है। बाकी काम B अकेले कितने दिन में पूरा करेगा? Total work — LCM of 12 and 16 equals 48 units। A की efficiency — 48 by 12 equals 4 units per day। B की efficiency — 48 by 16 equals 3 units per day। 4 दिन दोनों ने मिलकर किया — 4 times 7 equals 28 units। बचा काम — 48 minus 28 equals 20 units। B अकेले करेगा — 20 by 3 equals 6 days और 2 units बचेंगे। 2 units — B एक दिन में 3 units करता है — तो 2 by 3 दिन। Total — 6 and 2 by 3 दिन। [pause] एक बार quick recap करते हैं। पहली बात — Efficiency equals 1 by N। जो जितने कम दिन में करे, उसकी efficiency उतनी ज़्यादा। दूसरी बात — साथ काम करें तो efficiencies add होती हैं। दो लोगों के लिए shortcut — N1 times N2 by N1 plus N2। तीसरी बात — LCM method सबसे safe है। Total work को LCM मान लो — fractions खत्म। चौथी बात — Pipes में inlet positive, outlet negative। पाँचवीं बात — Wages हमेशा efficiency के ratio में बाँटो। और सबसे ज़रूरी बात — यह topic purely formula नहीं है। Concept समझो — efficiency क्या है, काम क्या है, time क्या है। तीनों का relation clear रहे तो कोई भी variation solve हो जाएगी। [pause] Time and Work का pattern हर सवाल में same रहता है। बस situation बदलती है। और एक बार LCM method हाथ में आ जाए — सीसैट के इस section में गलती की गुंजाइश बहुत कम रह जाती है।

@@ -4,33 +4,50 @@ import { FONTS } from "../fonts";
 
 type Props = {
   mode: "intro" | "outro";
-  introSubtitle?: string;
-  outroSubtitle?: string;
+  introSubtitle?: string;   // "UPSC CSAT — Topic Name" format
+  outroSubtitle?: string;   // unused in new design, kept for compat
+  brandName?: string;       // unused in new design, kept for compat
+  logoPath?: string;        // unused in new design, kept for compat
 };
+
+const BASE_IMG = "brand/SuperKalam-Intro-Outro-img.png";
 
 export const SceneBrand: React.FC<Props> = ({
   mode,
-  introSubtitle = "UPSC CSAT — Numbers & Simplification",
-  outroSubtitle = "Subscribe for complete CSAT coverage",
+  introSubtitle = "UPSC CSAT — Topic",
 }) => {
   const frame = useCurrentFrame();
 
-  // Keep logo visible from the very first intro frame.
-  const logoOpacity = mode === "intro"
-    ? 1
-    : interpolate(frame, [0, 15], [0, 1], { extrapolateRight: "clamp" });
-  const taglineOpacity = interpolate(
-    frame,
-    mode === "intro" ? [20, 45] : [10, 30],
-    [0, 1],
-    { extrapolateRight: "clamp" },
-  );
-  const lineScale = interpolate(
-    frame,
-    mode === "intro" ? [15, 40] : [5, 25],
-    [0, 1],
-    { extrapolateRight: "clamp" },
-  );
+  // Parse "UPSC CSAT — Addition and Subtraction" → seriesLabel + topicName
+  const dashIdx = introSubtitle.indexOf(" — ");
+  const seriesLabel = dashIdx >= 0 ? introSubtitle.slice(0, dashIdx) : "UPSC CSAT";
+  const topicName   = dashIdx >= 0 ? introSubtitle.slice(dashIdx + 3) : introSubtitle;
+
+  const imgOpacity = interpolate(frame, [0, 20], [0, 1], { extrapolateRight: "clamp" });
+
+  if (mode === "outro") {
+    return (
+      <AbsoluteFill
+        style={{
+          backgroundColor: D.bg,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ opacity: imgOpacity }}>
+          <Img
+            src={staticFile(BASE_IMG)}
+            style={{ width: 1500, height: "auto", objectFit: "contain" }}
+          />
+        </div>
+      </AbsoluteFill>
+    );
+  }
+
+  // Intro
+  const seriesOpacity = interpolate(frame, [22, 42], [0, 1], { extrapolateRight: "clamp" });
+  const topicOpacity  = interpolate(frame, [30, 55], [0, 1], { extrapolateRight: "clamp" });
+  const topicY        = interpolate(frame, [30, 55], [16, 0], { extrapolateRight: "clamp" });
 
   return (
     <AbsoluteFill
@@ -39,98 +56,50 @@ export const SceneBrand: React.FC<Props> = ({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        gap: 32,
+        gap: 20,
       }}
     >
-      {/* Top accent bar */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: D.accentHeight,
-          backgroundColor: D.blue,
-        }}
-      />
-
-      {/* Brand logo */}
-      <div
-        style={{
-          opacity: logoOpacity,
-          width: 520,
-          height: 160,
-          borderRadius: 20,
-          border: `2px solid ${D.blue}40`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#FFFFFF",
-          padding: "20px 28px",
-        }}
-      >
+      {/* Brand image */}
+      <div style={{ opacity: imgOpacity }}>
         <Img
-          src={staticFile("brand/logo.jpg")}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-          }}
+          src={staticFile(BASE_IMG)}
+          style={{ width: 1200, height: "auto", objectFit: "contain" }}
         />
       </div>
 
-      {/* Company name */}
+      {/* Series label — "UPSC CSAT" */}
       <div
         style={{
-          opacity: logoOpacity,
-          fontFamily: FONTS.body,
-          fontSize: 56,
-          fontWeight: 600,
-          color: D.textPrimary,
-          letterSpacing: "-0.02em",
-        }}
-      >
-        SuperKalam
-      </div>
-
-      {/* Divider line */}
-      <div
-        style={{
-          width: 400,
-          height: 2,
-          backgroundColor: `${D.blue}50`,
-          transform: `scaleX(${lineScale})`,
-          transformOrigin: "center",
-        }}
-      />
-
-      {/* Tagline */}
-      <div
-        style={{
-          opacity: taglineOpacity,
+          opacity: seriesOpacity,
           fontFamily: FONTS.body,
           fontSize: 36,
-          fontWeight: 400,
+          fontWeight: 500,
           color: D.textSecondary,
-          letterSpacing: "0.05em",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          // marginTop: 01,
         }}
       >
-        {mode === "intro"
-          ? introSubtitle
-          : outroSubtitle}
+        {seriesLabel}
       </div>
 
-      {/* Bottom accent bar */}
+      {/* Topic name — bold, large */}
       <div
         style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: D.accentHeight,
-          backgroundColor: D.blue,
+          opacity: topicOpacity,
+          transform: `translateY(${topicY}px)`,
+          fontFamily: FONTS.body,
+          fontSize: 72,
+          fontWeight: 700,
+          color: D.textPrimary,
+          letterSpacing: "-0.01em",
+          textAlign: "center",
+          maxWidth: 1200,
+          lineHeight: 1.15,
         }}
-      />
+      >
+        {topicName}
+      </div>
     </AbsoluteFill>
   );
 };

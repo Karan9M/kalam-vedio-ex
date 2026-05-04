@@ -1,49 +1,34 @@
+import { useCurrentFrame } from "remotion";
 import { SceneShell } from "../../components/SceneShell";
 import { RuleBox } from "../../components/RuleBox";
+import { VisualRenderer } from "../../components/VisualRenderer";
+import { WordHighlightSubtitle } from "../../components/WordHighlightSubtitle";
 import { D } from "../../design";
-import { FONTS } from "../../fonts";
+import { percentagesManifest } from "../../content/percentagesManifest";
+import { findSceneById, getCueFrame, getActiveSegmentIndex } from "../../content/cues";
+
+const scene = findSceneById(percentagesManifest.scenes, "p-speed-tricks");
 
 export const ScenePSpeedTricks: React.FC = () => {
+  const frame = useCurrentFrame();
+  const activeIdx = getActiveSegmentIndex(frame, scene);
+  const seg = scene.narration[activeIdx];
+  const segStartFrame = scene.cueFrames[seg?.cue ?? "sceneIn"] ?? 0;
+  const ruleBoxIn = getCueFrame(scene.cueFrames, "ruleBoxIn", 9999);
+
   return (
-    <SceneShell label="Averages · Speed Trick" accentColor={D.green}>
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: 96,
-          fontWeight: 700,
-          color: D.green,
-          marginBottom: 18,
-        }}
-      >
-        Average Speed Trick
+    <SceneShell label={scene.label} accentColor={D[scene.accentColor]}>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        {seg?.visual && (
+          <VisualRenderer spec={seg.visual} startFrame={segStartFrame} accentColor={D[scene.accentColor]} />
+        )}
       </div>
-
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: D.sz.sub,
-          color: D.textSecondary,
-          marginBottom: 24,
-        }}
-      >
-        Not simple average of x and y
-      </div>
-
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: 68,
-          fontWeight: 700,
-          color: D.yellow,
-          marginBottom: 34,
-        }}
-      >
-        Avg Speed = 2xy / (x + y)
-      </div>
-
-      <RuleBox color={D.yellow} startFrame={36} style={{ alignSelf: "flex-start" }}>
-        For equal distance travel, always use harmonic mean form
-      </RuleBox>
+      <WordHighlightSubtitle text={seg?.text ?? ""} accentColor={D[scene.accentColor]} />
+      {ruleBoxIn < 9999 && (
+        <RuleBox color={D[scene.accentColor]} startFrame={ruleBoxIn} style={{ alignSelf: "flex-start", marginTop: 24 }}>
+          {scene.takeaway}
+        </RuleBox>
+      )}
     </SceneShell>
   );
 };

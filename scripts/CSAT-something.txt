@@ -1,0 +1,201 @@
+हेलो दोस्तों। आज हम पढ़ेंगे Ratio and Proportion... और इसका सबसे पावरफुल यूज़... Speed, Time, and Distance।
+चलो एक सिंपल सवाल से स्टार्ट करते हैं।
+एक क्लास में 30 लड़के हैं और 20 लड़कियां। कोई पूछे... लड़कों और लड़कियों का ratio क्या है?
+30 to 20। सिंपल।
+लेकिन रुको। क्या 30:20 और 3:2 एक ही है?
+हां। बिल्कुल एक ही है।
+यही है Ratio का सबसे बड़ा आइडिया। दो quantities के बीच का relative comparison। Actual values matter नहीं, relationship matters है।
+यह छोटी सी बात आज बहुत बड़े सवाल सॉल्व करवाएगी। तो ध्यान से चलते हैं। स्टेप बाय स्टेप।
+तो सबसे पहले, Ratio क्या होता है। Foundation clear करते हैं।
+Ratio basically एक fraction है। A:B मतलब A/B। 3:2 मतलब 3/2। इतना सिंपल।
+अब एक ज़रूरी बात। और यह बात ध्यान से सुनो। Ratio हमेशा same unit में होता है।
+मान लो 5 किलोमीटर और 500 मीटर का ratio निकालना है। बहुत लोग क्या करते हैं? सीधे लिख देते हैं 5:500। गलत। पहले same unit करो। 5 किलोमीटर यानी 5000 मीटर। अब ratio है 5000:500 यानी 10:1।
+अगर units अलग हैं और directly ratio निकाल लिया, गलती पक्की। यह CSAT में बहुत common trap है। Exam में pressure में यही गलती सबसे पहले होती है। इसलिए आदत डालो। Ratio देखो, पहले units check करो। हमेशा।
+अब एक और चीज़। Equivalent Ratios।
+3:2 को multiply करो 4 से, 12:8 आया। Same ratio। 3:2 को multiply करो 7 से, 21:14 आया। फिर same ratio।
+यह इसलिए important है क्योंकि जब हम proportions में काम करते हैं, हम basically यही करते हैं। दोनों ratios को same scale पर लाते हैं।
+तो Proportion का मतलब क्या है? Proportion मतलब दो ratios बराबर हैं।
+a:b = c:d। इसे ऐसे लिखो, a/b = c/d। अब cross multiply करो। a times d = b times c।
+यह है Golden Rule of Proportion। इसे याद कर लो। आज के 80% सवाल इसी से सॉल्व होंगे।
+चलो एक example लेते हैं।
+अगर 8 workers मिलकर 12 दिन में एक काम करते हैं, तो 6 workers कितने दिन में करेंगे?
+Pause करो। सोचो।
+Workers कम हुए तो दिन ज़्यादा लगेंगे। यह Inverse Proportion है।
+8 times 12 = 6 times ?
+? = 96/6 = 16 दिन।
+देखो, सिर्फ एक line। No confusion।
+तो basically दो types हैं। Direct Proportion, एक बढ़ता है तो दूसरा भी बढ़ता है। Inverse Proportion, एक बढ़ता है तो दूसरा घटता है।
+यह दो types याद रखो। हर ratio-proportion सवाल इन्हीं दोनों में से है। इससे बाहर कोई सवाल नहीं है CSAT में।
+एक और करते हैं। 12 pipes मिलकर एक tank 8 घंटे में भरते हैं। 16 pipes कितने घंटे में भरेंगे?
+Pipes बढ़े तो time कम होगा। Inverse proportion।
+12 times 8 = 16 times ? तो ? = 96/16 = 6 घंटे।
+Simple। एक line। इससे ज़्यादा कुछ नहीं।
+अब आते हैं Ratio के सबसे powerful use पर। Parts निकालना।
+CSAT में सबसे ज़्यादा यही type आता है। और यहां सबसे ज़्यादा लोग unnecessary equations बनाते हैं।
+A और B का ratio 3:5 है। Total = 240। A और B अलग-अलग कितने हैं?
+बहुत लोग क्या करते हैं? x और y रखते हैं। Equations बनाते हैं। टाइम बर्बाद होता है।
+Shortcut यह है। Ratio को Parts में सोचो।
+3:5 मतलब कुल 3+5 = 8 parts। 240 को 8 parts में बांटो। एक part = 30।
+A = 3 times 30 = 90। B = 5 times 30 = 150।
+Done। 10 seconds।
+Video pause करो और यह try करो। A:B:C = 2:3:5 और Total = 600। तीनों निकालो।
+Total parts = 2+3+5 = 10। एक part = 60।
+A = 120, B = 180, C = 300।
+कितना fast था। कोई equation नहीं। बस parts का concept।
+अब एक slightly tricky version।
+A और B का ratio 5:3 है। A और B का difference 40 है। दोनों की values निकालो।
+यहां total नहीं दिया। Difference दिया। तो?
+Difference of parts = 5 minus 3 = 2 parts। 2 parts = 40 तो एक part = 20।
+A = 5 times 20 = 100। B = 3 times 20 = 60।
+Check करो। 100 minus 60 = 40। सही है।
+यह वाला CSAT में बहुत आता है। जब भी difference दिया हो, difference of parts निकालो। Same logic, same speed। यह parts method आगे Speed-Time-Distance में भी काम आएगी।
+अब एक concept है जो बहुत लोग miss करते हैं। Three Ratios को Combine करना।
+A:B = 2:3 और B:C = 4:5 दिया है। तो A:B:C क्या है?
+B दोनों में है। लेकिन पहले में B = 3 है, दूसरे में B = 4 है। Different values हैं। तो directly combine नहीं कर सकते।
+B को common बनाना पड़ेगा।
+B का LCM निकालो। LCM of 3 and 4 = 12।
+A:B = 2:3 को 4 से multiply करो, 8:12 आया।
+B:C = 4:5 को 3 से multiply करो, 12:15 आया।
+अब B same है दोनों में। तो A:B:C = 8:12:15।
+यह एक standard CSAT question type है। जब भी दो अलग ratios दिए हों जिनमें एक common element हो, यही method। Common element का LCM निकालो। Adjust करो। बाकी automatically आ जाएगा।
+अब आते हैं सबसे important application पर। Speed, Time, Distance।
+Speed times Time = Distance।
+यह formula तो सबको पता है। लेकिन CSAT में formula नहीं, इसकी Ratio-sense काम आती है।
+देखो कैसे।
+अगर Speed fix है, Distance और Time Direct Proportion में हैं। ज़्यादा दूरी मतलब ज़्यादा समय।
+अगर Distance fix है, Speed और Time Inverse Proportion में हैं। ज़्यादा speed मतलब कम समय।
+यह दो relationships याद रखो। बाकी सब इसी से निकलेगा।
+अब Speed का Ratio और Time का Ratio। यह CSAT का सबसे popular concept है।
+एक आदमी पहले 60 km/h की speed से चलता है। फिर 40 km/h से चलता है। Same distance। दोनों में कितना time लगा, ratio क्या होगा?
+Distance same है। तो Speed और Time inverse proportion में हैं।
+Speed ratio = 60:40 = 3:2।
+Time ratio = उल्टा = 2:3।
+बस। कोई calculation नहीं।
+जब distance same हो, Speed और Time के ratios एक दूसरे के reciprocal होते हैं। यह property याद कर लो। बहुत सारे CSAT के सवाल directly यहीं से आते हैं।
+चलो एक real CSAT style question try करते हैं।
+Ram usually takes 1 hour to reach office। एक दिन उसकी speed 3/4 हो गई। कितना extra time लगा?
+Speed 3/4 हुई मतलब speed ratio = 3:4, new to old।
+Time ratio = 4:3, inverse।
+पहले 3 parts में जाता था, अब 4 parts में जाएगा।
+Extra time = 1 part।
+1 hour = 3 parts तो 1 part = 20 minutes।
+Extra time = 20 minutes।
+Video pause करो। Check करो। क्या आप यह बिना formula के, सिर्फ ratio से कर पाए?
+अगर हां, तो तुम उन 10% students में हो जो CSAT में time बचाते हैं।
+अब एक और variation।
+Mohan office जाने में 2 घंटे लेता है। अगर वो अपनी speed 25% बढ़ा दे, तो कितना समय बचेगा?
+Speed 25% बढ़ी। New speed = 5/4 times old speed।
+Speed ratio, new to old = 5:4।
+Time ratio, new to old = 4:5, inverse।
+पहले 5 parts लेता था, अब 4 parts।
+5 parts = 2 घंटे = 120 minutes। एक part = 24 minutes।
+Time saved = 1 part = 24 minutes।
+देखो। Same logic। Same method। Different numbers। यही तो pattern है जो CSAT में काम आता है।
+अब एक बहुत important topic। Average Speed का Trap।
+यह सबसे ज़्यादा गलतियाँ होती हैं यहां। और यह गलती CSAT में well-prepared student भी कर देता है अगर ध्यान न हो।
+A से B जाओ 60 km/h से। B से A वापस आओ 40 km/h से। Average speed क्या है?
+90% students क्या करते हैं? 60 + 40 divide by 2 = 50 km/h।
+गलत।
+Average speed वो नहीं होती जो तुम सोच रहे हो।
+Average Speed = Total Distance divided by Total Time।
+मान लो A से B = D km।
+जाने में time = D/60। आने में time = D/40।
+Total distance = 2D।
+Total time = D/60 + D/40।
+Common denominator 120 से। 2D/120 + 3D/120 = 5D/120 = D/24।
+Average Speed = 2D divided by D/24 = 48 km/h।
+लेकिन रुको। क्या हर बार यह calculation करनी पड़ेगी? नहीं।
+Shortcut है। Harmonic Mean of Two Speeds।
+जब distance same हो, same distance two different speeds,
+Average Speed = 2ab divided by a+b।
+यहां a = 60, b = 40।
+2 times 60 times 40 divided by 100 = 4800/100 = 48 km/h।
+यह formula directly use करो जब भी same distance, two speeds का scenario हो।
+लेकिन एक warning। यह formula तभी काम करता है जब दोनों legs की distance same हो। अगर distance अलग-अलग है तो formula से काम नहीं चलेगा। Full calculation करनी पड़ेगी। CSAT में अक्सर distance अलग कर देते हैं और students formula लगा देते हैं। यह trap है। ध्यान रखो।
+अब आते हैं Relative Speed पर। Trains और Meeting Problems।
+CSAT में trains और two people मिलते हुए, यह बहुत आता है। और यहां एक ही concept से सारे सवाल सॉल्व होते हैं।
+Concept simple है।
+दो objects एक दूसरे की तरफ आ रहे हैं, Relative Speed = जोड़ो।
+दो objects एक ही direction में जा रहे हैं, Relative Speed = घटाओ।
+क्यों? सोचो।
+अगर दोनों एक दूसरे की तरफ आ रहे हैं, दोनों की distance एक साथ कम हो रही है। इसलिए effective speed बढ़ती है।
+अगर एक ही direction में हैं, आगे वाला भाग रहा है। Gap धीरे-धीरे कम होती है। Effective speed घटती है।
+चलो एक example करते हैं।
+दो trains A और B, 200 km दूर हैं। A की speed 60 km/h, B की speed 40 km/h। दोनों एक दूसरे की तरफ आ रहे हैं। कितने घंटे में मिलेंगे?
+Relative Speed = 60 + 40 = 100 km/h।
+Time = 200/100 = 2 घंटे।
+Same question, एक ही direction में होते तो?
+Relative Speed = 60 minus 40 = 20 km/h।
+Time = 200/20 = 10 घंटे।
+देखो। एक formula, एक concept, दो अलग scenarios।
+अब थोड़ा advance करते हैं।
+दो trains opposite directions से आ रहे हैं। Train A की length 200 m, Train B की length 300 m। A की speed 60 km/h, B की speed 40 km/h। एक दूसरे को cross करने में कितना time लगेगा?
+यहां cross करने का मतलब यह है कि दोनों trains पूरी तरह से एक-दूसरे के सामने से निकल जाएं।
+Total distance to cover = 200 + 300 = 500 m।
+यह बहुत लोग भूल जाते हैं और सिर्फ एक train की length लेते हैं। गलती। दोनों lengths जोड़नी पड़ती हैं।
+Relative Speed = 60 + 40 = 100 km/h।
+100 km/h को m/s में convert करो। 100 times 1000/3600 = 250/9 m/s।
+Time = 500 divided by 250/9 = 500 times 9/250 = 18 seconds।
+यह train crossing formula याद रखो। जब trains cross करें तो distance = sum of their lengths।
+अब इन सब concepts को एक real CSAT question में लगाते हैं।
+Question यह है। P और Q एक ही जगह से निकलते हैं। P की speed 4 km/h है। Q, P के 2 घंटे बाद निकलता है 6 km/h की speed से। Q कितने समय में P को catch करेगा, Q के निकलने के बाद?
+Video pause करो। खुद try करो।
+चलो देखते हैं।
+जब Q निकलता है, P already 2 घंटे चल चुका है।
+P ने cover किया = 4 times 2 = 8 km। यानी P, Q से 8 km आगे है।
+अब दोनों same direction में हैं।
+Relative Speed = 6 minus 4 = 2 km/h।
+Q को 8 km का gap cover करना है।
+Time = 8/2 = 4 घंटे।
+लेकिन CSAT इसे और tricky बनाता है।
+वही question लेकिन पूछता है, Q कहाँ catch करेगा, start से कितनी दूर?
+Q 4 घंटे चला 6 km/h से।
+Distance = 6 times 4 = 24 km।
+Check करो। P ने 6 घंटे चले, 2 पहले और 4 बाद। 4 times 6 = 24 km। सही है।
+एक ही solution से दोनों answers। यह सोचने का तरीका है। पहले time निकालो। फिर distance। दोनों एक ही calculation में।
+अब एक Special Trick। Changing Ratios।
+CSAT में ऐसे सवाल आते हैं जहां ratios change होते हैं।
+A और B का ratio 3:4 है। अगर A में 6 जोड़ दो तो ratio 5:6 हो जाता है। A और B की actual values क्या हैं?
+बहुत लोग equations में confuse हो जाते हैं। Method systematic रखो।
+Original मान लो, A = 3k, B = 4k।
+A में 6 जोड़ा तो, 3k + 6 divided by 4k = 5/6।
+Cross multiply करो। 6 times 3k + 6 = 5 times 4k।
+18k + 36 = 20k।
+2k = 36। k = 18।
+A = 3 times 18 = 54। B = 4 times 18 = 72।
+Check करो। 54 + 6 = 60। 60:72 = 5:6। सही है।
+Key insight यह है। Ratio में unknown को k रखो। एक equation बनाओ। Solve करो। No guesswork।
+अब एक और variation।
+A और B का ratio 2:3 है। B से 10 घटाया तो ratio 3:4 हो गया। A और B निकालो।
+A = 2k, B = 3k।
+2k divided by 3k minus 10 = 3/4।
+8k = 9k minus 30।
+k = 30।
+A = 60, B = 90।
+Check करो। 90 minus 10 = 80। 60:80 = 3:4। सही है।
+Same method। Different operation। Subtraction भी exactly same तरीके से solve होता है।
+अब Quick Practice करते हैं। पाँच सवाल। Minimum calculation। Video pause करो और खुद try करो पहले।
+पहला सवाल। Ram और Shyam की speed का ratio 3:5 है। Same distance तय करते हैं। Time का ratio क्या होगा?
+Distance same है। Inverse proportion। Time ratio = 5:3।
+दूसरा सवाल। एक train 120 km की दूरी 2 घंटे में तय करती है। अगर speed 20% बढ़ा दो, नया time क्या होगा?
+Original speed = 60 km/h। New speed = 72 km/h। Time = 120/72 = 5/3 घंटे = 1 घंटा 40 मिनट।
+तीसरा सवाल। A:B = 2:3 और B:C = 4:5 है तो A:B:C क्या है?
+LCM of 3 and 4 = 12। A:B = 8:12। B:C = 12:15। A:B:C = 8:12:15।
+चौथा सवाल। दो cities के बीच distance 300 km है। एक car जाती है 50 km/h से, वापस आती है 60 km/h से। Average speed क्या है?
+Same distance, two speeds। Formula use करो।
+2 times 50 times 60 divided by 110 = 6000/110 = approximately 54.5 km/h।
+पाँचवाँ सवाल। P और Q एक project पर काम करते हैं। P अकेले 12 दिन में करता है, Q अकेले 18 दिन में। साथ काम करें तो कितने दिन?
+एक दिन में P करता है = 1/12। एक दिन में Q करता है = 1/18।
+Together = 1/12 + 1/18 = 3/36 + 2/36 = 5/36।
+Total days = 36/5 = 7.2 दिन।
+यह bonus था। Work problems भी ratio से ही solve होती हैं। Same foundation।
+तो अब एक बार पूरा recap करते हैं। सात चीज़ें जो हमेशा याद रहनी चाहिए।
+एक। Ratio निकालने से पहले units same करो। यह trap CSAT में हर बार आता है।
+दो। Parts method। Ratio को parts में सोचो। Total या difference से एक part निकालो। Direct answer। No equations।
+तीन। तीन ratios combine करने हों तो common element का LCM निकालो। Adjust करो। बाकी automatically आ जाएगा।
+चार। Distance same हो तो Speed और Time inversely proportional हैं। Speed ratio उल्टा करो, Time ratio मिल जाएगा।
+पाँच। Same distance, two speeds। Average Speed = 2ab divided by a+b। Simple average मत निकालो। वो हमेशा गलत होगा।
+छह। Relative Speed। Opposite direction में speeds जोड़ो। Same direction में speeds घटाओ। Train crossing में दोनों lengths जोड़ो।
+सात। Changing Ratios। Unknown को k रखो। एक equation बनाओ। Solve करो। No guesswork।
+यह सात concepts। इनके साथ CSAT में Ratio-Proportion और Speed-Time-Distance के 95% सवाल solve हो जाएंगे। Topic बड़ा लगता है लेकिन foundation छोटा है। Foundation clear हो तो सवाल automatically easy लगने लगते हैं।
+समझ आया? तो अभी एक काम करो। यह सातों rules एक बार खुद लिखो, बिना देखे। अगर सातों आ गए, आज का session complete है।

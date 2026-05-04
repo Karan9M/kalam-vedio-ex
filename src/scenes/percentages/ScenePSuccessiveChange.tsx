@@ -1,48 +1,34 @@
+import { useCurrentFrame } from "remotion";
 import { SceneShell } from "../../components/SceneShell";
 import { RuleBox } from "../../components/RuleBox";
+import { VisualRenderer } from "../../components/VisualRenderer";
+import { WordHighlightSubtitle } from "../../components/WordHighlightSubtitle";
 import { D } from "../../design";
-import { FONTS } from "../../fonts";
+import { percentagesManifest } from "../../content/percentagesManifest";
+import { findSceneById, getCueFrame, getActiveSegmentIndex } from "../../content/cues";
+
+const scene = findSceneById(percentagesManifest.scenes, "p-successive-change");
 
 export const ScenePSuccessiveChange: React.FC = () => {
+  const frame = useCurrentFrame();
+  const activeIdx = getActiveSegmentIndex(frame, scene);
+  const seg = scene.narration[activeIdx];
+  const segStartFrame = scene.cueFrames[seg?.cue ?? "sceneIn"] ?? 0;
+  const ruleBoxIn = getCueFrame(scene.cueFrames, "ruleBoxIn", 9999);
+
   return (
-    <SceneShell label="Percentages · Successive Change" accentColor={D.red}>
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: 96,
-          fontWeight: 700,
-          color: D.yellow,
-          marginBottom: 28,
-        }}
-      >
-        +10% then -10% ≠ 0%
+    <SceneShell label={scene.label} accentColor={D[scene.accentColor]}>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        {seg?.visual && (
+          <VisualRenderer spec={seg.visual} startFrame={segStartFrame} accentColor={D[scene.accentColor]} />
+        )}
       </div>
-
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: D.sz.sub,
-          color: D.textSecondary,
-          marginBottom: 20,
-        }}
-      >
-        Net % change = x + y + (xy/100)
-      </div>
-
-      <div
-        style={{
-          fontFamily: FONTS.body,
-          fontSize: D.sz.body,
-          color: D.textPrimary,
-          marginBottom: 42,
-        }}
-      >
-        10 + (-10) + (10 × -10 / 100) = <span style={{ color: D.red }}>-1%</span>
-      </div>
-
-      <RuleBox color={D.red} startFrame={40} style={{ alignSelf: "flex-start" }}>
-        Equal up and down percentages do not cancel — base keeps changing
-      </RuleBox>
+      <WordHighlightSubtitle text={seg?.text ?? ""} accentColor={D[scene.accentColor]} />
+      {ruleBoxIn < 9999 && (
+        <RuleBox color={D[scene.accentColor]} startFrame={ruleBoxIn} style={{ alignSelf: "flex-start", marginTop: 24 }}>
+          {scene.takeaway}
+        </RuleBox>
+      )}
     </SceneShell>
   );
 };

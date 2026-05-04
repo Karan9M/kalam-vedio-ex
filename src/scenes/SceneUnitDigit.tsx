@@ -3,7 +3,10 @@ import { D } from "../design";
 import { FONTS } from "../fonts";
 import { SceneShell } from "../components/SceneShell";
 import { RuleBox } from "../components/RuleBox";
+import { findSceneById, getCueFrame } from "../content/cues";
+import { numbersManifest } from "../content/numbersManifest";
 
+const scene = findSceneById(numbersManifest.scenes, "unit-digit");
 const CYCLE = [
   { exp: "7¹", digit: "7" },
   { exp: "7²", digit: "9" },
@@ -13,22 +16,25 @@ const CYCLE = [
 
 export const SceneUnitDigit: React.FC = () => {
   const frame = useCurrentFrame();
+  const titleIn = getCueFrame(scene.cueFrames, "titleIn", 0);
+  const visualIn = getCueFrame(scene.cueFrames, "visualIn", 20);
+  const detailIn = getCueFrame(scene.cueFrames, "detailIn", 48);
+  const ruleBoxIn = getCueFrame(scene.cueFrames, "ruleBoxIn", 84);
 
-  const problemOpacity = interpolate(frame, [0, 18], [0, 1], {
+  const problemOpacity = interpolate(frame, [titleIn, titleIn + 18], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const cycleOpacity = interpolate(frame, [20, 40], [0, 1], {
+  const cycleOpacity = interpolate(frame, [visualIn, visualIn + 20], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const stepOpacity = interpolate(frame, [50, 70], [0, 1], {
+  const stepOpacity = interpolate(frame, [detailIn, detailIn + 20], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   return (
-    <SceneShell label="Numbers · Unit Digit Method" accentColor={D.green}>
-      {/* Problem */}
+    <SceneShell label={scene.label} accentColor={D[scene.accentColor]}>
       <div
         style={{
           opacity: problemOpacity,
@@ -43,7 +49,6 @@ export const SceneUnitDigit: React.FC = () => {
         7⁹⁵ − 3⁵⁸
       </div>
 
-      {/* Cyclicity row */}
       <div
         style={{
           opacity: cycleOpacity,
@@ -52,37 +57,17 @@ export const SceneUnitDigit: React.FC = () => {
           marginBottom: 40,
         }}
       >
-        <div
-          style={{
-            fontFamily: FONTS.body,
-            fontSize: D.sz.body,
-            color: D.textSecondary,
-            alignSelf: "center",
-            marginRight: 8,
-          }}
-        >
+        <div style={{ fontFamily: FONTS.body, fontSize: D.sz.body, color: D.textSecondary, alignSelf: "center", marginRight: 8 }}>
           Cyclicity of 7:
         </div>
         {CYCLE.map((c) => (
-          <div
-            key={c.exp}
-            style={{
-              border: `2px solid ${D.blue}40`,
-              borderRadius: D.cardR,
-              padding: "16px 28px",
-              textAlign: "center",
-              fontFamily: FONTS.body,
-            }}
-          >
+          <div key={c.exp} style={{ border: `2px solid ${D.blue}40`, borderRadius: D.cardR, padding: "16px 28px", textAlign: "center", fontFamily: FONTS.body }}>
             <div style={{ fontSize: 28, color: D.textSecondary }}>{c.exp}</div>
-            <div style={{ fontSize: 48, fontWeight: 700, color: D.blue }}>
-              {c.digit}
-            </div>
+            <div style={{ fontSize: 48, fontWeight: 700, color: D.blue }}>{c.digit}</div>
           </div>
         ))}
       </div>
 
-      {/* Calculation step */}
       <div
         style={{
           opacity: stepOpacity,
@@ -92,12 +77,11 @@ export const SceneUnitDigit: React.FC = () => {
           marginBottom: 40,
         }}
       >
-        95 mod 4 = 3 → unit digit of 7⁹⁵ is{" "}
-        <span style={{ color: D.green, fontWeight: 700 }}>3</span>
+        95 mod 4 = 3 → unit digit of 7⁹⁵ is <span style={{ color: D.green, fontWeight: 700 }}>3</span>
       </div>
 
-      <RuleBox color={D.green} startFrame={80} style={{ alignSelf: "flex-start" }}>
-        Don't compute — just find the unit digit via cyclicity
+      <RuleBox color={D.green} startFrame={ruleBoxIn} style={{ alignSelf: "flex-start" }}>
+        {scene.takeaway}
       </RuleBox>
     </SceneShell>
   );

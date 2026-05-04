@@ -3,24 +3,28 @@ import { D } from "../design";
 import { FONTS } from "../fonts";
 import { SceneShell } from "../components/SceneShell";
 import { RuleBox } from "../components/RuleBox";
+import { findSceneById, getCueFrame } from "../content/cues";
+import { numbersManifest } from "../content/numbersManifest";
 
+const scene = findSceneById(numbersManifest.scenes, "vbodmas");
 const STEPS = [
-  { letter: "V", label: "Vinculum / Bar",  color: D.blue },
-  { letter: "B", label: "Brackets",        color: D.blue },
-  { letter: "O", label: "Of",              color: D.yellow },
-  { letter: "D", label: "Division",        color: D.textPrimary },
-  { letter: "M", label: "Multiplication",  color: D.textPrimary },
-  { letter: "A", label: "Addition",        color: D.textSecondary },
-  { letter: "S", label: "Subtraction",     color: D.textSecondary },
+  { letter: "V", label: "Vinculum / Bar", color: D.blue },
+  { letter: "B", label: "Brackets", color: D.blue },
+  { letter: "O", label: "Of", color: D.yellow },
+  { letter: "D", label: "Division", color: D.textPrimary },
+  { letter: "M", label: "Multiplication", color: D.textPrimary },
+  { letter: "A", label: "Addition", color: D.textSecondary },
+  { letter: "S", label: "Subtraction", color: D.textSecondary },
 ];
 
 export const SceneVbodmas: React.FC = () => {
   const frame = useCurrentFrame();
-  const shown = Math.min(STEPS.length, Math.floor(frame / 20));
+  const detailIn = getCueFrame(scene.cueFrames, "detailIn", 20);
+  const exampleIn = getCueFrame(scene.cueFrames, "exampleIn", 60);
+  const shown = Math.min(STEPS.length, Math.max(0, Math.floor((frame - detailIn) / 20) + 1));
 
   return (
-    <SceneShell label="Numbers · VBODMAS" accentColor={D.blue}>
-      {/* Letter row */}
+    <SceneShell label={scene.label} accentColor={D[scene.accentColor]}>
       <div style={{ display: "flex", gap: 24, marginBottom: 48 }}>
         {STEPS.map((s, i) => (
           <div
@@ -39,7 +43,6 @@ export const SceneVbodmas: React.FC = () => {
         ))}
       </div>
 
-      {/* Step labels */}
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {STEPS.map((s, i) => (
           <div
@@ -56,19 +59,13 @@ export const SceneVbodmas: React.FC = () => {
           >
             <span style={{ fontWeight: 700, minWidth: 40 }}>{s.letter}</span>
             <span style={{ color: D.textLabel }}>—</span>
-            <span style={{ fontWeight: s.color === D.yellow ? 600 : 400 }}>
-              {s.label}
-            </span>
+            <span style={{ fontWeight: s.color === D.yellow ? 600 : 400 }}>{s.label}</span>
           </div>
         ))}
       </div>
 
-      <RuleBox
-        color={D.yellow}
-        startFrame={STEPS.length * 20 + 10}
-        style={{ marginTop: 48, alignSelf: "flex-start" }}
-      >
-        'O' (Of) solves before Division — most aspirants miss this
+      <RuleBox color={D.yellow} startFrame={exampleIn} style={{ marginTop: 48, alignSelf: "flex-start" }}>
+        {scene.takeaway}
       </RuleBox>
     </SceneShell>
   );

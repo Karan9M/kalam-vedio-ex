@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SuperKalam Local Render Tool</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="panel hero">
+        <h1>SuperKalam Local Render Tool</h1>
+        <p>Upload audio, script, and branding. Generate a video locally with Remotion in the background.</p>
+      </section>
+
+      <section class="grid">
+        <form id="render-form" class="panel form-panel">
+          <h2>Create Render Job</h2>
+
+          <label>Topic
+            <input name="topic" placeholder="e.g. CSAT Percentage Tricks" required />
+          </label>
+
+          <label>Template
+            <select name="templateId" id="template-select"></select>
+          </label>
+
+          <label>Theme preset
+            <select name="themePreset">
+              <option value="default">Default Blue</option>
+              <option value="warm">Warm Yellow/Red</option>
+              <option value="green">Green Focus</option>
+            </select>
+          </label>
+
+          <label>Brand name
+            <input name="brandName" value="SuperKalam" />
+          </label>
+
+          <label>Intro subtitle
+            <input name="introSubtitle" placeholder="UPSC CSAT — Topic intro" />
+          </label>
+
+          <label>Outro subtitle
+            <input name="outroSubtitle" placeholder="Closing line" />
+          </label>
+
+          <label>Audio file
+            <input id="audio-file" type="file" accept="audio/*" required />
+          </label>
+
+          <label>Script file (.txt)
+            <input id="script-file" type="file" accept=".txt,text/plain" required />
+          </label>
+
+          <label>Logo file
+            <input id="logo-file" type="file" accept="image/*" />
+          </label>
+
+          <button type="submit">Start Local Render</button>
+          <p id="form-status" class="muted"></p>
+        </form>
+
+        <section class="panel jobs-panel">
+          <div class="jobs-header">
+            <h2>Render Jobs</h2>
+            <button id="refresh-jobs" type="button">Refresh</button>
+          </div>
+          <div id="jobs"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

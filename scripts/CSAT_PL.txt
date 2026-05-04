@@ -1,0 +1,137 @@
+नमस्ते! आज हम बात करेंगे Profit और Loss की, मतलब लाभ और हानि।
+यह topic CSAT में बहुत important है.... और अच्छी बात यह है कि यह हमारी daily life से directly जुड़ा है। तो समझना भी आसान होगा।
+तो सबसे पहले basic concept clear करते हैं।
+जब कोई दुकानदार कोई चीज़ खरीदता है, उसे जो price चुकानी पड़ती है उसे कहते हैं Cost Price, short में CP।
+और जब वो उस चीज़ को बेचता है, जो price मिलती है उसे कहते हैं Selling Price, short में SP।
+बस इन्हीं दोनों के बीच का फर्क है Profit और Loss।
+अगर SP ज़्यादा है CP से.... तो Profit हुआ। अगर SP कम है CP से.... तो Loss हुआ।
+जैसे मान लो कि एक दुकानदार ने एक घड़ी 500 रुपये में खरीदी और 600 रुपये में बेच दी.... तो Profit हुआ 100 रुपये। और अगर उसने वही घड़ी 400 रुपये में बेची.... तो Loss हुआ 100 रुपये।
+इतना basic सबको पता है। लेकिन CSAT में सिर्फ यह नहीं पूछते। वो पूछते हैं Profit Percentage और Loss Percentage।
+तो वो formula याद रखो।
+Profit Percent = Profit divided by CP, पूरा into 100।
+Loss Percent = Loss divided by CP, पूरा into 100।
+ध्यान से देखो.... हमेशा CP से divide करते हैं। SP से नहीं। यह सबसे common गलती है जो students करते हैं। Exam में pressure में यही slip होती है।
+उसी example में, Profit था 100 रुपये और CP था 500 रुपये।
+तो Profit Percent = 100 divided by 500, into 100 = 20 percent। Simple।
+अब एक important formula। अगर CP और Profit Percent दिया हो, तो SP कैसे निकालें?
+SP = CP into, 100 plus Profit Percent, divided by 100।
+और अगर Loss हो तो....
+SP = CP into, 100 minus Loss Percent, divided by 100।
+जैसे मान लो CP है 400 रुपये और 25 percent profit चाहिए....
+SP = 400 into 125 divided by 100 = 500 रुपये।
+यह formula directly याद कर लो। CSAT में इसी से SP या CP निकालते हैं।
+अब उल्टा सोचते हैं। मान लो SP दिया है और Profit Percent दिया है। CP कैसे निकालें?
+CP = SP into 100, divided by, 100 plus Profit Percent।
+जैसे मान लो SP है 600 रुपये और Profit 20 percent है....
+CP = 600 into 100 divided by 120 = 500 रुपये।
+यह reverse calculation CSAT में बहुत आती है। बहुत लोग यहाँ confuse होते हैं क्योंकि directly CP नहीं दिया होता। इसलिए यह formula अलग से practice करो।
+अब एक interesting concept। Marked Price और Discount।
+दुकान में जो price tag लगा होता है ना.... वो होता है Marked Price, short में MP। लेकिन जब दुकानदार कुछ छूट देता है, उसे कहते हैं Discount। और Discount हमेशा Marked Price पर दिया जाता है, Cost Price पर नहीं।
+तो SP = MP minus Discount।
+Discount Percent = Discount divided by MP, into 100।
+जैसे मान लो एक shirt का MP है 1000 रुपये और दुकानदार 20 percent discount दे रहा है....
+Discount = 20 percent of 1000 = 200 रुपये। SP = 1000 minus 200 = 800 रुपये।
+अब यहाँ CSAT एक tricky सवाल पूछता है।
+दुकानदार ने 800 रुपये में shirt खरीदी, MP रखा 1000, और 20 percent discount दिया। Profit हुआ कि Loss?
+SP आया 800। CP भी 800। तो Profit = zero। ना फायदा ना नुकसान।
+देखो.... यहाँ students अक्सर confuse होते हैं। Discount देखकर सोचते हैं Loss हुआ। लेकिन हमें CP और SP compare करना है। MP से नहीं। यह concept बहुत ज़रूरी है।
+अब एक और important concept। Successive Discounts।
+मान लो कोई दुकानदार कहे, पहले 20 percent discount, फिर उस पर और 10 percent discount।
+बहुत लोग क्या करते हैं? 20 plus 10 = 30 percent मान लेते हैं। गलत।
+सही तरीका यह है।
+मान लो MP है 1000 रुपये। पहले 20 percent discount। 1000 minus 200 = 800। अब 800 पर 10 percent discount। 800 minus 80 = 720।
+तो effective discount हुआ 1000 minus 720 = 280 रुपये। Percent में.... 280 divided by 1000 into 100 = 28 percent।
+तो 20 percent और 10 percent का combination 30 percent नहीं, 28 percent होता है।
+इसका एक shortcut formula भी है।
+Effective Discount = a plus b minus ab divided by 100।
+यहाँ a और b दोनों discounts हैं।
+तो 20 plus 10 minus, 20 into 10 divided by 100 = 30 minus 2 = 28 percent।
+यह formula CSAT में time बचाता है। याद रख लो।
+अब एक classic CSAT trap की बात करते हैं। Same SP पर Profit और Loss।
+एक आदमी दो चीज़ें बेचता है। दोनों same SP पर, मान लो 300 रुपये में। एक पर 20 percent profit और दूसरे पर 20 percent loss।
+बहुत लोग सोचते हैं overall कोई फर्क नहीं। Same profit, same loss। Cancel out हो जाएगा।
+लेकिन यह बिल्कुल गलत है।
+इस situation में हमेशा loss होता है।
+क्यों? क्योंकि दोनों items का CP अलग-अलग होता है। जिस पर profit हुआ उसका CP कम था। जिस पर loss हुआ उसका CP ज़्यादा था। तो loss वाले item में ज़्यादा पैसे लगे थे।
+Formula है.... Overall Loss Percent = common percent square, divided by 100।
+यहाँ common percent 20 है।
+तो Loss Percent = 20 square divided by 100 = 400 divided by 100 = 4 percent loss।
+यह rule हमेशा याद रखो। जब same SP पर same percentage profit और loss हो.... overall result हमेशा loss होता है। हमेशा। कोई exception नहीं।
+अब बात करते हैं Dishonest Dealer की। यह concept बहुत interesting है।
+एक दुकानदार कहता है कि वो CP पर ही बेच रहा है, कोई profit नहीं। लेकिन वो 1 kg की जगह 900 gram तौलता है।
+तो उसका actual profit percent क्या है?
+सोचो ऐसे। वो 1000 gram का price ले रहा है, लेकिन दे रहा है 900 gram।
+Profit = 1000 minus 900 = 100 gram।
+Profit Percent = 100 divided by 900, into 100।
+यहाँ denominator 900 है क्योंकि वो actually 900 gram खर्च कर रहा है। उसका वही real CP है।
+= 100 divided by 900, into 100 = 11.11 percent approximately।
+याद रखो.... इस type के सवाल में denominator हमेशा actual दी गई quantity होती है, नाकि claimed quantity।
+Formula = True weight minus False weight, divided by False weight, into 100।
+अब एक shortcut जो CSAT में बहुत काम आता है। Price change और Consumption का relation।
+अगर कोई चीज़ x percent सस्ती हो जाए.... तो उसकी consumption कितनी बढ़ाएं ताकि खर्चा same रहे?
+Formula है.... increase in consumption = x divided by, 100 minus x, into 100।
+जैसे मान लो petrol 25 percent सस्ता हो गया।
+तो consumption बढ़ाओ = 25 divided by 75, into 100 = 33.33 percent।
+और उल्टा.... अगर चीज़ x percent महंगी हो जाए, खर्चा same रखने के लिए consumption कितनी घटाएं?
+Reduction = x divided by, 100 plus x, into 100।
+जैसे petrol 25 percent महंगा हो गया। Reduction = 25 divided by 125, into 100 = 20 percent।
+यह दोनों formulas CSAT के data interpretation और arithmetic दोनों में आते हैं। इन्हें confuse मत करो। सस्ता हो तो denominator में minus, महंगा हो तो plus।
+अब एक और important concept जो CSAT में directly आता है। Multiple items खरीदना और बेचना।
+मान लो एक आदमी ने 10 items खरीदे 50 रुपये प्रति item के हिसाब से। और 12 items बेचे 60 रुपये प्रति item के हिसाब से।
+Wait.... 10 खरीदे और 12 बेचे? हाँ। कभी-कभी पहले से stock होता है। या कभी-कभी items अलग-अलग rates पर खरीदे होते हैं।
+इस तरह के सवालों में ek hi approach काम करती है।
+Total CP निकालो। Total SP निकालो। फिर compare करो।
+Total CP = 10 into 50 = 500 रुपये।
+Total SP = 12 into 60 = 720 रुपये।
+Profit = 720 minus 500 = 220 रुपये।
+Profit Percent = 220 divided by 500, into 100 = 44 percent।
+Simple। Confusing लगता है लेकिन approach वही है।
+अब एक live CSAT style question करते हैं।
+एक दुकानदार ने एक item 20 percent profit पर बेचा। अगर CP 20 percent कम होती और SP 10 रुपये कम होती, तो उसे 40 percent profit होता। CP निकालो।
+पहले जो दिया है उसे equation में लिखो।
+Original SP = CP into 120 divided by 100 = 1.2 CP।
+New CP = 0.8 CP।
+New SP = 1.2 CP minus 10।
+New Profit Percent = 40 percent।
+तो New SP = New CP into 140 divided by 100।
+1.2 CP minus 10 = 0.8 CP into 1.4।
+1.2 CP minus 10 = 1.12 CP।
+0.08 CP = 10।
+CP = 125 रुपये।
+देखो.... सीधे equation लिखो। CP को variable मानो। Solve करो। यही approach CSAT में सबसे fast है। Panic मत करो। बस systematically लिखते जाओ।
+अब एक aur important type। Partner ship और Profit Sharing।
+यह concept Ratio से जुड़ा है।
+मान लो A ने 3000 रुपये invest किए और B ने 5000 रुपये। साल के अंत में 1600 रुपये profit हुआ। दोनों का share क्या होगा?
+Investment का ratio = 3000 : 5000 = 3 : 5।
+Profit भी इसी ratio में बंटेगा।
+Total parts = 8। एक part = 1600 divided by 8 = 200।
+A का share = 3 into 200 = 600 रुपये।
+B का share = 5 into 200 = 1000 रुपये।
+अब थोड़ा tricky version। मान लो दोनों ने अलग-अलग time के लिए invest किया।
+A ने 4000 रुपये 6 महीने के लिए। B ने 6000 रुपये 4 महीने के लिए।
+यहाँ ratio सिर्फ investment का नहीं, investment into time का होगा।
+A का effective investment = 4000 into 6 = 24000।
+B का effective investment = 6000 into 4 = 24000।
+Ratio = 24000 : 24000 = 1 : 1।
+तो profit equally बंटेगा।
+यह concept बहुत important है। जब time अलग हो, हमेशा investment into time का ratio लो।
+अब एक final important concept। Breakeven Point।
+मान लो एक दुकानदार ने 100 items 10 रुपये each में खरीदे। Total CP = 1000 रुपये। उसे overall 20 percent profit चाहिए।
+लेकिन कुछ items खराब हो गए। मान लो 20 items खराब हो गए।
+तो बाकी 80 items को किस price पर बेचे कि overall 20 percent profit हो?
+Required Total SP = 1000 into 120 divided by 100 = 1200 रुपये।
+यह 1200 रुपये सिर्फ 80 items से आने चाहिए।
+SP per item = 1200 divided by 80 = 15 रुपये।
+यानी जो item 10 रुपये में खरीदा, उसे 15 रुपये में बेचना पड़ेगा। 50 percent profit per item।
+देखो.... overall सिर्फ 20 percent profit चाहिए था। लेकिन per item 50 percent रखना पड़ा क्योंकि कुछ items waste हो गए। यह real life logic है और CSAT में directly इसी type के सवाल आते हैं।
+तो आज का पूरा summary यह रहा।
+Profit और Loss हमेशा CP से calculate होते हैं। SP से नहीं।
+SP निकालनी हो तो CP into, 100 plus or minus percent, divided by 100।
+CP निकालनी हो तो SP into 100, divided by, 100 plus or minus percent।
+Successive discounts add नहीं होते। Formula use करो। a plus b minus ab divided by 100।
+Same SP पर same percent profit और loss हो तो हमेशा loss होता है। Loss percent = common percent square divided by 100।
+Dishonest dealer में.... True minus False, divided by False, into 100।
+Price change हो और expense same रखना हो तो.... सस्ता होने पर x divided by 100 minus x, महंगा होने पर x divided by 100 plus x, into 100।
+Partnership में time अलग हो तो investment into time का ratio लो।
+Multiple items में total CP और total SP निकालो। फिर compare करो।
+यह सारे concepts CSAT में directly आते हैं। Formulas रटने की ज़रूरत नहीं.... बस logic समझो। जब logic clear होगा, formula automatically याद रहेगा।

@@ -3,22 +3,27 @@ import { D } from "../design";
 import { FONTS } from "../fonts";
 import { SceneShell } from "../components/SceneShell";
 import { RuleBox } from "../components/RuleBox";
+import { findSceneById, getCueFrame } from "../content/cues";
+import { numbersManifest } from "../content/numbersManifest";
+
+const scene = findSceneById(numbersManifest.scenes, "of-trap");
 
 export const SceneOfTrap: React.FC = () => {
   const frame = useCurrentFrame();
+  const comparisonIn = getCueFrame(scene.cueFrames, "comparisonIn", 18);
+  const ruleBoxIn = getCueFrame(scene.cueFrames, "ruleBoxIn", 72);
 
-  const wrongOpacity = interpolate(frame, [15, 35], [0, 1], {
+  const wrongOpacity = interpolate(frame, [comparisonIn, comparisonIn + 20], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const rightOpacity = interpolate(frame, [40, 60], [0, 1], {
+  const rightOpacity = interpolate(frame, [comparisonIn + 25, comparisonIn + 45], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   return (
-    <SceneShell label="Numbers · The 'Of' Trap" accentColor={D.yellow}>
-      {/* Problem statement */}
+    <SceneShell label={scene.label} accentColor={D[scene.accentColor]}>
       <div
         style={{
           fontFamily: FONTS.body,
@@ -32,9 +37,7 @@ export const SceneOfTrap: React.FC = () => {
         1/2 of 18 ÷ 3
       </div>
 
-      {/* Two-column comparison */}
       <div style={{ display: "flex", gap: 40, marginBottom: 48 }}>
-        {/* Wrong path */}
         <div
           style={{
             opacity: wrongOpacity,
@@ -45,30 +48,14 @@ export const SceneOfTrap: React.FC = () => {
             backgroundColor: `${D.red}10`,
           }}
         >
-          <div
-            style={{
-              fontFamily: FONTS.body,
-              fontSize: D.sz.body,
-              fontWeight: 700,
-              color: D.red,
-              marginBottom: 20,
-            }}
-          >
+          <div style={{ fontFamily: FONTS.body, fontSize: D.sz.body, fontWeight: 700, color: D.red, marginBottom: 20 }}>
             ✗  Wrong
           </div>
-          <div
-            style={{
-              fontFamily: FONTS.body,
-              fontSize: D.sz.body,
-              color: D.textSecondary,
-              lineHeight: 1.8,
-            }}
-          >
+          <div style={{ fontFamily: FONTS.body, fontSize: D.sz.body, color: D.textSecondary, lineHeight: 1.8 }}>
             18 ÷ 3 = 6{"\n"}1/2 of 6 = 3
           </div>
         </div>
 
-        {/* Right path */}
         <div
           style={{
             opacity: rightOpacity,
@@ -79,32 +66,17 @@ export const SceneOfTrap: React.FC = () => {
             backgroundColor: `${D.green}10`,
           }}
         >
-          <div
-            style={{
-              fontFamily: FONTS.body,
-              fontSize: D.sz.body,
-              fontWeight: 700,
-              color: D.green,
-              marginBottom: 20,
-            }}
-          >
+          <div style={{ fontFamily: FONTS.body, fontSize: D.sz.body, fontWeight: 700, color: D.green, marginBottom: 20 }}>
             ✓  Correct
           </div>
-          <div
-            style={{
-              fontFamily: FONTS.body,
-              fontSize: D.sz.body,
-              color: D.textSecondary,
-              lineHeight: 1.8,
-            }}
-          >
+          <div style={{ fontFamily: FONTS.body, fontSize: D.sz.body, color: D.textSecondary, lineHeight: 1.8 }}>
             1/2 of 18 = 9{"\n"}9 ÷ 3 = 3
           </div>
         </div>
       </div>
 
-      <RuleBox color={D.yellow} startFrame={70} style={{ alignSelf: "flex-start" }}>
-        'Of' always solves before Division — this is VBODMAS in action
+      <RuleBox color={D.yellow} startFrame={ruleBoxIn} style={{ alignSelf: "flex-start" }}>
+        {scene.takeaway}
       </RuleBox>
     </SceneShell>
   );

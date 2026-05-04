@@ -1,0 +1,45 @@
+नमस्ते! आज हम UPSC CSAT के एक बहुत important topic पर बात करेंगे — Ratio and Proportion। यह topic directly exam में आता है, और कई और topics जैसे Partnership, Mixture, और Age problems में भी इसकी foundation काम आती है। तो ध्यान से सुनिए।
+
+सबसे पहले समझते हैं — Ratio होता क्या है।
+
+Ratio का मतलब है दो quantities का comparison, जो same unit में हों। मान लीजिए एक class में 30 लड़के हैं और 20 लड़कियाँ। तो लड़कों और लड़कियों का ratio हुआ 30 is to 20 — जिसे हम simplify करके कहेंगे 3 is to 2।
+
+यहाँ एक बात याद रखें — ratio में order matter करता है। 3 is to 2 और 2 is to 3 दोनों अलग-अलग हैं। पहले वाले में लड़के ज़्यादा हैं, दूसरे में लड़कियाँ।
+
+दूसरी important बात — ratio तभी निकालते हैं जब दोनों quantities same unit में हों। Metres और Kilograms का ratio नहीं निकलता।
+
+अब बात करते हैं equivalent ratios की। अगर किसी ratio के दोनों terms को same number से multiply या divide करें, तो ratio नहीं बदलता। जैसे 3 is to 2 को 2 से multiply करें तो 6 is to 4 — same ratio। यही concept equivalent fractions में भी होता है।
+
+CSAT में अक्सर पूछा जाता है — कौन सा ratio बड़ा है? इसके लिए दोनों ratios को decimal में convert करो। 3 by 4 equals 0.75 — और 5 by 7 equals approximately 0.71। तो 3 is to 4 बड़ा है।
+
+अब आते हैं Proportion पर।
+
+Proportion का मतलब है — दो ratios का equal होना। अगर a is to b, c is to d के equal है — तो हम कहते हैं a, b, c, d proportion में हैं।
+
+इसकी सबसे important property है — cross multiplication। मतलब a into d equals b into c। इसे "product of extremes equals product of means" भी कहते हैं। CSAT में यह property सबसे ज़्यादा use होती है।
+
+अब direct और inverse proportion — यह दोनों concepts बहुत practically important हैं।
+
+Direct Proportion में — जब एक quantity बढ़ती है, दूसरी भी उसी अनुपात में बढ़ती है। जैसे अगर 5 kg सेब 200 रुपये के हैं, तो 8 kg सेब कितने के होंगे? यहाँ quantity बढ़ी तो price भी बढ़ी — direct proportion। Answer होगा 8 into 200 divided by 5 — यानि 320 रुपये।
+
+Inverse Proportion में — जब एक quantity बढ़ती है, दूसरी घटती है। जैसे 6 workers एक काम 12 दिन में करते हैं, तो 9 workers कितने दिन में करेंगे? Workers बढ़े तो days घटेंगे — inverse proportion। Answer होगा 6 into 12 divided by 9 — यानि 8 दिन।
+
+CSAT में एक बहुत common mistake होती है — students direct और inverse में confuse हो जाते हैं। Rule simple है — same direction means direct, opposite direction means inverse।
+
+अब बात करते हैं Partnership problems की — जो ratio का ही एक application है।
+
+अगर A ने 3000 रुपये और B ने 5000 रुपये invest किए, तो profit का ratio होगा 3 is to 5। इतना simple है।
+
+लेकिन जब time अलग-अलग हो — जैसे A ने 3000 रुपये 12 महीने के लिए और B ने 5000 रुपये 8 महीने के लिए — तब profit ratio होगा 3000 into 12 is to 5000 into 8 — यानि 36000 is to 40000 — simplify होगा 9 is to 10।
+
+यह concept clearly समझ लो — CSAT में partnership questions exactly इसी pattern पर आते हैं।
+
+एक और important application है — Age problems।
+
+अगर आज A और B की उम्र का ratio 3 is to 4 है, और 5 साल बाद ratio 4 is to 5 होगा — तो आज की उम्र क्या है? इस type के questions में हम ages को 3x और 4x मान लेते हैं, फिर equation बनाते हैं — 3x plus 5 by 4x plus 5 equals 4 by 5। Cross multiply करो, solve करो — answer आ जाएगा।
+
+UPSC CSAT में ratio के questions rarely straightforward होते हैं — usually वे किसी real-life situation में wrapped होते हैं। इसलिए concept clear रखो, formula नहीं।
+
+Summary में तीन चीज़ें याद रखो — पहला, ratio में order और unit दोनों matter करते हैं। दूसरा, proportion में cross multiplication सबसे powerful tool है। तीसरा, direct और inverse को situation देखकर identify करो, guess मत करो।
+
+Ratio and Proportion एक ऐसा topic है जो थोड़ी practice से बहुत fast हो जाता है। अगले video में हम इन्हीं concepts पर UPSC previous year questions solve करेंगे।

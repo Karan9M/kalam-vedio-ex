@@ -1,0 +1,16 @@
+नमस्ते! आज हम एक ऐसा topic cover करेंगे जो C-SAT में हर साल आता है | Profit and Loss। इस video में हम concepts समझेंगे, formulas याद करेंगे, और short tricks भी सीखेंगे। तो शुरू करते हैं।
+[pause]
+Cost Price — यानी CP — वो price जिस पर कोई चीज़ खरीदी जाती है।
+Selling Price — यानी SP — वो price जिस पर वो चीज़ बेची जाती है।
+अब तीन cases होते हैं।
+अगर SP, CP से ज़्यादा है — तो Profit हुआ।
+अगर SP, CP से कम है — तो Loss हुआ।
+और अगर SP और CP equal हैं — तो No Profit, No Loss।
+एक relatable example लो। Rohan ने एक packet rice 100 रुपये में खरीदा — यह उसका CP है। उसने वो 120 रुपये में बेचा — यह SP है। SP बड़ा है CP से — तो Rohan को Profit हुआ। Simple।
+[pause]
+आओ अब कुछ फ़ॉर्मूलास देखते हैं जो आपको याद करने होंगे 
+पहला — Profit equals SP minus CP।
+दूसरा — Loss equals CP minus SP।
+तीसरा — Profit percent equals Profit divided by CP, into 100।
+चौथा — Loss percent equals Loss divided by CP, into 100।
+एक important tip — पहले हमेशा Profit या Loss निकालो, फिर percentage। Directly percentage निकालने की कोशिश में mistake होती है। Step by step चलो।

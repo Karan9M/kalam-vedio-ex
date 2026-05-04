@@ -1,4 +1,4 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { D } from "../design";
 import { FONTS } from "../fonts";
 
@@ -27,7 +27,7 @@ export const SceneShell: React.FC<Props> = ({
         padding: D.pad,
         paddingTop: D.pad + D.accentHeight + 24,
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "flex-start",
       }}
     >
       {/* Accent bar at very top */}
@@ -57,6 +57,20 @@ export const SceneShell: React.FC<Props> = ({
       >
         {label}
       </div>
+
+      {/* Watermark logo — top right */}
+      <Img
+        src={staticFile("brand/NoBg-Logo.png")}
+        style={{
+          position: "absolute",
+          bottom: D.accentHeight + -100,
+          right: D.pad + -200,
+          width: 450,
+          height: "auto",
+          objectFit: "contain",
+          opacity: 0.35,
+        }}
+      />
 
       {children}
     </AbsoluteFill>
