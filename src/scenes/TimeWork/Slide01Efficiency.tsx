@@ -53,6 +53,11 @@ export const Slide01Efficiency: React.FC = () => (
           </RuleBox>
         </Reveal>
 
+        <Reveal at={1165} style={{ marginBottom: 10 }}>
+          <AnimImg src={badgeImportant} revealFrame={1165}
+            style={{ position: "relative" as const, width: 220, height: 54, top: 0, left: 0 }} />
+        </Reveal>
+
         <Reveal at={1345}>
           <div style={{ fontFamily: F, fontSize: 32, color: C.gray, fontStyle: "italic" }}>
             Fewer days = Higher efficiency. More days = Lower efficiency.
@@ -61,11 +66,9 @@ export const Slide01Efficiency: React.FC = () => (
       </div>
 
       <div style={{ flex: 0.8, position: "relative", minHeight: 600 }}>
-        <AnimImg src={clockIcon}  revealFrame={0}   style={{ right: 0,   top: 0,   width: 200 }} />
-        <AnimImg src={upTrend}    revealFrame={540}  style={{ right: 20,  top: 200, width: 160 }} />
-        <AnimImg src={humanIdea}  revealFrame={855}  style={{ right: -20, top: 330, width: 300 }} />
-        <AnimImg src={badgeImportant} revealFrame={1165}
-          style={{ position: "relative" as const, width: 220, height: 54, top: 0, left: 0 }} />
+        <AnimImg src={clockIcon} revealFrame={0}   style={{ right: 0, top: 0,   width: 240 }} />
+        <AnimImg src={upTrend}   revealFrame={540}  style={{ right: 30, top: 260, width: 200 }} />
+        <AnimImg src={humanIdea} revealFrame={855}  style={{ right: -10, top: 390, width: 320 }} />
       </div>
     </Row>
   </SlideBase>

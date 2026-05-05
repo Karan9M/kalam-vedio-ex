@@ -1,0 +1,164 @@
+हेलो दोस्तों । एक simple situation सोचो।
+तुम market जाते हो, एक shirt 400 रुपये में खरीदते हो, और किसी ज़रूरत में बाद में उसे 500 रुपये में बेच देते हो। क्या हुआ? 100 रुपये फायदा।
+अब दूसरी situation — वही shirt किसीने 400 रुपए में खरीदी, लेकिन उसे 300 में बेच दी। क्या हुआ? 100 रुपये का नुकसान।
+यही है Profit and Loss। इतना simple।
+[pause]
+लेकिन सीसैट इतना simple नहीं पूछता।
+सीसैट पूछता है — discount, profit, MP, SP, false weight — और इन सबको मिलाकर एक question बनाता है जो देखने में complicated लगता है। लेकिन अंदर से वही 400-500 वाला concept है। बस layers हैं। आज उन layers को एक-एक करके उठाएंगे।
+तो शुरू करते हैं सबसे basic चीज़ से।
+[pause]
+किसी भी transaction में दो numbers होते हैं।
+पहला — Cost Price, यानी CP। वो price जिस पर चीज़ खरीदी।
+दूसरा — Selling Price, यानी SP। वो price जिस पर चीज़ बेची।
+और इन दोनों का फर्क decide करता है — profit हुआ या loss।
+SP बड़ा है CP से — तो Profit।
+SP छोटा है CP से — तो Loss।
+SP equal है CP से —तो No Profit, No Loss।
+[pause]
+अब यहाँ एक चीज़ ध्यान से सुनो जो textbook नहीं बताता।
+CP सिर्फ खरीदने का दाम नहीं होता। अगर कोई shopkeeper एक TV 10,000 में खरीदता है, उसे transport में 500 लगते हैं, और घर में रखने से पहले repair में 200 लगे — तो उसका actual CP है 10,700।
+सीसैट में कभी-कभी यह directly पूछते हैं। "Total cost क्या है?" — तो overhead हमेशा CP में जोड़ो।
+[pause]
+अब formulas। लेकिन रटने मत बैठो। देखो ये कहाँ से आते हैं।
+Profit equals SP minus CP। Simple — जितना मिला उसमे से जितना लगाया वो minus करो ।
+Loss equals CP minus SP। Reverse — जितना लगाया minus जितना मिला।
+अब Profit percent — यहाँ एक question आता है। Percent किस चीज़ का?
+सोचो। तुमने 400 में खरीदा। 100 का profit हुआ। Profit percent मतलब — तुम्हारी investment पर कितना return मिला। Investment थी 400। तो Profit percent equals 100 divided by 400, into 100 equals 25 percent।
+CP is the base. Always.
+यह line याद रखो — Profit percent और Loss percent हमेशा CP पर निकलती है, SP पर नहीं।
+यही सीसैट में सबसे common trap है। SP पर percent निकाल दिया — गलत answer।
+अब formulas को numbers के साथ देखो।
+[pause]
+Example — एक cycle 3000 रुपये में खरीदी, 3600 में बेची।
+Profit equals 3600 minus 3000 equals 600 रुपये।
+Profit percent equals 600 divided by 3000, into 100 equals 20 percent।
+Simple। लेकिन अब इसे reverse करते हैं।
+रुको।
+[pause]
+सीसैट rarely forward calculation पूछता है। वो reverse पूछता है।
+"SP क्या था अगर CP 3000 था और profit 20 percent था?"
+यह ज़्यादा common है।
+तो यह formula याद रखो, और समझो क्यों।
+अगर Profit percent 20 है — मतलब 100 रुपये CP पर 20 रुपये फायदा। यानी SP हुआ 120 रुपये।
+तो SP equals CP into 120, divided by सो।
+3000 into 120 divided by 100 equals 3600। Same answer आया।
+Pattern देखो। Profit percent है P — तो SP equals CP into open bracket 100 plus P close bracket, divided by सो।
+Loss percent है L — तो SP equals CP into open bracket 100 minus L close bracket, divided by सो।
+Profit पर 100 में जोड़ो। Loss पर 100 में घटाओ। Multiplier बन जाएगा।
+[pause]
+अब दूसरा reverse — SP दिया है, percent दिया है, CP निकालना है।
+यह ज़्यादा tricky है। यहाँ students गलती करते हैं।
+Example — एक item 1200 रुपये में बेचा गया और 20 percent profit हुआ। CP क्या था?
+बहुत students क्या करते हैं? 1200 का 20 percent निकालते हैं, यानी 240, और 1200 में से घटाते हैं। आंसर देते हैं 960।
+गलत।
+[pause]
+क्यों गलत? क्योंकि 20 percent profit CP पर था। SP पर नहीं। लेकिन उन्होंने SP पर percent निकाला।
+Correct method — SP 1200 है, और यह CP का 120 percent है क्योंकि 20 percent profit था।
+CP equals 1200 into सो, divided by 120 equals 1000।
+Check करो — CP is 1000, SP is 1200, profit is 200, profit percent equals 200 by 1000 into 100 equals 20 percent। Correct।
+Formula — CP equals SP into 100, divided by open bracket 100 plus P close bracket।
+Loss में — CP equals SP into 100, divided by open bracket 100 minus L close bracket।
+SP into 100 — divide — 100 plus profit या 100 minus loss। बस इतना।
+अब एक real सीसैट style question।
+[pause]
+एक shopkeeper ने एक item बेचा और 1080 रुपये मिले। उसे 10 percent loss हुई थी। CP कितना था?
+रुको [pause]। पहले identify करो — यह किस case में है।
+SP दिया है — 1080।
+Loss percent दिया है — 10।
+CP निकालना है।
+Formula — CP equals SP into 100, divided by 100 minus 10।
+CP equals 1080 into 100, divided by 90 equals 1200।
+Cross-check — CP 1200, SP 1080, Loss equals 120, Loss percent equals 120 by 1200 into 100 equals 10 percent। Correct।
+[pause]
+अब एक नई layer — Marked Price।
+Market में जो price tag लगा होता है — वो है Marked Price, यानी MP।
+लेकिन बहुत बार shopkeeper discount देता है। तो जो actual में pay करना पड़ता है — वो है SP।
+MP हमेशा SP से बड़ा होता है जब discount हो।
+Discount equals MP minus SP।
+Discount percent equals Discount divided by MP, into 100।
+यहाँ दूसरा trap है।
+[pause]
+Profit percent — CP पर।
+Discount percent — MP पर।
+दोनों अलग-अलग bases हैं। इन्हें mix करने से गलत answer आएगा।
+अब इन दोनों को एक साथ देखते हैं।
+एक shopkeeper ने MP पर 20 percent discount दिया और फिर भी 25 percent profit हुआ।
+यहाँ CP, MP, SP — तीनों हैं।
+Solve करने का सबसे clean method — CP को 100 मान लो।
+25 percent profit — SP equals 125।
+20 percent discount on MP — SP is 80 percent of MP।
+तो MP equals 125 divided by 0.8 equals 156.25।
+MP is 156.25 when CP is 100। यानी MP is 56.25 percent more than CP।
+यह method — CP को 100 मान लो — हर question में काम करता है जहाँ CP और MP दोनों involved हों।
+[pause]
+अब Successive Discounts।
+दुकान में board लगा है — "20 percent then 10 percent discount"।
+बहुत customers सोचते हैं — 30 percent discount मिलेगा।
+नहीं।
+[pause ]
+Successive discounts add नहीं होते।
+देखो — MP को 100 मान लो।
+पहले 20 percent discount — बचा 80।
+फिर 80 पर 10 percent discount — 80 minus 8 equals 72।
+Total discount equals 100 minus 72 equals 28 percent। 30 नहीं, 28।
+Formula — अगर two successive discounts हों x percent और y percent — effective discount equals x plus y minus xy divided by 100।
+20 plus 10 minus 200 by 100 equals 30 minus 2 equals 28। Same।
+अब यह formula directly सीसैट  में use होता है। Memorize करो — लेकिन reasoning भी याद रखो।
+[pause]
+अब एक concept जो सीसैट में आता है और ज़्यादातर students miss कर जाते हैं।
+False Weights।
+एक dishonest seller है। वो कहता है — 1 kilogram दे रहा हूँ। लेकिन actually देता है 800 grams।
+Profit percent क्या है?
+बहुत students confuse हो जाते हैं क्योंकि कोई price नहीं दिया।
+लेकिन assume करो — 1 gram का price 1 रुपया है।
+CP — वो pay करता है 800 grams का। CP equals 800।
+SP — वो charge करता है 1000 grams का। SP equals 1000।
+Profit equals 200। Profit percent equals 200 by 800 into 100 equals 25 percent।
+Formula — Profit percent equals True Weight minus False Weight, divided by False Weight, into 100।
+1000 minus 800 divided by 800 into 100 equals 25 percent।
+Simple। Price की ज़रूरत नहीं। Weights का ratio काफी है।
+अब एक question जो सीसैट  में बार-बार आता है और हर बार students गलत करते हैं।
+एक shopkeeper ने दो items बेचे। दोनों same SP पर — 960 रुपये में। एक पर 20 percent profit, दूसरे पर 20 percent loss।
+Overall profit हुआ, loss हुआ, या zero?
+बहुत students कहते हैं — same profit और same loss, तो overall zero।
+गलत।
+हमेशा loss होता है। हमेशा।
+देखते हैं क्यों।
+पहले item का CP — SP into 100 divided by 120 equals 960 into 100 divided by 120 equals 800।
+दूसरे item का CP — SP into 100 divided by 80 equals 960 into 100 divided by 80 equals 1200।
+Total CP equals 800 plus 1200 equals 2000।
+Total SP equals 960 plus 960 equals 1920।
+Loss equals 80 रुपये।
+क्यों loss? क्योंकि 20 percent profit का CP अलग था, और 20 percent loss का CP अलग था। दोनों का SP same था, लेकिन CPs अलग थे।
+Golden rule — Same SP, same profit and loss percentage — always overall loss।
+Formula — Overall loss percent equals x squared divided by 100। जहाँ x percent profit और loss था।
+20 squared divided by 100 equals 400 divided by 100 equals 4 percent loss।
+यह formula याद करो। और यह भी याद रखो — यह कभी profit नहीं होता। कभी नहीं।
+चलो अब एक full सीसैट  level question।
+A ने एक article खरीदा और उस पर 40 percent markup करके MP set किया। फिर उसने MP पर 25 percent discount दिया। बताओ — उसे profit हुआ या loss? कितना percent?
+रुको। इसे solve करने से पहले identify करो।
+CP दिया नहीं। But markup 40 percent — तो CP को 100 मान लो।
+MP equals 140।
+25 percent discount on MP — SP equals 140 into 75 divided by 100 equals 105।
+CP was 100, SP is 105।
+Profit equals 5। Profit percent equals 5 percent।
+देखो — question में एक भी actual number नहीं था। लेकिन CP को 100 मानकर पूरा solve हो गया।
+यह technique exam में बहुत काम आती है। जब भी CP directly नहीं दिया हो — CP equals 100 मान लो।
+एक और।
+एक shopkeeper ने कहा — "20 percent discount के बाद भी मुझे 12 percent profit होता है।" तो उसका MP, CP का कितना percent है?
+CP equals 100।
+Profit 12 percent — SP equals 112।
+Discount 20 percent on MP — SP is 80 percent of MP।
+MP equals 112 divided by 0.8 equals 140।
+MP is 140 percent of CP। यानी MP, CP से 40 percent ज़्यादा है।
+चलो एक बार quick recap करते हैं।
+पहली बात — CP is the base। Profit percent और Loss percent हमेशा CP पर।
+दूसरी बात — SP निकालना है — 100 plus or minus percent, multiply करो CP से, divide by 100।
+तीसरी बात — CP निकालना है — SP multiply 100, divide by 100 plus or minus percent।
+चौथी बात — Discount percent MP पर। Profit percent CP पर। दोनों bases अलग हैं।
+पाँचवीं बात — Successive discounts add नहीं होते। Formula है x plus y minus xy by 100।
+छठी बात — False weights में — True minus False, divided by False, into 100 equals Profit percent।
+सातवीं बात — Same SP, same profit and loss percentage — always loss। Loss percent equals x squared by 100।
+और सबसे ज़रूरी बात जो सब भूल जाते हैं —
+जब भी question में CP नहीं दिया, CP को 100 मान लो। जब MP नहीं दिया, MP को 100 मान लो। यह trick हर complicated question को simple बना देती है।
+Profit and Loss में confusion इसलिए नहीं होता कि concept hard है। Confusion इसलिए होता है कि question में बहुत सारे numbers होते हैं और students तुरंत calculate करने लगते हैं बिना structure identify किए।
