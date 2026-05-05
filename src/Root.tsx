@@ -52,6 +52,10 @@ import {
   calculateEWMetadata,
   EWComposition,
 } from "./CompositionEW";
+import {
+  calculatePL2Metadata,
+  PL2Composition,
+} from "./CompositionPL2";
 
 const BRAND_INTRO_FRAMES = 75;
 const BRAND_OUTRO_FRAMES = 90;
@@ -154,6 +158,16 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
         defaultProps={{ sceneDurations: [1530, 1420, 1580, 1910, 1805, 1815, 2355, 1295, 1370, 2130, 2190].map((d) => d + 12) }}
         calculateMetadata={calculateEWMetadata}
+      />
+      <Composition
+        id="ProfitAndLoss"
+        component={PL2Composition}
+        durationInFrames={75 + 840 + 750 + 870 + 810 + 2000 + 750 + 2070 + 3180 + 1800 + 2880 + 2280 + 2310 + 4110 + 2370 + 1440 + 3000 + 12 + 90}
+        fps={FPS}
+        width={1920}
+        height={1080}
+        defaultProps={{ sceneDurations: [840, 750, 870, 810, 2000, 750, 2070, 3180, 1800, 2880, 2280, 2310, 4110, 2370, 1440, 3000].map((d) => d + 12) }}
+        calculateMetadata={calculatePL2Metadata}
       />
     </>
   );
