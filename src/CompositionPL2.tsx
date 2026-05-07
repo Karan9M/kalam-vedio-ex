@@ -83,7 +83,7 @@ export const PL2Composition: React.FC<Props> = ({ sceneDurations }) => {
             <TransitionSeries.Sequence
               key={`pl2-slide-${i}`}
               durationInFrames={durations[i]}
-              premountFor={TRANSITION * 2}
+              premountFor={60}
             >
               <SlideComp />
             </TransitionSeries.Sequence>

@@ -2,21 +2,21 @@
 // Audio sync: frame = (ts_seconds - 948.67) × 30
 // Uses Reveal (accumulating) — checklist builds up one point at a time.
 import React from "react";
-import { SlideBase, Reveal, C, F, Row, AnimImg } from "./shared";
+import { SlideBase, Reveal, BounceIn, C, F, Row, AnimImg, Pulse, StampIn } from "./shared";
 import tickIcon from "../../../Graphics/right-tickmark-true-icon.png";
 import ideaBulb from "../../../Graphics/Idea-Bulb-icon.png";
 import starIcon  from "../../../Graphics/star-icon.png";
 
 // ── Reusable checklist point ─────────────────────────────────────────────────
 const Point: React.FC<{ at: number; children: React.ReactNode }> = ({ at, children }) => (
-  <Reveal at={at} style={{ marginBottom: 18 }}>
-    <Row gap={18} align="flex-start">
+  <Reveal at={at} style={{ marginBottom: 28 }}>
+    <Row gap={24} align="flex-start">
       <AnimImg
         src={tickIcon}
         revealFrame={at}
-        style={{ position: "relative", top: 4, left: 0, width: 40, height: 40, flexShrink: 0 }}
+        style={{ position: "relative", top: 8, left: 0, width: 56, height: 56, flexShrink: 0 }}
       />
-      <div style={{ fontFamily: F, fontSize: 36, color: C.dark, lineHeight: 1.5 }}>
+      <div style={{ fontFamily: F, fontSize: 52, color: C.dark, lineHeight: 1.5 }}>
         {children}
       </div>
     </Row>
@@ -31,7 +31,7 @@ export const Slide16Recap: React.FC = () => (
     <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "row", gap: 48 }}>
 
       {/* ── Left column: checklist ──────────────────────────────────────── */}
-      <div style={{ flex: 1.3, paddingTop: 4, overflowY: "visible" }}>
+      <div style={{ flex: 1.3, paddingTop: 12, overflowY: "visible" }}>
 
         {/* 1. CP is the base  (audio: 951.308s → 80f) */}
         <Point at={80}>
@@ -64,7 +64,9 @@ export const Slide16Recap: React.FC = () => (
         {/* 5. Successive discounts  (audio: 991.268s → 1278f) */}
         <Point at={1278}>
           <strong>Successive discounts:</strong>{" "}
-          <strong style={{ color: C.mp }}>x + y − xy/100</strong>. Never just add.
+          <Pulse at={1278} style={{ display: "inline-block" }}>
+            <strong style={{ color: C.mp }}>x + y − xy/100</strong>
+          </Pulse>. Never just add.
         </Point>
 
         {/* 6. False weights  (~1500f — spaced evenly in remaining time) */}
@@ -81,17 +83,17 @@ export const Slide16Recap: React.FC = () => (
         </Point>
 
         {/* ── Idea callout: CP = 100 / MP = 100 trick  (~1920f) ─────────── */}
-        <Reveal at={1920} style={{ marginTop: 12 }}>
+        <BounceIn at={1920} style={{ marginTop: 20 }}>
           <div style={{
             background: "#FFFBEB", border: "2.5px dashed #FCD34D",
-            borderRadius: 14, padding: "14px 28px",
-            fontFamily: F, fontSize: 34, color: C.dark, lineHeight: 1.5,
+            borderRadius: 16, padding: "24px 40px",
+            fontFamily: F, fontSize: 50, color: C.dark, lineHeight: 1.5,
           }}>
-            <Row gap={12} align="flex-start">
+            <Row gap={16} align="flex-start">
               <AnimImg
                 src={ideaBulb}
                 revealFrame={1920}
-                style={{ position: "relative", width: 36, height: 36, top: 4, left: 0, flexShrink: 0 }}
+                style={{ position: "relative", width: 48, height: 48, top: 4, left: 0, flexShrink: 0 }}
               />
               <div>
                 CP not given → assume <strong>CP = 100</strong>.<br />
@@ -99,21 +101,21 @@ export const Slide16Recap: React.FC = () => (
               </div>
             </Row>
           </div>
-        </Reveal>
+        </BounceIn>
 
         {/* ── Closing line  (~2400f) ──────────────────────────────────────── */}
-        <Reveal at={2400} style={{ marginTop: 14 }}>
-          <Row gap={12} align="center">
+        <StampIn at={2400} style={{ marginTop: 20 }}>
+          <Row gap={20} align="center">
             <AnimImg
               src={starIcon}
               revealFrame={2400}
-              style={{ position: "relative", width: 34, height: 34, top: 0, left: 0 }}
+              style={{ position: "relative", width: 52, height: 52, top: 0, left: 0 }}
             />
-            <div style={{ fontFamily: F, fontSize: 30, color: C.gray, fontStyle: "italic" }}>
+            <div style={{ fontFamily: F, fontSize: 48, color: C.gray, fontStyle: "italic" }}>
               Identify the structure before you calculate.
             </div>
           </Row>
-        </Reveal>
+        </StampIn>
 
       </div>
 

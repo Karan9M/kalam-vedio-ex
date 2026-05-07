@@ -5,32 +5,35 @@ import {
 import type { CSSProperties } from "react";
 import { FONTS } from "../../fonts";
 
+// ─── Color palette ────────────────────────────────────────────────────────────
+// White-background boxes with solid accent borders — matches the clean
+// whiteboard reference image: color lives on the TEXT and BORDER, not the fill.
 export const C = {
   profit:    "#16A34A",
   loss:      "#DC2626",
   cp:        "#1D4ED8",
   sp:        "#7C3AED",
   mp:        "#D97706",
-  dark:      "#111827",
-  gray:      "#6B7280",
-  lightGray: "#9CA3AF",
-  bg:        "#FFFFFF",
-  profitBg:  "#F0FDF4",
-  profitBd:  "#86EFAC",
-  lossBg:    "#FEF2F2",
-  lossBd:    "#FCA5A5",
-  cpBg:      "#EFF6FF",
-  cpBd:      "#93C5FD",
-  spBg:      "#F5F3FF",
-  spBd:      "#C4B5FD",
-  mpBg:      "#FFFBEB",
-  mpBd:      "#FCD34D",
-  badge:     "#0E7490",
+  dark:      "#111111",
+  gray:      "#555555",
+  lightGray: "#AAAAAA",
+  bg:        "#FFFEF9",   // warm notebook white for slide background
+  profitBg:  "#FFFFFF",
+  profitBd:  "#16A34A",   // solid green border (was pastel #86EFAC)
+  lossBg:    "#FFFFFF",
+  lossBd:    "#DC2626",   // solid red border (was pastel #FCA5A5)
+  cpBg:      "#FFFFFF",
+  cpBd:      "#1D4ED8",   // solid blue border
+  spBg:      "#FFFFFF",
+  spBd:      "#7C3AED",   // solid purple border
+  mpBg:      "#FFFFFF",
+  mpBd:      "#D97706",   // solid amber border
+  badge:     "#DC2626",   // red circle for slide numbers
 } as const;
 
 export const F = FONTS.body;
 
-// AnimImg stays the same
+// ─── AnimImg ──────────────────────────────────────────────────────────────────
 export const AnimImg: React.FC<{
   src: string; revealFrame: number; endFrame?: number;
   style?: CSSProperties; origin?: string;
@@ -38,8 +41,8 @@ export const AnimImg: React.FC<{
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const elapsed = Math.max(0, frame - revealFrame);
-  const scale = spring({ frame: elapsed, fps, config: { damping: 14, stiffness: 180, mass: 0.9 }, from: 0.88, to: 1 });
-  const fadeIn  = interpolate(frame, [revealFrame, revealFrame + 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const scale = spring({ frame: elapsed, fps, config: { damping: 22, stiffness: 180, mass: 0.9 }, from: 0.92, to: 1 });
+  const fadeIn  = interpolate(frame, [revealFrame, revealFrame + 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const fadeOut = endFrame != null ? interpolate(frame, [endFrame, endFrame + 8], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1;
   return (
     <Img src={src} style={{
@@ -51,14 +54,15 @@ export const AnimImg: React.FC<{
   );
 };
 
-// Reveal: fade-in (and optional fade-out). For accumulating items.
+// ─── Reveal ───────────────────────────────────────────────────────────────────
+// Smooth fade-up — 6px drift (was 16px) for a clean, subtle entrance.
 export const Reveal: React.FC<{
   at: number; end?: number; style?: CSSProperties; children: React.ReactNode;
 }> = ({ at, end, style, children }) => {
   const frame = useCurrentFrame();
-  const fadeIn  = interpolate(frame, [at, at + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const fadeIn  = interpolate(frame, [at, at + 14], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const fadeOut = end != null ? interpolate(frame, [end, end + 10], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1;
-  const ty = interpolate(frame, [at, at + 14], [16, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const ty = interpolate(frame, [at, at + 18], [6, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
     <div style={{ opacity: Math.min(fadeIn, fadeOut), transform: `translateY(${ty}px)`, ...style }}>
       {children}
@@ -66,8 +70,8 @@ export const Reveal: React.FC<{
   );
 };
 
-// Moment: ONE concept at a time. Position absolute, fills the content area.
-// Use this for exclusive visual moments (one replaces another).
+// ─── Moment ───────────────────────────────────────────────────────────────────
+// One concept at a time — position:absolute overlay.
 export const Moment: React.FC<{
   from: number; to?: number;
   justify?: CSSProperties["justifyContent"];
@@ -90,41 +94,61 @@ export const Moment: React.FC<{
   );
 };
 
+// ─── Pop ──────────────────────────────────────────────────────────────────────
+// Smooth scale-in (0.92→1, overdamped — no bounce, no jitter).
 export const Pop: React.FC<{ at: number; style?: CSSProperties; children: React.ReactNode }> = ({ at, style, children }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const elapsed = Math.max(0, frame - at);
-  const scale = spring({ frame: elapsed, fps, config: { damping: 12, stiffness: 200, mass: 0.8 }, from: 0.6, to: 1 });
-  const opacity = interpolate(frame, [at, at + 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const scale = spring({ frame: elapsed, fps, config: { damping: 22, stiffness: 180, mass: 0.8 }, from: 0.92, to: 1 });
+  const opacity = interpolate(frame, [at, at + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return <div style={{ opacity, transform: `scale(${scale})`, display: "inline-block", ...style }}>{children}</div>;
 };
 
-// SlideBase: thin title bar at top, then position:relative content area for Moments.
+// ─── SweepUnderline ───────────────────────────────────────────────────────────
+// Draws a line left→right using a spring — used in SlideBase title.
+export const SweepUnderline: React.FC<{ at: number; color?: string; style?: CSSProperties }> = ({ at, color = C.loss, style }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const prog = spring({ frame: Math.max(0, frame - at), fps, config: { damping: 20, stiffness: 70 }, from: 0, to: 1 });
+  return (
+    <div style={{ height: 3, background: color, width: `${prog * 100}%`, borderRadius: 2, marginTop: 5, ...style }} />
+  );
+};
+
+// ─── SlideBase ────────────────────────────────────────────────────────────────
+// Warm white background, red-circle number, title + sweep underline.
+// Matches the clean whiteboard reference image aesthetic.
 export const SlideBase: React.FC<{
   num: number; title: string; children: React.ReactNode;
   padTop?: number; showNum?: boolean;
-}> = ({ num, title, children, padTop = 48, showNum = true }) => (
-  <AbsoluteFill style={{ backgroundColor: C.bg, padding: `${padTop}px 96px 44px`, display: "flex", flexDirection: "column" }}>
-    <Reveal at={0} style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 28, flexShrink: 0 }}>
+}> = ({ num, title, children, padTop = 40, showNum = true }) => (
+  <AbsoluteFill style={{ backgroundColor: C.bg, padding: `${padTop}px 80px 36px`, display: "flex", flexDirection: "column" }}>
+    <Reveal at={0} style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 26, flexShrink: 0 }}>
       {showNum && (
         <div style={{
-          width: 62, height: 62, borderRadius: "50%",
-          background: C.badge, color: "#fff", flexShrink: 0,
+          width: 52, height: 52, borderRadius: "50%",
+          border: `3px solid ${C.loss}`, background: "#FFFFFF",
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 30, fontWeight: 800, fontFamily: F,
+          fontSize: 26, fontWeight: 700, fontFamily: F, color: C.loss,
+          flexShrink: 0,
         }}>{num}</div>
       )}
-      <div style={{ fontSize: 46, fontWeight: 900, color: "#1E3A8A", fontFamily: F, lineHeight: 1, letterSpacing: "-0.5px" }}>
-        {title}
+      <div>
+        <div style={{ fontSize: 44, fontWeight: 700, color: C.dark, fontFamily: F, lineHeight: 1.1 }}>
+          {title}
+        </div>
+        <SweepUnderline at={4} />
       </div>
     </Reveal>
-    {/* Content area  -  Moment children use position:absolute within this */}
+    {/* Content area — Moment children use position:absolute within this */}
     <div style={{ position: "relative", flex: 1 }}>
       {children}
     </div>
   </AbsoluteFill>
 );
 
+// ─── Row ──────────────────────────────────────────────────────────────────────
 export const Row: React.FC<{
   gap?: number; align?: string; style?: CSSProperties; children: React.ReactNode;
 }> = ({ gap = 24, align = "center", style, children }) => (
@@ -133,83 +157,85 @@ export const Row: React.FC<{
   </div>
 );
 
-// Tag pill for CP / SP / MP labels
+// ─── Tag ──────────────────────────────────────────────────────────────────────
 export const Tag: React.FC<{
   text: string; color: string; bg: string; border: string;
   size?: number; style?: CSSProperties;
 }> = ({ text, color, bg, border, size = 52, style }) => (
   <div style={{
-    background: bg, border: `3px solid ${border}`, borderRadius: 16,
-    padding: "16px 40px",
-    fontFamily: F, fontWeight: 900, fontSize: size, color,
+    background: bg, border: `2.5px solid ${border}`, borderRadius: 14,
+    padding: "14px 36px",
+    fontFamily: F, fontWeight: 700, fontSize: size, color,
     display: "inline-block", ...style,
   }}>
     {text}
   </div>
 );
 
-// Big number / headline
+// ─── BigLabel ─────────────────────────────────────────────────────────────────
 export const BigLabel: React.FC<{
   children: React.ReactNode; color?: string; size?: number; style?: CSSProperties;
 }> = ({ children, color = C.dark, size = 88, style }) => (
-  <div style={{ fontFamily: F, fontWeight: 900, fontSize: size, color, lineHeight: 1, ...style }}>
+  <div style={{ fontFamily: F, fontWeight: 700, fontSize: size, color, lineHeight: 1, ...style }}>
     {children}
   </div>
 );
 
-// Formula card
+// ─── Formula ──────────────────────────────────────────────────────────────────
+// Clean white card with solid dark border — matches reference image box style.
 export const Formula: React.FC<{
   children: React.ReactNode; color?: string; bg?: string; border?: string; style?: CSSProperties;
-}> = ({ children, color = C.dark, bg = "#F8FAFC", border = "#CBD5E1", style }) => (
+}> = ({ children, color = C.dark, bg = "#FFFFFF", border = "#222222", style }) => (
   <div style={{
-    background: bg, border: `3px solid ${border}`, borderRadius: 20,
-    padding: "28px 56px",
-    fontFamily: F, fontWeight: 800, fontSize: 56, color,
-    display: "inline-flex", alignItems: "center", gap: 16,
+    background: bg, border: `2.5px solid ${border}`, borderRadius: 16,
+    padding: "22px 44px",
+    fontFamily: F, fontWeight: 700, fontSize: 50, color,
+    display: "inline-flex", alignItems: "center", gap: 14,
     lineHeight: 1.2, ...style,
   }}>
     {children}
   </div>
 );
 
-// Comparison card (for CP vs SP, profit vs loss)
+// ─── Card ─────────────────────────────────────────────────────────────────────
 export const Card: React.FC<{
   headline: React.ReactNode; sub?: React.ReactNode;
   color: string; bg: string; border: string;
   style?: CSSProperties;
 }> = ({ headline, sub, color, bg, border, style }) => (
   <div style={{
-    background: bg, border: `3px solid ${border}`, borderRadius: 24,
-    padding: "32px 48px", minWidth: 300,
-    display: "flex", flexDirection: "column", alignItems: "center", gap: 14,
+    background: bg, border: `2.5px solid ${border}`, borderRadius: 20,
+    padding: "28px 44px", minWidth: 280,
+    display: "flex", flexDirection: "column", alignItems: "center", gap: 12,
     ...style,
   }}>
-    <div style={{ fontFamily: F, fontWeight: 900, fontSize: 72, color, lineHeight: 1 }}>
+    <div style={{ fontFamily: F, fontWeight: 700, fontSize: 68, color, lineHeight: 1 }}>
       {headline}
     </div>
     {sub && (
-      <div style={{ fontFamily: F, fontSize: 34, color: C.gray, textAlign: "center", lineHeight: 1.4 }}>
+      <div style={{ fontFamily: F, fontSize: 32, color: C.gray, textAlign: "center", lineHeight: 1.4 }}>
         {sub}
       </div>
     )}
   </div>
 );
 
-// Highlighted rule / callout box
+// ─── CallOut ──────────────────────────────────────────────────────────────────
+// Clean rule/callout box — white bg, solid border.
 export const CallOut: React.FC<{
   children: React.ReactNode; color?: string; bg?: string; border?: string;
   dashed?: boolean; style?: CSSProperties;
-}> = ({ children, color = C.dark, bg = "#FFFBEB", border = "#FCD34D", dashed = false, style }) => (
+}> = ({ children, color = C.dark, bg = "#FFFFFF", border = "#222222", dashed = false, style }) => (
   <div style={{
-    background: bg, border: `2.5px ${dashed ? "dashed" : "solid"} ${border}`, borderRadius: 18,
-    padding: "20px 40px",
-    fontFamily: F, fontWeight: 700, fontSize: 40, color, lineHeight: 1.5, ...style,
+    background: bg, border: `2.5px ${dashed ? "dashed" : "solid"} ${border}`, borderRadius: 16,
+    padding: "18px 36px",
+    fontFamily: F, fontWeight: 700, fontSize: 38, color, lineHeight: 1.5, ...style,
   }}>
     {children}
   </div>
 );
 
-// CSS fraction
+// ─── Frac ─────────────────────────────────────────────────────────────────────
 export const Frac: React.FC<{
   num: React.ReactNode; den: React.ReactNode; size?: number; color?: string;
 }> = ({ num, den, size = 42, color = C.dark }) => (
@@ -223,15 +249,15 @@ export const Frac: React.FC<{
   </span>
 );
 
-// Wrong / Right split boxes
+// ─── WrongBox / RightBox ──────────────────────────────────────────────────────
 export const WrongBox: React.FC<{ children: React.ReactNode; style?: CSSProperties }> = ({ children, style }) => (
   <div style={{
-    background: C.lossBg, border: `3px solid ${C.lossBd}`, borderRadius: 20,
-    padding: "28px 40px", flex: 1,
-    fontFamily: F, fontSize: 38, color: C.dark, lineHeight: 1.7, ...style,
+    background: C.lossBg, border: `2.5px solid ${C.lossBd}`, borderRadius: 16,
+    padding: "22px 36px", flex: 1,
+    fontFamily: F, fontSize: 36, color: C.dark, lineHeight: 1.7, ...style,
   }}>
-    <div style={{ color: C.loss, fontWeight: 900, fontSize: 26, marginBottom: 14, letterSpacing: "1px" }}>
-      WRONG
+    <div style={{ color: C.loss, fontWeight: 700, fontSize: 22, marginBottom: 12, letterSpacing: "0.5px" }}>
+      ✗ WRONG
     </div>
     {children}
   </div>
@@ -239,39 +265,39 @@ export const WrongBox: React.FC<{ children: React.ReactNode; style?: CSSProperti
 
 export const RightBox: React.FC<{ children: React.ReactNode; style?: CSSProperties }> = ({ children, style }) => (
   <div style={{
-    background: C.profitBg, border: `3px solid ${C.profitBd}`, borderRadius: 20,
-    padding: "28px 40px", flex: 1,
-    fontFamily: F, fontSize: 38, color: C.dark, lineHeight: 1.7, ...style,
+    background: C.profitBg, border: `2.5px solid ${C.profitBd}`, borderRadius: 16,
+    padding: "22px 36px", flex: 1,
+    fontFamily: F, fontSize: 36, color: C.dark, lineHeight: 1.7, ...style,
   }}>
-    <div style={{ color: C.profit, fontWeight: 900, fontSize: 26, marginBottom: 14, letterSpacing: "1px" }}>
-      CORRECT
+    <div style={{ color: C.profit, fontWeight: 700, fontSize: 22, marginBottom: 12, letterSpacing: "0.5px" }}>
+      ✓ CORRECT
     </div>
     {children}
   </div>
 );
 
-// ---- Shared animation helpers ----
-
-// BounceIn: elastic spring pop wrapper  -  damping 7 = satisfying overshoot
+// ─── BounceIn ─────────────────────────────────────────────────────────────────
+// Smooth scale-in — overdamped spring, NO overshoot or bounce.
 export const BounceIn: React.FC<{ at: number; style?: CSSProperties; children: React.ReactNode }> = ({ at, style, children }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const elapsed = Math.max(0, frame - at);
-  const scale = spring({ frame: elapsed, fps, config: { damping: 7, stiffness: 300, mass: 0.7 }, from: 0, to: 1 });
-  const opacity = interpolate(frame, [at, at + 7], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const scale = spring({ frame: elapsed, fps, config: { damping: 22, stiffness: 180, mass: 0.8 }, from: 0.92, to: 1 });
+  const opacity = interpolate(frame, [at, at + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return <div style={{ opacity, transform: `scale(${scale})`, display: "inline-block", ...style }}>{children}</div>;
 };
 
-// SlideIn: spring translate from left/right + fade
+// ─── SlideIn ──────────────────────────────────────────────────────────────────
+// Smooth spring translate from left/right/top — dist reduced to 20px default.
 export const SlideIn: React.FC<{
   at: number; from?: "left" | "right" | "top"; dist?: number;
   style?: CSSProperties; children: React.ReactNode;
-}> = ({ at, from = "left", dist = 30, style, children }) => {
+}> = ({ at, from = "left", dist = 20, style, children }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const elapsed = Math.max(0, frame - at);
-  const prog = spring({ frame: elapsed, fps, config: { damping: 13, stiffness: 160, mass: 0.9 }, from: 0, to: 1 });
-  const opacity = interpolate(frame, [at, at + 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const prog = spring({ frame: elapsed, fps, config: { damping: 22, stiffness: 140, mass: 0.9 }, from: 0, to: 1 });
+  const opacity = interpolate(frame, [at, at + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const tx = from === "left" ? (1 - prog) * -dist : from === "right" ? (1 - prog) * dist : 0;
   const ty = from === "top" ? (1 - prog) * -dist : 0;
   return (
@@ -281,10 +307,11 @@ export const SlideIn: React.FC<{
   );
 };
 
-// DrawArrow: line grows right then arrowhead appears
+// ─── DrawArrow ────────────────────────────────────────────────────────────────
+// Line grows right then arrowhead fades in — unchanged, it already looks clean.
 export const DrawArrow: React.FC<{
   at: number; color?: string; lineLen?: number; vertical?: boolean;
-}> = ({ at, color = "#9CA3AF", lineLen = 72, vertical = false }) => {
+}> = ({ at, color = "#AAAAAA", lineLen = 72, vertical = false }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const prog = spring({ frame: Math.max(0, frame - at), fps, config: { damping: 16, stiffness: 110 }, from: 0, to: 1 });
@@ -309,6 +336,53 @@ export const DrawArrow: React.FC<{
         borderTop: "9px solid transparent", borderBottom: "9px solid transparent",
         borderLeft: `16px solid ${color}`,
       }} />
+    </div>
+  );
+};
+
+// ─── CountUp ──────────────────────────────────────────────────────────────────
+// Spring-eased number counter for key result values.
+export const CountUp: React.FC<{
+  from?: number; to: number; at: number;
+  suffix?: string; color?: string; size?: number; style?: CSSProperties;
+}> = ({ from = 0, to, at, suffix = "", color = C.dark, size = 72, style }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const prog = spring({ frame: Math.max(0, frame - at), fps, config: { damping: 18, stiffness: 80, mass: 1 }, from: 0, to: 1 });
+  const value = Math.round(from + (to - from) * prog);
+  const opacity = interpolate(frame, [at, at + 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <span style={{ fontFamily: F, fontWeight: 700, fontSize: size, color, opacity, lineHeight: 1, ...style }}>
+      {value}{suffix}
+    </span>
+  );
+};
+
+// ─── Pulse ────────────────────────────────────────────────────────────────────
+// Very subtle sine-wave scale beat (±0.7%) — barely perceptible, keeps result alive.
+export const Pulse: React.FC<{ at: number; style?: CSSProperties; children: React.ReactNode }> = ({ at, style, children }) => {
+  const frame = useCurrentFrame();
+  const elapsed = Math.max(0, frame - (at + 20));
+  const beat = Math.sin((elapsed / 60) * Math.PI) * 0.007 + 1;
+  const opacity = interpolate(frame, [at, at + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <div style={{ opacity, transform: `scale(${beat})`, display: "inline-block", ...style }}>
+      {children}
+    </div>
+  );
+};
+
+// ─── StampIn ──────────────────────────────────────────────────────────────────
+// Gentle drop-in from -10px (not -60px) — smooth, professional feel.
+export const StampIn: React.FC<{ at: number; style?: CSSProperties; children: React.ReactNode }> = ({ at, style, children }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const elapsed = Math.max(0, frame - at);
+  const ty = spring({ frame: elapsed, fps, config: { damping: 22, stiffness: 180, mass: 0.8 }, from: -10, to: 0 });
+  const opacity = interpolate(frame, [at, at + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <div style={{ opacity, transform: `translateY(${ty}px)`, display: "inline-block", ...style }}>
+      {children}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 // Slide 8 - CP Formula: Reverse calculation trap (3180f, starts at 269.67s)
-import { SlideBase, Moment, Reveal, Pop, BounceIn, SlideIn, C, F, Row, Frac, Formula, BigLabel, CallOut, WrongBox, AnimImg } from "./shared";
+import { SlideBase, Moment, Reveal, BounceIn, SlideIn, C, F, Row, Frac, Formula, BigLabel, CallOut, WrongBox, AnimImg, CountUp, Pulse, StampIn } from "./shared";
 import crossIcon from "../../../Graphics/cross-wrong-false-icon.png";
 import tickIcon from "../../../Graphics/right-tickmark-true-icon.png";
 
@@ -10,45 +10,43 @@ export const Slide08CPFormula: React.FC = () => (
     <Moment from={0} to={126}>
       <div style={{ textAlign: "center" }}>
         <BounceIn at={16}>
-          <BigLabel color={C.cp} size={80}>Find CP from SP</BigLabel>
+          <BigLabel color={C.cp} size={96}>Find CP from SP</BigLabel>
         </BounceIn>
         <Reveal at={50}>
-          <div style={{ fontFamily: F, fontSize: 44, color: C.gray, marginTop: 20 }}>
+          <div style={{ fontFamily: F, fontSize: 52, color: C.gray, marginTop: 24 }}>
             SP is given. Percent is given. Find CP.
           </div>
         </Reveal>
       </div>
     </Moment>
 
-    {/* M2 (295-413f): Question: SP = 1200, Profit = 20%. Find CP. */}
+    {/* M2 (295-544f): Question: SP = 1200, Profit = 20%. Find CP. */}
     <Moment from={295} to={544}>
-      <div style={{ textAlign: "center", width: "100%", maxWidth: 860 }}>
+      <div style={{ textAlign: "center", width: "100%", maxWidth: 1300 }}>
         <SlideIn at={295} from="top">
-          <div style={{
-            background: "#F9FAFB", border: "2px solid #E5E7EB",
-            borderRadius: 20, padding: "32px 56px",
-          }}>
-            <div style={{ fontFamily: F, fontSize: 38, color: C.gray, marginBottom: 24 }}>
-              An item was sold for <strong style={{ color: C.sp }}>Rs. 1200</strong>.
-            </div>
-            <Row gap={48} align="center" style={{ justifyContent: "center" }}>
-              <div style={{
-                background: C.spBg, border: `3px solid ${C.spBd}`,
-                borderRadius: 16, padding: "16px 36px",
-                fontFamily: F, fontWeight: 900, fontSize: 52, color: C.sp,
-              }}>SP = 1200</div>
-              <div style={{
-                background: C.profitBg, border: `3px solid ${C.profitBd}`,
-                borderRadius: 16, padding: "16px 36px",
-                fontFamily: F, fontWeight: 900, fontSize: 52, color: C.profit,
-              }}>Profit = 20%</div>
-              <div style={{
-                background: C.cpBg, border: `3px dashed ${C.cpBd}`,
-                borderRadius: 16, padding: "16px 36px",
-                fontFamily: F, fontWeight: 900, fontSize: 52, color: C.cp,
-              }}>CP = ?</div>
-            </Row>
+          <div style={{ fontFamily: F, fontSize: 52, color: C.gray, marginBottom: 36 }}>
+            An item was sold for <strong style={{ color: C.sp }}>Rs. 1200</strong>.
           </div>
+          <Row gap={40} align="center" style={{ justifyContent: "center" }}>
+            <div style={{
+              background: C.spBg, border: `3px solid ${C.spBd}`,
+              borderRadius: 16, padding: "24px 52px",
+              fontFamily: F, fontWeight: 700, fontSize: 72, color: C.sp,
+              whiteSpace: "nowrap",
+            }}>SP = 1200</div>
+            <div style={{
+              background: C.profitBg, border: `3px solid ${C.profitBd}`,
+              borderRadius: 16, padding: "24px 52px",
+              fontFamily: F, fontWeight: 700, fontSize: 72, color: C.profit,
+              whiteSpace: "nowrap",
+            }}>Profit = 20%</div>
+            <div style={{
+              background: C.cpBg, border: `3px dashed ${C.cpBd}`,
+              borderRadius: 16, padding: "24px 52px",
+              fontFamily: F, fontWeight: 700, fontSize: 72, color: C.cp,
+              whiteSpace: "nowrap",
+            }}>CP = ?</div>
+          </Row>
         </SlideIn>
       </div>
     </Moment>
@@ -57,53 +55,53 @@ export const Slide08CPFormula: React.FC = () => (
     <Moment from={544} to={976}>
       <div style={{ textAlign: "center" }}>
         <Reveal at={544}>
-          <div style={{ fontFamily: F, fontSize: 40, color: C.dark, marginBottom: 20, fontWeight: 700 }}>
+          <div style={{ fontFamily: F, fontSize: 48, color: C.dark, marginBottom: 24, fontWeight: 700 }}>
             What most students do:
           </div>
         </Reveal>
-        <Pop at={604}>
-          <WrongBox style={{ maxWidth: 680, textAlign: "left" }}>
+        <BounceIn at={604}>
+          <WrongBox style={{ maxWidth: 760, textAlign: "left" }}>
             <Reveal at={604}>
-              <div style={{ fontFamily: F, fontSize: 42, lineHeight: 1.8 }}>
+              <div style={{ fontFamily: F, fontSize: 50, lineHeight: 1.8 }}>
                 20% of 1200 = 240
               </div>
             </Reveal>
             <Reveal at={693}>
-              <div style={{ fontFamily: F, fontSize: 42, lineHeight: 1.8 }}>
+              <div style={{ fontFamily: F, fontSize: 50, lineHeight: 1.8 }}>
                 1200 - 240 = 960
               </div>
             </Reveal>
             <Reveal at={838}>
-              <Row gap={16} align="center">
-                <div style={{ fontFamily: F, fontSize: 46, fontWeight: 900, color: C.loss }}>
+              <Row gap={20} align="center">
+                <div style={{ fontFamily: F, fontSize: 54, fontWeight: 700, color: C.loss }}>
                   CP = 960
                 </div>
                 <AnimImg src={crossIcon} revealFrame={838}
-                  style={{ position: "relative" as const, width: 60, height: 60, top: 0, left: 0 }} />
+                  style={{ position: "relative" as const, width: 64, height: 64, top: 0, left: 0 }} />
               </Row>
             </Reveal>
           </WrongBox>
-        </Pop>
+        </BounceIn>
       </div>
     </Moment>
 
     {/* M4 (976-1243f): "WRONG" big red + why */}
     <Moment from={976} to={1244}>
       <div style={{ textAlign: "center" }}>
-        <Row gap={24} align="center" style={{ justifyContent: "center", marginBottom: 28 }}>
+        <Row gap={24} align="center" style={{ justifyContent: "center", marginBottom: 32 }}>
           <AnimImg src={crossIcon} revealFrame={976}
-            style={{ position: "relative" as const, width: 88, height: 88, top: 0, left: 0 }} />
-          <BounceIn at={976}>
-            <BigLabel color={C.loss} size={96}>WRONG!</BigLabel>
-          </BounceIn>
+            style={{ position: "relative" as const, width: 96, height: 96, top: 0, left: 0 }} />
+          <StampIn at={976}>
+            <BigLabel color={C.loss} size={110}>WRONG!</BigLabel>
+          </StampIn>
         </Row>
         <Reveal at={1013}>
-          <CallOut color={C.loss} bg={C.lossBg} border={C.lossBd} style={{ fontSize: 44 }}>
+          <CallOut color={C.loss} bg={C.lossBg} border={C.lossBd} style={{ fontSize: 52 }}>
             20% profit was calculated on <strong>CP</strong>, not SP
           </CallOut>
         </Reveal>
         <Reveal at={1096}>
-          <div style={{ fontFamily: F, fontSize: 40, color: C.gray, marginTop: 20 }}>
+          <div style={{ fontFamily: F, fontSize: 46, color: C.gray, marginTop: 24 }}>
             But they applied 20% to SP (1200) — that's the trap.
           </div>
         </Reveal>
@@ -114,21 +112,21 @@ export const Slide08CPFormula: React.FC = () => (
     <Moment from={1244} to={1524}>
       <div style={{ textAlign: "center" }}>
         <SlideIn at={1244} from="left">
-          <div style={{ fontFamily: F, fontSize: 44, color: C.dark, marginBottom: 20 }}>
+          <div style={{ fontFamily: F, fontSize: 52, color: C.dark, marginBottom: 28 }}>
             Correct logic:
           </div>
         </SlideIn>
         <Reveal at={1349}>
           <div style={{
             background: C.spBg, border: `3px solid ${C.spBd}`,
-            borderRadius: 18, padding: "20px 48px", marginBottom: 16,
-            fontFamily: F, fontSize: 46, color: C.sp, fontWeight: 700,
+            borderRadius: 18, padding: "24px 56px", marginBottom: 20,
+            fontFamily: F, fontSize: 56, color: C.sp, fontWeight: 700,
           }}>
             SP = 120% of CP
           </div>
         </Reveal>
         <Reveal at={1400}>
-          <div style={{ fontFamily: F, fontSize: 44, color: C.dark }}>
+          <div style={{ fontFamily: F, fontSize: 52, color: C.dark }}>
             So: CP = SP ÷ 1.2
           </div>
         </Reveal>
@@ -140,18 +138,18 @@ export const Slide08CPFormula: React.FC = () => (
       <div style={{ textAlign: "center" }}>
         <BounceIn at={1524}>
           <div style={{
-            background: "#F9FAFB", border: "2px solid #E5E7EB",
-            borderRadius: 18, padding: "24px 56px",
+            background: "#FFFFFF", border: "2px solid #CCCCCC",
+            borderRadius: 18, padding: "32px 64px",
           }}>
-            <Row gap={16} align="center" style={{ justifyContent: "center" }}>
-              <div style={{ fontFamily: F, fontSize: 52, fontWeight: 800, color: C.dark }}>
+            <Row gap={20} align="center" style={{ justifyContent: "center" }}>
+              <div style={{ fontFamily: F, fontSize: 64, fontWeight: 700, color: C.dark }}>
                 CP = 1200 ×
               </div>
-              <Frac num="100" den="120" size={44} color={C.cp} />
-              <div style={{ fontFamily: F, fontSize: 52, fontWeight: 800, color: C.dark }}>=</div>
-              <Pop at={1637}>
-                <BigLabel color={C.cp} size={80}>1000</BigLabel>
-              </Pop>
+              <Frac num="100" den="120" size={52} color={C.cp} />
+              <div style={{ fontFamily: F, fontSize: 64, fontWeight: 700, color: C.dark }}>=</div>
+              <Pulse at={1637}>
+                <CountUp from={800} to={1000} at={1637} color={C.cp} size={96} />
+              </Pulse>
             </Row>
           </div>
         </BounceIn>
@@ -160,42 +158,44 @@ export const Slide08CPFormula: React.FC = () => (
 
     {/* M7 (1757-2287f): Verification table */}
     <Moment from={1757} to={2288}>
-      <div style={{ textAlign: "center", width: "100%", maxWidth: 820 }}>
-        <div style={{ fontFamily: F, fontSize: 40, color: C.dark, fontWeight: 700, marginBottom: 24 }}>
+      <div style={{ textAlign: "center", width: "100%", maxWidth: 1100 }}>
+        <div style={{ fontFamily: F, fontSize: 48, color: C.dark, fontWeight: 700, marginBottom: 28 }}>
           Cross-check:
         </div>
         <div style={{
-          background: "#F9FAFB", border: "2px solid #E5E7EB",
-          borderRadius: 20, padding: "24px 48px",
+          background: "#FFFFFF", border: "2px solid #CCCCCC",
+          borderRadius: 20, padding: "28px 56px",
         }}>
-          <Row gap={0} align="stretch" style={{ flexDirection: "column", gap: 16 }}>
+          <Row gap={0} align="stretch" style={{ flexDirection: "column", gap: 20 }}>
             <Reveal at={1757}>
               <Row gap={20} align="center" style={{ justifyContent: "space-between" }}>
-                <div style={{ fontFamily: F, fontSize: 40, color: C.dark }}>CP</div>
-                <BigLabel color={C.cp} size={52}>= 1000</BigLabel>
+                <div style={{ fontFamily: F, fontSize: 48, color: C.dark, whiteSpace: "nowrap" }}>CP</div>
+                <BigLabel color={C.cp} size={64}>= 1000</BigLabel>
               </Row>
             </Reveal>
             <Reveal at={1828}>
               <Row gap={20} align="center" style={{ justifyContent: "space-between" }}>
-                <div style={{ fontFamily: F, fontSize: 40, color: C.dark }}>SP</div>
-                <BigLabel color={C.sp} size={52}>= 1200</BigLabel>
+                <div style={{ fontFamily: F, fontSize: 48, color: C.dark, whiteSpace: "nowrap" }}>SP</div>
+                <BigLabel color={C.sp} size={64}>= 1200</BigLabel>
               </Row>
             </Reveal>
             <Reveal at={2011}>
-              <div style={{ borderTop: "2px solid #E5E7EB", paddingTop: 16 }}>
+              <div style={{ borderTop: "2px solid #CCCCCC", paddingTop: 20 }}>
                 <Row gap={20} align="center" style={{ justifyContent: "space-between" }}>
-                  <div style={{ fontFamily: F, fontSize: 40, color: C.dark }}>Profit = 1200 - 1000</div>
-                  <BigLabel color={C.profit} size={52}>= 200</BigLabel>
+                  <div style={{ fontFamily: F, fontSize: 48, color: C.dark, whiteSpace: "nowrap" }}>Profit = 1200 - 1000</div>
+                  <BigLabel color={C.profit} size={64}>= 200</BigLabel>
                 </Row>
               </div>
             </Reveal>
             <Reveal at={2122}>
               <Row gap={20} align="center" style={{ justifyContent: "space-between" }}>
-                <div style={{ fontFamily: F, fontSize: 40, color: C.dark }}>Profit% = 200/1000 × 100</div>
-                <Row gap={12} align="center">
-                  <BigLabel color={C.profit} size={52}>= 20%</BigLabel>
-                  <AnimImg src={tickIcon} revealFrame={2122}
-                    style={{ position: "relative" as const, width: 52, height: 52, top: 0, left: 0 }} />
+                <div style={{ fontFamily: F, fontSize: 48, color: C.dark, whiteSpace: "nowrap" }}>Profit% = 200/1000 × 100</div>
+                <Row gap={16} align="center">
+                  <BigLabel color={C.profit} size={64}>= 20%</BigLabel>
+                  <BounceIn at={2122}>
+                    <AnimImg src={tickIcon} revealFrame={2122}
+                      style={{ position: "relative" as const, width: 60, height: 60, top: 0, left: 0 }} />
+                  </BounceIn>
                 </Row>
               </Row>
             </Reveal>
@@ -208,20 +208,20 @@ export const Slide08CPFormula: React.FC = () => (
     <Moment from={2288} to={2565}>
       <div style={{ textAlign: "center" }}>
         <Reveal at={2288}>
-          <div style={{ fontFamily: F, fontSize: 40, color: C.gray, marginBottom: 20 }}>
+          <div style={{ fontFamily: F, fontSize: 48, color: C.gray, marginBottom: 24 }}>
             When Profit = P%
           </div>
         </Reveal>
-        <BounceIn at={2445}>
-          <Formula color={C.profit} bg={C.profitBg} border={C.profitBd} style={{ fontSize: 48 }}>
+        <StampIn at={2445}>
+          <Formula color={C.profit} bg={C.profitBg} border={C.profitBd} style={{ fontSize: 60 }}>
             CP = SP ×
-            <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", verticalAlign: "middle", margin: "0 8px" }}>
-              <span style={{ fontSize: 42, lineHeight: 1.1 }}>100</span>
-              <span style={{ display: "block", height: 3, background: C.profit, minWidth: 60, margin: "4px 0" }} />
-              <span style={{ fontSize: 42, lineHeight: 1.1 }}>(100 + P)</span>
+            <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", verticalAlign: "middle", margin: "0 10px" }}>
+              <span style={{ fontSize: 52, lineHeight: 1.1 }}>100</span>
+              <span style={{ display: "block", height: 4, background: C.profit, minWidth: 72, margin: "5px 0" }} />
+              <span style={{ fontSize: 52, lineHeight: 1.1 }}>(100 + P)</span>
             </span>
           </Formula>
-        </BounceIn>
+        </StampIn>
       </div>
     </Moment>
 
@@ -229,22 +229,22 @@ export const Slide08CPFormula: React.FC = () => (
     <Moment from={2565}>
       <div style={{ textAlign: "center" }}>
         <Reveal at={2565}>
-          <div style={{ fontFamily: F, fontSize: 40, color: C.gray, marginBottom: 20 }}>
+          <div style={{ fontFamily: F, fontSize: 48, color: C.gray, marginBottom: 24 }}>
             When Loss = L%
           </div>
         </Reveal>
-        <BounceIn at={2770}>
-          <Formula color={C.loss} bg={C.lossBg} border={C.lossBd} style={{ fontSize: 48 }}>
+        <StampIn at={2770}>
+          <Formula color={C.loss} bg={C.lossBg} border={C.lossBd} style={{ fontSize: 60 }}>
             CP = SP ×
-            <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", verticalAlign: "middle", margin: "0 8px" }}>
-              <span style={{ fontSize: 42, lineHeight: 1.1 }}>100</span>
-              <span style={{ display: "block", height: 3, background: C.loss, minWidth: 60, margin: "4px 0" }} />
-              <span style={{ fontSize: 42, lineHeight: 1.1 }}>(100 - L)</span>
+            <span style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", verticalAlign: "middle", margin: "0 10px" }}>
+              <span style={{ fontSize: 52, lineHeight: 1.1 }}>100</span>
+              <span style={{ display: "block", height: 4, background: C.loss, minWidth: 72, margin: "5px 0" }} />
+              <span style={{ fontSize: 52, lineHeight: 1.1 }}>(100 - L)</span>
             </span>
           </Formula>
-        </BounceIn>
+        </StampIn>
         <Reveal at={2890}>
-          <CallOut style={{ fontSize: 36, marginTop: 24 }}>
+          <CallOut style={{ fontSize: 44, marginTop: 28 }}>
             Short form: SP × 100 ÷ (100 ± %)
           </CallOut>
         </Reveal>

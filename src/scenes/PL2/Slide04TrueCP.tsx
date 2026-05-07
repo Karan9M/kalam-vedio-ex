@@ -1,7 +1,7 @@
 // Slide 4 - True CP includes overheads (810f, 82s - 109s)
 import React from "react";
 import {
-  SlideBase, Moment, Reveal, Pop, BounceIn, SlideIn,
+  SlideBase, Moment, Reveal, BounceIn, SlideIn, CountUp,
   C, F, Row, BigLabel, CallOut,
 } from "./shared";
 import badgeImportant from "../../../Graphics/badge-important.png";
@@ -15,8 +15,8 @@ export const Slide04TrueCP: React.FC = () => (
       <div style={{ textAlign: "center" }}>
         <SlideIn at={0} from="top" dist={36}>
           <div style={{
-            fontFamily: F, fontWeight: 900, fontSize: 52, color: C.gray,
-            marginBottom: 20,
+            fontFamily: F, fontWeight: 700, fontSize: 64, color: C.gray,
+            marginBottom: 28,
           }}>
             Textbook says:
           </div>
@@ -24,9 +24,9 @@ export const Slide04TrueCP: React.FC = () => (
         <Reveal at={14}>
           <div style={{
             background: C.cpBg, border: `3px solid ${C.cpBd}`,
-            borderRadius: 18, padding: "22px 60px", display: "inline-block",
+            borderRadius: 20, padding: "32px 80px", display: "inline-block",
           }}>
-            <div style={{ fontFamily: F, fontWeight: 900, fontSize: 58, color: C.cp }}>
+            <div style={{ fontFamily: F, fontWeight: 700, fontSize: 76, color: C.cp }}>
               CP = Buying Price
             </div>
           </div>
@@ -40,15 +40,15 @@ export const Slide04TrueCP: React.FC = () => (
         <BounceIn at={122}>
           <div style={{
             background: C.lossBg, border: `3px solid ${C.lossBd}`,
-            borderRadius: 24, padding: "32px 72px", display: "inline-block",
+            borderRadius: 24, padding: "40px 88px", display: "inline-block",
           }}>
-            <div style={{ fontFamily: F, fontWeight: 900, fontSize: 60, color: C.loss }}>
+            <div style={{ fontFamily: F, fontWeight: 700, fontSize: 76, color: C.loss }}>
               CP ≠ just buying price
             </div>
           </div>
         </BounceIn>
-        <Reveal at={148} style={{ marginTop: 28 }}>
-          <div style={{ fontFamily: F, fontSize: 42, color: C.gray }}>
+        <Reveal at={148} style={{ marginTop: 36 }}>
+          <div style={{ fontFamily: F, fontSize: 52, color: C.gray }}>
             All extra costs count too
           </div>
         </Reveal>
@@ -57,52 +57,54 @@ export const Slide04TrueCP: React.FC = () => (
 
     {/* M3: Build-up calculation — TV 10,000 at 204f, Transport at 314f, Repair at 382f, total at 472f */}
     <Moment from={204} to={578}>
-      <div style={{ width: "100%", maxWidth: 820 }}>
+      <div style={{ width: "100%", maxWidth: 1160 }}>
         <div style={{
-          background: "#F9FAFB", border: "2px solid #E5E7EB",
-          borderRadius: 20, padding: "32px 56px",
+          background: "#FFFFFF", border: "2px solid #CCCCCC",
+          borderRadius: 24, padding: "40px 64px",
         }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
 
             {/* TV Price — appears at 204f */}
             <SlideIn at={204} from="left" dist={40}>
               <Row gap={24} align="center" style={{ justifyContent: "space-between" }}>
-                <div style={{ fontFamily: F, fontSize: 42, color: C.dark, fontWeight: 600 }}>
+                <div style={{ fontFamily: F, fontSize: 52, color: C.dark, fontWeight: 600, whiteSpace: "nowrap" }}>
                   Shopkeeper buys TV
                 </div>
-                <BigLabel color={C.cp} size={52}>Rs. 10,000</BigLabel>
+                <BigLabel color={C.cp} size={68}>Rs. 10,000</BigLabel>
               </Row>
             </SlideIn>
 
             {/* Transport — appears at 314f */}
             <Reveal at={314}>
               <Row gap={24} align="center" style={{ justifyContent: "space-between" }}>
-                <div style={{ fontFamily: F, fontSize: 42, color: C.dark }}>
+                <div style={{ fontFamily: F, fontSize: 52, color: C.dark }}>
                   + Transport
                 </div>
-                <BigLabel color={C.mp} size={52}>Rs. 500</BigLabel>
+                <BigLabel color={C.mp} size={68}>Rs. 500</BigLabel>
               </Row>
             </Reveal>
 
             {/* Repair — appears at 382f */}
             <Reveal at={382}>
               <Row gap={24} align="center" style={{ justifyContent: "space-between" }}>
-                <div style={{ fontFamily: F, fontSize: 42, color: C.dark }}>
+                <div style={{ fontFamily: F, fontSize: 52, color: C.dark }}>
                   + Repair
                 </div>
-                <BigLabel color={C.mp} size={52}>Rs. 200</BigLabel>
+                <BigLabel color={C.mp} size={68}>Rs. 200</BigLabel>
               </Row>
             </Reveal>
 
             {/* Total CP — appears at 472f */}
             <Reveal at={472}>
-              <div style={{ borderTop: "2px solid #D1D5DB", paddingTop: 20, marginTop: 4 }}>
+              <div style={{ borderTop: "2px solid #CCCCCC", paddingTop: 24, marginTop: 4 }}>
                 <Row gap={24} align="center" style={{ justifyContent: "space-between" }}>
-                  <div style={{ fontFamily: F, fontSize: 44, fontWeight: 800, color: C.dark }}>
+                  <div style={{ fontFamily: F, fontSize: 56, fontWeight: 700, color: C.dark }}>
                     Actual CP
                   </div>
                   <BounceIn at={472}>
-                    <BigLabel color={C.cp} size={68}>Rs. 10,700</BigLabel>
+                    <div style={{ fontFamily: F, fontWeight: 700, fontSize: 88, color: C.cp, lineHeight: 1 }}>
+                      Rs. <CountUp from={10000} to={10700} at={472} color={C.cp} size={88} />
+                    </div>
                   </BounceIn>
                 </Row>
               </div>
@@ -116,29 +118,29 @@ export const Slide04TrueCP: React.FC = () => (
     {/* M4: Key rule — "add all overhead costs to CP" at 701f */}
     <Moment from={581}>
       <div style={{ textAlign: "center" }}>
-        <Row gap={20} align="center" style={{ justifyContent: "center", marginBottom: 28 }}>
+        <Row gap={20} align="center" style={{ justifyContent: "center", marginBottom: 36 }}>
           <AnimImg
             src={badgeImportant}
             revealFrame={581}
-            style={{ position: "relative" as const, width: 220, height: 54, top: 0, left: 0 }}
+            style={{ position: "relative" as const, width: 280, height: 68, top: 0, left: 0 }}
           />
         </Row>
-        <Pop at={601}>
+        <BounceIn at={601}>
           <CallOut
             color={C.cp}
             bg={C.cpBg}
             border={C.cpBd}
-            style={{ fontSize: 48, padding: "28px 56px", textAlign: "center" }}
+            style={{ fontSize: 58, padding: "36px 72px", textAlign: "center" }}
           >
             Add ALL overhead costs to CP
           </CallOut>
-        </Pop>
-        <Reveal at={701} style={{ marginTop: 32, textAlign: "center" }}>
+        </BounceIn>
+        <Reveal at={701} style={{ marginTop: 40, textAlign: "center" }}>
           <div style={{
-            background: "#F9FAFB", border: "2px solid #E5E7EB",
-            borderRadius: 16, padding: "18px 40px", display: "inline-block",
+            background: "#FFFFFF", border: "2px solid #CCCCCC",
+            borderRadius: 18, padding: "24px 52px", display: "inline-block",
           }}>
-            <div style={{ fontFamily: F, fontSize: 40, color: C.dark, lineHeight: 1.6 }}>
+            <div style={{ fontFamily: F, fontSize: 48, color: C.dark, lineHeight: 1.6 }}>
               True CP = Purchase Price + Transport + Repair + ...
             </div>
           </div>

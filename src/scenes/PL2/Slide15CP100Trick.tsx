@@ -2,34 +2,34 @@
 // Audio sync: frame = (ts_seconds - 900.67) × 30
 import React from "react";
 import {
-  SlideBase, Moment, Reveal, Pop, C, F, Row,
+  SlideBase, Moment, Reveal, C, F, Row,
   BigLabel, Formula, CallOut, Frac, AnimImg,
-  BounceIn, SlideIn, DrawArrow,
+  BounceIn, SlideIn,
+  CountUp, Pulse, StampIn,
 } from "./shared";
 import badgeTrick from "../../../Graphics/badge-trick.png";
 import tickIcon   from "../../../Graphics/right-tickmark-true-icon.png";
+import arrowRight from "../../../Graphics/arrow-right-facing.png";
 
 export const Slide15CP100Trick: React.FC = () => (
   <SlideBase num={15} title="THE CP = 100 TRICK">
 
     {/* ── M1 (0-397f): Question card ─────────────────────────────────────── */}
-    {/* "shopkeeper: 20% discount still gets 12% profit" at 48f             */}
-    {/* "what % of CP is MP?" at 167f                                        */}
     <Moment from={0} to={397}>
-      <div style={{ width: "100%", maxWidth: 900, textAlign: "center" }}>
+      <div style={{ width: "100%", maxWidth: 1000, textAlign: "center" }}>
 
         {/* Badge */}
-        <BounceIn at={0} style={{ display: "inline-block", marginBottom: 24 }}>
+        <BounceIn at={0} style={{ display: "inline-block", marginBottom: 36 }}>
           <AnimImg src={badgeTrick} revealFrame={0}
-            style={{ position: "relative", width: 210, height: 52, top: 0, left: 0 }} />
+            style={{ position: "relative", width: 270, height: 66, top: 0, left: 0 }} />
         </BounceIn>
 
         {/* Problem statement — slides in at 48f */}
         <SlideIn at={48} from="top" dist={24}>
           <div style={{
-            background: "#F9FAFB", border: "2px solid #E5E7EB",
-            borderRadius: 20, padding: "28px 52px",
-            fontFamily: F, fontSize: 42, color: C.dark, lineHeight: 1.75,
+            background: "#FFFFFF", border: "2px solid #CCCCCC",
+            borderRadius: 24, padding: "40px 72px",
+            fontFamily: F, fontSize: 60, color: C.dark, lineHeight: 1.75,
             textAlign: "left",
           }}>
             A shopkeeper gives a{" "}
@@ -40,11 +40,11 @@ export const Slide15CP100Trick: React.FC = () => (
         </SlideIn>
 
         {/* Question — appears at 167f */}
-        <Reveal at={167} style={{ marginTop: 24 }}>
+        <Reveal at={167} style={{ marginTop: 36 }}>
           <div style={{
             background: C.cpBg, border: `2.5px solid ${C.cpBd}`,
-            borderRadius: 16, padding: "20px 44px",
-            fontFamily: F, fontSize: 44, fontWeight: 800, color: C.cp,
+            borderRadius: 18, padding: "30px 64px",
+            fontFamily: F, fontSize: 64, fontWeight: 700, color: C.cp,
           }}>
             What % of CP is the Marked Price?
           </div>
@@ -54,28 +54,28 @@ export const Slide15CP100Trick: React.FC = () => (
     </Moment>
 
     {/* ── M2 (398-635f): Assume CP = 100, derive SP = 112 ───────────────── */}
-    {/* "CP = 100" at 398f  |  "12% profit" at 451f  |  "SP = 112" at 477f */}
     <Moment from={398} to={635}>
-      <div style={{ width: "100%", maxWidth: 780 }}>
+      <div style={{ width: "100%", maxWidth: 1000 }}>
 
         {/* Step label */}
-        <BounceIn at={398} style={{ display: "inline-block", marginBottom: 20 }}>
+        <StampIn at={398}>
           <div style={{
-            background: C.cpBg, border: `3px solid ${C.cpBd}`, borderRadius: 14,
-            padding: "10px 32px", fontFamily: F, fontSize: 34, fontWeight: 900, color: C.cp,
+            background: C.cpBg, border: `3px solid ${C.cpBd}`, borderRadius: 16,
+            padding: "16px 52px", fontFamily: F, fontSize: 52, fontWeight: 700, color: C.cp,
+            marginBottom: 24,
           }}>
             STEP 1 — Assume CP = 100
           </div>
-        </BounceIn>
+        </StampIn>
 
         <div style={{
-          background: "#F9FAFB", border: "2px solid #E5E7EB",
-          borderRadius: 20, padding: "28px 48px",
+          background: "#FFFFFF", border: "2px solid #CCCCCC",
+          borderRadius: 24, padding: "40px 64px",
         }}>
           {/* CP = 100 */}
-          <Row gap={24} align="center" style={{ justifyContent: "space-between", marginBottom: 16 }}>
+          <Row gap={24} align="center" style={{ justifyContent: "space-between", marginBottom: 24 }}>
             <BounceIn at={398}>
-              <div style={{ fontFamily: F, fontSize: 44, fontWeight: 800, color: C.cp }}>
+              <div style={{ fontFamily: F, fontSize: 64, fontWeight: 700, color: C.cp }}>
                 CP = 100
               </div>
             </BounceIn>
@@ -83,23 +83,24 @@ export const Slide15CP100Trick: React.FC = () => (
 
           {/* 12% profit label */}
           <Reveal at={451}>
-            <Row gap={24} align="center" style={{ justifyContent: "space-between", marginBottom: 16 }}>
-              <div style={{ fontFamily: F, fontSize: 40, color: C.dark }}>
+            <Row gap={24} align="center" style={{ justifyContent: "space-between", marginBottom: 24 }}>
+              <div style={{ fontFamily: F, fontSize: 60, color: C.dark }}>
                 12% profit on CP
               </div>
-              <DrawArrow at={460} color={C.profit} lineLen={60} />
+              <AnimImg src={arrowRight} revealFrame={460}
+                style={{ position: "relative" as const, width: 90, height: 52, top: 0, left: 0 }} />
             </Row>
           </Reveal>
 
           {/* SP = 112 */}
           <Reveal at={477}>
             <Row gap={24} align="center" style={{ justifyContent: "space-between" }}>
-              <div style={{ fontFamily: F, fontSize: 40, color: C.dark }}>
+              <div style={{ fontFamily: F, fontSize: 60, color: C.dark, whiteSpace: "nowrap" }}>
                 SP = CP + 12% of CP
               </div>
-              <Pop at={490}>
-                <BigLabel color={C.sp} size={64}>SP = 112</BigLabel>
-              </Pop>
+              <BounceIn at={490}>
+                <BigLabel color={C.sp} size={88}>SP = 112</BigLabel>
+              </BounceIn>
             </Row>
           </Reveal>
         </div>
@@ -108,47 +109,48 @@ export const Slide15CP100Trick: React.FC = () => (
     </Moment>
 
     {/* ── M3 (636-866f): 20% discount on MP → SP = 80% of MP ───────────── */}
-    {/* "20% discount on MP" at 636f  |  "SP = 80% of MP" at 729f          */}
     <Moment from={636} to={866}>
-      <div style={{ width: "100%", maxWidth: 820 }}>
+      <div style={{ width: "100%", maxWidth: 1000 }}>
 
-        <BounceIn at={636} style={{ display: "inline-block", marginBottom: 20 }}>
+        <StampIn at={636}>
           <div style={{
-            background: C.mpBg, border: `3px solid ${C.mpBd}`, borderRadius: 14,
-            padding: "10px 32px", fontFamily: F, fontSize: 34, fontWeight: 900, color: C.mp,
+            background: C.mpBg, border: `3px solid ${C.mpBd}`, borderRadius: 16,
+            padding: "16px 52px", fontFamily: F, fontSize: 52, fontWeight: 700, color: C.mp,
+            marginBottom: 24,
           }}>
             STEP 2 — Use the Discount
           </div>
-        </BounceIn>
+        </StampIn>
 
         <div style={{
-          background: "#F9FAFB", border: "2px solid #E5E7EB",
-          borderRadius: 20, padding: "28px 48px",
+          background: "#FFFFFF", border: "2px solid #CCCCCC",
+          borderRadius: 24, padding: "40px 64px",
         }}>
           {/* 20% discount on MP */}
           <SlideIn at={636} from="left">
-            <Row gap={20} align="center" style={{ marginBottom: 24 }}>
-              <div style={{ fontFamily: F, fontSize: 42, color: C.dark }}>
+            <Row gap={28} align="center" style={{ marginBottom: 36 }}>
+              <div style={{ fontFamily: F, fontSize: 60, color: C.dark }}>
                 Discount on MP =
               </div>
               <div style={{
-                background: C.mpBg, border: `2px solid ${C.mpBd}`, borderRadius: 12,
-                padding: "8px 28px", fontFamily: F, fontSize: 42, fontWeight: 900, color: C.mp,
+                background: C.mpBg, border: `2px solid ${C.mpBd}`, borderRadius: 14,
+                padding: "14px 44px", fontFamily: F, fontSize: 60, fontWeight: 700, color: C.mp,
               }}>
                 20%
               </div>
             </Row>
           </SlideIn>
 
-          {/* SP = 80% of MP — arrives at 729f */}
+          {/* SP = 80% of MP */}
           <Reveal at={729}>
-            <Row gap={20} align="center" style={{ justifyContent: "center" }}>
-              <DrawArrow at={729} color={C.sp} lineLen={64} />
-              <Pop at={745}>
-                <Formula color={C.sp} bg={C.spBg} border={C.spBd} style={{ fontSize: 44 }}>
+            <Row gap={28} align="center" style={{ justifyContent: "center" }}>
+              <AnimImg src={arrowRight} revealFrame={729}
+                style={{ position: "relative" as const, width: 90, height: 52, top: 0, left: 0 }} />
+              <BounceIn at={745}>
+                <Formula color={C.sp} bg={C.spBg} border={C.spBd} style={{ fontSize: 64 }}>
                   SP = 80% of MP
                 </Formula>
-              </Pop>
+              </BounceIn>
             </Row>
           </Reveal>
         </div>
@@ -157,87 +159,81 @@ export const Slide15CP100Trick: React.FC = () => (
     </Moment>
 
     {/* ── M4 (867-1128f): Calculate MP = 112 / 0.8 = 140 ──────────────── */}
-    {/* "MP = 112/0.8 = 140" at 867f  |  "= 140" emphasis at 1032f         */}
     <Moment from={867} to={1128}>
       <div style={{ textAlign: "center" }}>
 
-        <BounceIn at={867} style={{ display: "inline-block", marginBottom: 28 }}>
+        <StampIn at={867}>
           <div style={{
-            background: C.mpBg, border: `3px solid ${C.mpBd}`, borderRadius: 14,
-            padding: "10px 32px", fontFamily: F, fontSize: 34, fontWeight: 900, color: C.mp,
+            background: C.mpBg, border: `3px solid ${C.mpBd}`, borderRadius: 16,
+            padding: "16px 52px", fontFamily: F, fontSize: 52, fontWeight: 700, color: C.mp,
+            marginBottom: 28,
           }}>
             STEP 3 — Solve for MP
           </div>
-        </BounceIn>
+        </StampIn>
 
-        {/* Equation: SP = 80% × MP, so MP = SP / 0.8 */}
+        {/* Equation */}
         <SlideIn at={867} from="left">
-          <div style={{ fontFamily: F, fontSize: 44, color: C.dark, marginBottom: 20 }}>
+          <div style={{ fontFamily: F, fontSize: 64, color: C.dark, marginBottom: 32 }}>
             SP = 80% of MP&nbsp;&nbsp;→&nbsp;&nbsp;MP =
             <span style={{ color: C.sp }}> SP </span>÷ 0.8
           </div>
         </SlideIn>
 
-        {/* The fraction MP = 112 / 0.8 */}
+        {/* Fraction MP = 112 / 0.8 */}
         <Reveal at={900}>
-          <Row gap={20} align="center" style={{ justifyContent: "center", marginBottom: 20 }}>
-            <div style={{ fontFamily: F, fontSize: 44, color: C.dark, fontWeight: 700 }}>MP = </div>
-            <Frac num={<span style={{ color: C.sp }}>112</span>} den="0.8" size={44} color={C.dark} />
+          <Row gap={28} align="center" style={{ justifyContent: "center", marginBottom: 32 }}>
+            <div style={{ fontFamily: F, fontSize: 64, color: C.dark, fontWeight: 700 }}>MP = </div>
+            <Frac num={<span style={{ color: C.sp }}>112</span>} den="0.8" size={64} color={C.dark} />
           </Row>
         </Reveal>
 
         {/* = 140 highlighted at 1032f */}
-        <Reveal at={1032}>
-          <Pop at={1032}>
-            <div style={{
-              background: C.mpBg, border: `3.5px solid ${C.mpBd}`, borderRadius: 20,
-              padding: "18px 64px", display: "inline-block",
-            }}>
-              <BigLabel color={C.mp} size={88}>= 140</BigLabel>
+        <Pulse at={1032}>
+          <BounceIn at={1032}>
+            <div style={{ fontFamily: F, fontWeight: 700, fontSize: 108, color: C.mp, lineHeight: 1 }}>
+              MP = <CountUp from={100} to={140} at={1032} color={C.mp} size={108} suffix="%" />
             </div>
-          </Pop>
-        </Reveal>
+          </BounceIn>
+        </Pulse>
 
       </div>
     </Moment>
 
     {/* ── M5 (1129-1440f): Result — MP = 140% of CP, 40% more ─────────── */}
-    {/* "MP = 140% of CP" at 1129f  |  "MP is 40% more than CP" at 1263f   */}
     <Moment from={1129}>
       <div style={{ textAlign: "center" }}>
 
         {/* Main result */}
         <BounceIn at={1129}>
           <div style={{
-            background: C.mpBg, border: `3px solid ${C.mpBd}`, borderRadius: 24,
-            padding: "28px 72px", marginBottom: 28,
+            background: C.mpBg, border: `3px solid ${C.mpBd}`, borderRadius: 28,
+            padding: "40px 96px", marginBottom: 40,
           }}>
-            <Row gap={20} align="center" style={{ justifyContent: "center" }}>
-              <BigLabel color={C.mp} size={72}>MP = 140% of CP</BigLabel>
+            <Row gap={28} align="center" style={{ justifyContent: "center" }}>
+              <BigLabel color={C.mp} size={96}>MP = 140% of CP</BigLabel>
               <AnimImg src={tickIcon} revealFrame={1160}
-                style={{ position: "relative", width: 56, height: 56, top: 0, left: 0 }} />
+                style={{ position: "relative", width: 72, height: 72, top: 0, left: 0 }} />
             </Row>
           </div>
         </BounceIn>
 
-        {/* Insight: 40% more — at 1263f */}
-        <Reveal at={1263}>
-          <Pop at={1263}>
-            <CallOut
-              color={C.dark} bg="#F0FDF4" border="#86EFAC"
-              style={{ fontSize: 44, padding: "22px 52px" }}
-            >
-              MP is{" "}
-              <strong style={{ color: C.profit }}>40% more</strong>{" "}
-              than CP.
-            </CallOut>
-          </Pop>
-        </Reveal>
+        {/* Insight: 40% more */}
+        <StampIn at={1263}>
+          <CallOut
+            color={C.dark} bg="#F0FDF4" border="#86EFAC"
+            style={{ fontSize: 64, padding: "36px 72px" }}
+          >
+            MP is{" "}
+            <strong style={{ color: C.profit }}>40% more</strong>{" "}
+            than CP.
+          </CallOut>
+        </StampIn>
 
-        {/* Tiny reminder of the trick */}
-        <Reveal at={1320} style={{ marginTop: 20 }}>
+        {/* Reminder */}
+        <Reveal at={1320} style={{ marginTop: 32 }}>
           <div style={{
-            fontFamily: F, fontSize: 34, color: C.gray, lineHeight: 1.6,
+            fontFamily: F, fontSize: 50, color: C.gray, lineHeight: 1.6,
           }}>
             CP not given? Assume CP = 100. Always works.
           </div>

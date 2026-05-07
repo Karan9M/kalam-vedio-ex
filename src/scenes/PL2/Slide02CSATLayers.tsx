@@ -7,7 +7,8 @@
 // 421f  : "wahi 400-500 concept"
 // 524f  : "bas layers hain"
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { SlideBase, Moment, Reveal, Pop, C, F, Row } from "./shared";
+import { SlideBase, Moment, Reveal, Pop, Pulse, StampIn, AnimImg, C, F, Row } from "./shared";
+import arrowRight from "../../../Graphics/arrow-right-facing.png";
 
 // Badge with pop spring  -  each word appears exactly on its audio beat
 const WordBadge: React.FC<{
@@ -23,29 +24,11 @@ const WordBadge: React.FC<{
       <div style={{
         background: bg, border: `3px solid ${bd}`, borderRadius: 18,
         padding: "18px 38px",
-        fontFamily: F, fontWeight: 900, fontSize: 42, color,
+        fontFamily: F, fontWeight: 700, fontSize: 42, color,
         display: "inline-block",
       }}>
         {text}
       </div>
-    </div>
-  );
-};
-
-// Arrow that draws at `at`
-const DrawArrow: React.FC<{ at: number; color?: string; size?: number }> = ({ at, color = "#9CA3AF", size = 72 }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const prog = spring({ frame: Math.max(0, frame - at), fps, config: { damping: 16, stiffness: 110 }, from: 0, to: 1 });
-  const headOpacity = interpolate(prog, [0.8, 1], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <div style={{ width: size * prog, height: 4, background: color, borderRadius: 2 }} />
-      <div style={{
-        opacity: headOpacity, width: 0, height: 0,
-        borderTop: "9px solid transparent", borderBottom: "9px solid transparent",
-        borderLeft: `16px solid ${color}`,
-      }} />
     </div>
   );
 };
@@ -55,25 +38,24 @@ export const Slide02CSATLayers: React.FC = () => (
 
     {/* M1: Topic badges appear one by one on exact audio beats  -  0 to 418f */}
     <Moment from={0} to={418} align="flex-start" justify="flex-start">
-      <div style={{ paddingTop: 8 }}>
+      <div style={{ paddingTop: 16, width: "100%" }}>
         <Reveal at={0}>
-          <div style={{ fontFamily: F, fontSize: 40, color: C.gray, marginBottom: 32, fontWeight: 700 }}>
+          <div style={{ fontFamily: F, fontSize: 54, color: C.gray, marginBottom: 56, fontWeight: 700 }}>
             CSAT mixes all of these:
           </div>
         </Reveal>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 22 }}>
-          {/* Each badge fires on the exact frame the audio mentions that word */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 28 }}>
           <WordBadge text="Discount"     at={86}  color={C.mp}     bg={C.mpBg}     bd={C.mpBd}     />
           <WordBadge text="Profit %"     at={116} color={C.profit} bg={C.profitBg} bd={C.profitBd} />
           <WordBadge text="Marked Price" at={184} color={C.mp}     bg={C.mpBg}     bd={C.mpBd}     />
           <WordBadge text="Selling Price"at={200} color={C.sp}     bg={C.spBg}     bd={C.spBd}     />
-          <WordBadge text="False Weight" at={224} color={C.loss}   bg={C.lossBg}   bd={C.lossBd}   />
+          <Pulse at={280}><WordBadge text="False Weight" at={224} color={C.loss} bg={C.lossBg} bd={C.lossBd} /></Pulse>
         </div>
-        <Reveal at={271} style={{ marginTop: 32 }}>
+        <Reveal at={271} style={{ marginTop: 80 }}>
           <div style={{
-            background: "#F9FAFB", border: "2px dashed #D1D5DB", borderRadius: 16,
-            padding: "16px 36px",
-            fontFamily: F, fontSize: 36, color: C.gray,
+            background: "#FFFFFF", border: "2px dashed #CCCCCC", borderRadius: 20,
+            padding: "28px 52px",
+            fontFamily: F, fontSize: 50, color: C.gray,
           }}>
             All combined in one question.
           </div>
@@ -86,22 +68,23 @@ export const Slide02CSATLayers: React.FC = () => (
       <div style={{ textAlign: "center" }}>
         <Pop at={421}>
           <div style={{
-            background: C.cpBg, border: `3px solid ${C.cpBd}`, borderRadius: 24,
-            padding: "36px 64px",
+            background: C.cpBg, border: `3px solid ${C.cpBd}`, borderRadius: 28,
+            padding: "52px 96px",
           }}>
-            <div style={{ fontFamily: F, fontSize: 38, color: C.gray, marginBottom: 18, fontWeight: 600 }}>
+            <div style={{ fontFamily: F, fontSize: 50, color: C.gray, marginBottom: 36, fontWeight: 600 }}>
               But inside, it&apos;s always the same:
             </div>
-            <Row gap={32} align="center" style={{ justifyContent: "center" }}>
-              <div style={{ fontFamily: F, fontSize: 80, fontWeight: 900, color: C.cp }}>400</div>
-              <DrawArrow at={440} color={C.lightGray} size={56} />
-              <div style={{ fontFamily: F, fontSize: 80, fontWeight: 900, color: C.sp }}>500</div>
+            <Row gap={48} align="center" style={{ justifyContent: "center" }}>
+              <div style={{ fontFamily: F, fontSize: 110, fontWeight: 700, color: C.cp }}>400</div>
+              <AnimImg src={arrowRight} revealFrame={460}
+                style={{ position: "relative" as const, width: 130, height: 64, top: 0, left: 0 }} />
+              <div style={{ fontFamily: F, fontSize: 110, fontWeight: 700, color: C.sp }}>500</div>
             </Row>
-            <Reveal at={520}>
-              <div style={{ fontFamily: F, fontSize: 34, color: C.gray, marginTop: 18 }}>
+            <StampIn at={520}>
+              <div style={{ fontFamily: F, fontSize: 48, color: C.gray, marginTop: 36 }}>
                 Just layers on top.
               </div>
-            </Reveal>
+            </StampIn>
           </div>
         </Pop>
       </div>

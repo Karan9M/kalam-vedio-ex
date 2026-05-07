@@ -1,14 +1,7 @@
-import { loadFont } from "@remotion/google-fonts/Inter";
-
-const { fontFamily } = loadFont("normal", {
-  weights: ["400", "600", "700"],
-  subsets: ["latin", "latin-ext"],
-});
-
-// All font roles now use Inter.
-// handwritten/devanagari kept as aliases so percentage scenes compile without a full rewrite.
+// Comic Sans MS — system font, no network loading needed.
+// Chromium (used by Remotion) inherits Windows system fonts, so this works locally.
 export const FONTS = {
-  body:        fontFamily,
-  handwritten: fontFamily,
-  devanagari:  fontFamily,
+  body:        '"Comic Sans MS", "Comic Sans", cursive',
+  handwritten: '"Comic Sans MS", "Comic Sans", cursive',
+  devanagari:  '"Comic Sans MS", "Comic Sans", cursive',
 } as const;
